@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { ScrollAnimation } from "@/components/ScrollAnimation";
 import heroImage from "@/assets/hero-image.jpg";
 
 const Hero = () => {
@@ -17,44 +18,52 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="max-w-3xl">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
-            Empowering Communities Through
-            <span className="block text-gold"> Education & Innovation</span>
-          </h1>
+          <ScrollAnimation>
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+              Empowering Communities Through
+              <span className="block text-gold"> Education & Innovation</span>
+            </h1>
+          </ScrollAnimation>
           
-          <p className="text-xl md:text-2xl text-white/90 mb-8 animate-slide-up">
-            Waumbe is transforming lives in Cape Town through comprehensive programs in education, 
-            youth empowerment, entrepreneurship, and societal reformation.
-          </p>
+          <ScrollAnimation delay={0.2}>
+            <p className="text-xl md:text-2xl text-white/90 mb-8">
+              Waumbe is transforming lives in Cape Town through comprehensive programs in education, 
+              youth empowerment, entrepreneurship, and societal reformation.
+            </p>
+          </ScrollAnimation>
 
-          <div className="flex flex-col sm:flex-row gap-4 animate-scale-in">
-            <Button variant="cta" size="lg" className="text-lg px-8 py-3">
-              Learn About Our Programs
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="text-lg px-8 py-3 text-white border-white hover:bg-white hover:text-primary"
-            >
-              See Our Impact
-            </Button>
-          </div>
+          <ScrollAnimation delay={0.4}>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button variant="cta" size="lg" className="text-lg px-8 py-3">
+                Learn About Our Programs
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="text-lg px-8 py-3 text-white border-white hover:bg-white hover:text-primary"
+              >
+                See Our Impact
+              </Button>
+            </div>
+          </ScrollAnimation>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-16 animate-fade-in">
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-gold mb-2">500+</div>
-              <div className="text-white/80">Students Empowered</div>
+          <ScrollAnimation delay={0.6}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-16">
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-gold mb-2">500+</div>
+                <div className="text-white/80">Students Empowered</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-gold mb-2">15+</div>
+                <div className="text-white/80">Active Programs</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-gold mb-2">5</div>
+                <div className="text-white/80">Years of Impact</div>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-gold mb-2">15+</div>
-              <div className="text-white/80">Active Programs</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-gold mb-2">5</div>
-              <div className="text-white/80">Years of Impact</div>
-            </div>
-          </div>
+          </ScrollAnimation>
         </div>
       </div>
 

@@ -48,6 +48,10 @@ export default {
 					DEFAULT: 'hsl(var(--gold))',
 					foreground: 'hsl(var(--gold-foreground))'
 				},
+				waumbe: {
+					DEFAULT: 'hsl(var(--waumbe))',
+					foreground: 'hsl(var(--waumbe-foreground))'
+				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
 					foreground: 'hsl(var(--popover-foreground))'

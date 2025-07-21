@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Linkedin, Mail } from "lucide-react";
 import teamImage from "@/assets/team-image.jpg";
 
@@ -60,63 +61,65 @@ const Team = () => {
     <section id="team" className="py-20 bg-secondary/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-            Our Team
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Meet the dedicated professionals and community leaders driving positive change 
-            in Cape Town and beyond.
-          </p>
-        </div>
+        <ScrollAnimation>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+              Our Team
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Meet the dedicated professionals and community leaders driving positive change 
+              in Cape Town and beyond.
+            </p>
+          </div>
+        </ScrollAnimation>
 
         {/* Team Hero Image */}
-        <div className="mb-16 animate-scale-in">
-          <img
-            src={teamImage}
-            alt="Waumbe team members"
-            className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-lg"
-          />
-        </div>
+        <ScrollAnimation>
+          <div className="mb-16">
+            <img
+              src={teamImage}
+              alt="Waumbe team members"
+              className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-lg"
+            />
+          </div>
+        </ScrollAnimation>
 
         {/* Core Team */}
         <div className="mb-20">
           <h3 className="text-2xl font-bold text-foreground mb-8 text-center">Core Team</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <Card 
-                key={index} 
-                className="hover:shadow-lg transition-all duration-300 hover:scale-105 animate-slide-up"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <CardContent className="p-6">
-                  <div className="text-center">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
-                    />
-                    <h4 className="text-xl font-semibold text-foreground mb-1">
-                      {member.name}
-                    </h4>
-                    <p className="text-primary font-medium mb-2">{member.role}</p>
-                    <Badge variant="secondary" className="mb-3">
-                      {member.department}
-                    </Badge>
-                    <p className="text-sm text-muted-foreground mb-4">
-                      {member.bio}
-                    </p>
-                    <div className="flex justify-center space-x-3">
-                      <button className="text-muted-foreground hover:text-primary transition-colors">
-                        <Mail className="w-5 h-5" />
-                      </button>
-                      <button className="text-muted-foreground hover:text-primary transition-colors">
-                        <Linkedin className="w-5 h-5" />
-                      </button>
+              <ScrollAnimation key={index} delay={index * 0.1}>
+                <Card className="hover:shadow-lg transition-all duration-300 hover:scale-105 h-full">
+                  <CardContent className="p-6">
+                    <div className="text-center">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
+                      />
+                      <h4 className="text-xl font-semibold text-foreground mb-1">
+                        {member.name}
+                      </h4>
+                      <p className="text-primary font-medium mb-2">{member.role}</p>
+                      <Badge variant="secondary" className="mb-3">
+                        {member.department}
+                      </Badge>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        {member.bio}
+                      </p>
+                      <div className="flex justify-center space-x-3">
+                        <button className="text-muted-foreground hover:text-primary transition-colors">
+                          <Mail className="w-5 h-5" />
+                        </button>
+                        <button className="text-muted-foreground hover:text-primary transition-colors">
+                          <Linkedin className="w-5 h-5" />
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </ScrollAnimation>
             ))}
           </div>
         </div>

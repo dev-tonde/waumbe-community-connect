@@ -6,6 +6,7 @@ import StayConnected from "@/components/StayConnected";
 import Team from "@/components/Team";
 import Partners from "@/components/Partners";
 import Footer from "@/components/Footer";
+import { FloatingEntrepreneurshipButton } from "@/components/FloatingEntrepreneurshipButton";
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <Team />
       <Partners />
       <Footer />
+      <FloatingEntrepreneurshipButton />
     </div>
   );
 };
