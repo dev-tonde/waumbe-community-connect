@@ -77,39 +77,6 @@ const StayConnected = () => {
             </Card>
           </ScrollAnimation>
 
-          {/* Contact Form */}
-          <ScrollAnimation delay={0.2}>
-            <Card className="lg:col-span-2 bg-gradient-to-br from-fun-green/10 to-fun-yellow/10 hover:scale-105 transition-transform duration-300">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Send className="w-5 h-5 text-fun-green animate-float" />
-                  Get in Touch
-                </CardTitle>
-                <CardDescription>
-                  Have questions about our programs or want to get involved? We'd love to hear from you.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleContactSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Input placeholder="Full Name" required className="border-fun-green/30 focus:border-fun-green" />
-                    <Input type="email" placeholder="Email Address" required className="border-fun-green/30 focus:border-fun-green" />
-                  </div>
-                  <Input placeholder="Subject" required className="border-fun-green/30 focus:border-fun-green" />
-                  <Textarea
-                    placeholder="Your message..."
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    required
-                    className="min-h-[120px] border-fun-green/30 focus:border-fun-green"
-                  />
-                  <FunButton type="submit" variant="wiggle" size="lg">
-                    Send Message
-                  </FunButton>
-                </form>
-              </CardContent>
-            </Card>
-          </ScrollAnimation>
         </div>
 
         {/* Contact Information */}

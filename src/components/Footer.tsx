@@ -1,25 +1,26 @@
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, Heart } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const quickLinks = [
-    { name: "About Us", href: "#about" },
-    { name: "Programs", href: "#programs" },
-    { name: "Team", href: "#team" },
-    { name: "Partners", href: "#partners" }
+    { name: "About Us", href: "/about" },
+    { name: "Programs", href: "/programs" },
+    { name: "Team", href: "/team" },
+    { name: "Partners", href: "/partners" }
   ];
 
   const programs = [
-    { name: "Academic Development", href: "#academic-development" },
-    { name: "Youth Empowerment", href: "#youth-empowerment" },
-    { name: "Innovation Labs", href: "#innovation" },
-    { name: "Entrepreneurship", href: "#entrepreneurship" }
+    { name: "Academic Development", href: "/programs" },
+    { name: "Youth Empowerment", href: "/programs" },
+    { name: "Innovation Labs", href: "/programs" },
+    { name: "Entrepreneurship", href: "/entrepreneurship" }
   ];
 
   const resources = [
-    { name: "Financial Reports", href: "#reports" },
-    { name: "Governance", href: "#governance" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Gallery", href: "#gallery" }
+    { name: "Financial Reports", href: "/reports" },
+    { name: "Governance", href: "/governance" },
+    { name: "Testimonials", href: "/testimonials" },
+    { name: "Contact", href: "/contact" }
   ];
 
   return (
@@ -56,12 +57,12 @@ const Footer = () => {
             <ul className="space-y-2">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
+                  <Link 
+                    to={link.href} 
                     className="text-white/80 hover:text-gold transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -73,12 +74,12 @@ const Footer = () => {
             <ul className="space-y-2">
               {programs.map((program, index) => (
                 <li key={index}>
-                  <a 
-                    href={program.href} 
+                  <Link 
+                    to={program.href} 
                     className="text-white/80 hover:text-gold transition-colors"
                   >
                     {program.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -90,12 +91,12 @@ const Footer = () => {
             <ul className="space-y-2 mb-6">
               {resources.map((resource, index) => (
                 <li key={index}>
-                  <a 
-                    href={resource.href} 
+                  <Link 
+                    to={resource.href} 
                     className="text-white/80 hover:text-gold transition-colors"
                   >
                     {resource.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -165,12 +166,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Floating Entrepreneurship Button */}
-        <div className="fixed bottom-6 right-6 z-50">
-          <button className="bg-accent text-accent-foreground px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 font-semibold">
-            Go To Entrepreneurship →
-          </button>
-        </div>
       </div>
     </footer>
   );

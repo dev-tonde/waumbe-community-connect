@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,21 +11,22 @@ import {
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const isActive = (path: string) => location.pathname === path;
 
   const programsItems = [
-    "Academic Development",
-    "Courses",
-    "Learnerships", 
-    "Societal Reformation",
-    "Volunteers",
-    "TSIBA",
-    "OT Students"
+    { name: "Academic Development", path: "/programs" },
+    { name: "Courses", path: "/entrepreneurship" },
+    { name: "Learnerships", path: "/entrepreneurship" },
+    { name: "Youth Empowerment", path: "/programs" },
+    { name: "Innovation Labs", path: "/programs" },
   ];
 
   const testimonialsItems = [
-    "Student Stories",
-    "Community Impact",
-    "Success Stories"
+    { name: "Student Stories", path: "/testimonials" },
+    { name: "Community Impact", path: "/testimonials" },
+    { name: "Success Stories", path: "/testimonials" },
   ];
 
   return (
@@ -33,15 +35,20 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold text-primary">Waumbe</h1>
+            <Link to="/" className="text-2xl font-bold text-primary hover:scale-105 transition-transform">
+              Waumbe
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <a href="#about" className="text-foreground hover:text-primary transition-colors">
+              <Link 
+                to="/about" 
+                className={`transition-colors ${isActive('/about') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+              >
                 About Us
-              </a>
+              </Link>
               
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors">
@@ -49,47 +56,45 @@ const Navbar = () => {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-background border border-border shadow-lg">
                   {programsItems.map((item) => (
-                    <DropdownMenuItem key={item} className="hover:bg-muted">
-                      <a href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} className="w-full">
-                        {item}
-                      </a>
+                    <DropdownMenuItem key={item.name} className="hover:bg-muted">
+                      <Link to={item.path} className="w-full">
+                        {item.name}
+                      </Link>
                     </DropdownMenuItem>
                   ))}
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors">
-                  Testimonials <ChevronDown className="ml-1 h-4 w-4" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-background border border-border shadow-lg">
-                  {testimonialsItems.map((item) => (
-                    <DropdownMenuItem key={item} className="hover:bg-muted">
-                      <a href={`#${item.toLowerCase().replace(/\s+/g, '-')}`} className="w-full">
-                        {item}
-                      </a>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <Link 
+                to="/team" 
+                className={`transition-colors ${isActive('/team') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+              >
+                Team
+              </Link>
 
-              <a href="#reports" className="text-foreground hover:text-primary transition-colors">
-                Financial Reports
-              </a>
-              <a href="#governance" className="text-foreground hover:text-primary transition-colors">
-                Governance
-              </a>
-              <a href="#contact" className="text-foreground hover:text-primary transition-colors">
+              <Link 
+                to="/partners" 
+                className={`transition-colors ${isActive('/partners') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+              >
+                Partners
+              </Link>
+
+              <Link 
+                to="/contact" 
+                className={`transition-colors ${isActive('/contact') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+              >
                 Contact
-              </a>
+              </Link>
             </div>
           </div>
 
           {/* Donate Button */}
           <div className="hidden md:block">
-            <Button variant="donate" size="lg">
-              Donate Now
-            </Button>
+            <Link to="/donate">
+              <Button variant="donate" size="lg">
+                Donate Now
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -107,46 +112,36 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-t border-border">
-              <a href="#about" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
+              <Link to="/about" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
                 About Us
-              </a>
+              </Link>
               <div className="px-3 py-2">
                 <p className="text-sm font-medium text-muted-foreground mb-2">Programs</p>
                 {programsItems.map((item) => (
-                  <a
-                    key={item}
-                    href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
+                  <Link
+                    key={item.name}
+                    to={item.path}
                     className="block px-3 py-1 text-sm text-foreground hover:text-primary transition-colors"
                   >
-                    {item}
-                  </a>
+                    {item.name}
+                  </Link>
                 ))}
               </div>
-              <div className="px-3 py-2">
-                <p className="text-sm font-medium text-muted-foreground mb-2">Testimonials</p>
-                {testimonialsItems.map((item) => (
-                  <a
-                    key={item}
-                    href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="block px-3 py-1 text-sm text-foreground hover:text-primary transition-colors"
-                  >
-                    {item}
-                  </a>
-                ))}
-              </div>
-              <a href="#reports" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
-                Financial Reports
-              </a>
-              <a href="#governance" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
-                Governance
-              </a>
-              <a href="#contact" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
+              <Link to="/team" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
+                Team
+              </Link>
+              <Link to="/partners" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
+                Partners
+              </Link>
+              <Link to="/contact" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
                 Contact
-              </a>
+              </Link>
               <div className="px-3 py-2">
-                <Button variant="donate" className="w-full">
-                  Donate Now
-                </Button>
+                <Link to="/donate">
+                  <Button variant="donate" className="w-full">
+                    Donate Now
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
