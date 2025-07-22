@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { FunButton } from "@/components/ui/fun-button";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Heart, Users, Target, Award } from "lucide-react";
 
@@ -45,9 +45,9 @@ const WhoWeAre = () => {
                 Founded on the principles of transparency, community engagement, and sustainable development, 
                 we work closely with local communities in Fisantekraal and beyond to create lasting positive change.
               </p>
-              <Button variant="default" size="lg">
+              <FunButton variant="primary" size="lg">
                 Learn More About Our Mission
-              </Button>
+              </FunButton>
             </div>
           </ScrollAnimation>
 
@@ -55,8 +55,8 @@ const WhoWeAre = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {values.map((value, index) => (
               <ScrollAnimation key={index} delay={index * 0.1}>
-                <div className="bg-card p-6 rounded-lg shadow-sm border border-border hover:shadow-md transition-shadow">
-                  <value.icon className="w-12 h-12 text-primary mb-4" />
+                <div className="bg-card p-6 rounded-xl shadow-fun border border-border hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:rotate-1">
+                  <value.icon className={`w-12 h-12 mb-4 ${index % 4 === 0 ? 'text-fun-blue' : index % 4 === 1 ? 'text-fun-pink' : index % 4 === 2 ? 'text-fun-green' : 'text-fun-yellow'} animate-bounce-gentle`} />
                   <h3 className="text-xl font-semibold text-foreground mb-3">
                     {value.title}
                   </h3>
@@ -72,8 +72,8 @@ const WhoWeAre = () => {
         {/* Mission Statement */}
         <ScrollAnimation delay={0.4}>
           <div className="mt-20 text-center">
-            <div className="bg-gradient-to-r from-primary to-accent p-8 md:p-12 rounded-2xl text-white">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">Our Mission</h3>
+            <div className="bg-gradient-fun p-8 md:p-12 rounded-2xl text-white transform hover:scale-105 transition-transform duration-300">
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 animate-float">Our Mission</h3>
               <p className="text-lg md:text-xl max-w-4xl mx-auto">
                 To empower communities through education, innovation, and sustainable development 
                 programs that create lasting positive change and unlock human potential.

@@ -17,30 +17,47 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 210 24% 16%;
 
-    --primary: 189 94% 43%;
+    /* Vibrant colors for a fun, child-friendly experience */
+    --primary: 270 95% 75%; /* Bright purple */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 17% 95%;
+    --secondary: 150 60% 85%; /* Soft mint green */
     --secondary-foreground: 210 24% 16%;
 
-    --muted: 210 17% 95%;
+    --muted: 45 100% 95%; /* Very light yellow */
     --muted-foreground: 210 12% 46%;
 
-    --accent: 24 95% 53%;
+    --accent: 15 100% 70%; /* Bright coral/orange */
     --accent-foreground: 0 0% 100%;
+
+    --fun-blue: 200 95% 70%; /* Bright sky blue */
+    --fun-blue-foreground: 0 0% 100%;
+
+    --fun-pink: 330 85% 75%; /* Bright pink */
+    --fun-pink-foreground: 0 0% 100%;
+
+    --fun-green: 120 70% 65%; /* Bright green */
+    --fun-green-foreground: 0 0% 100%;
+
+    --fun-yellow: 45 100% 70%; /* Bright yellow */
+    --fun-yellow-foreground: 210 24% 16%;
 
     --gold: 43 74% 66%;
     --gold-foreground: 210 24% 16%;
 
+    /* Minimal use of brand color as accent only */
     --waumbe: 69 21% 40%;
     --waumbe-foreground: 0 0% 100%;
 
-    --gradient-primary: linear-gradient(135deg, hsl(189 94% 43%), hsl(189 84% 53%));
-    --gradient-accent: linear-gradient(135deg, hsl(24 95% 53%), hsl(24 85% 63%));
-    --gradient-hero: linear-gradient(135deg, hsl(189 94% 43%) 0%, hsl(24 95% 53%) 100%);
+    /* Fun gradients for vibrant design */
+    --gradient-primary: linear-gradient(135deg, hsl(270 95% 75%), hsl(200 95% 70%));
+    --gradient-accent: linear-gradient(135deg, hsl(15 100% 70%), hsl(330 85% 75%));
+    --gradient-hero: linear-gradient(135deg, hsl(270 95% 75%) 0%, hsl(15 100% 70%) 50%, hsl(200 95% 70%) 100%);
+    --gradient-fun: linear-gradient(45deg, hsl(330 85% 75%), hsl(45 100% 70%), hsl(120 70% 65%), hsl(200 95% 70%));
     
-    --shadow-soft: 0 4px 20px -4px hsl(189 94% 43% / 0.15);
-    --shadow-strong: 0 10px 40px -10px hsl(189 94% 43% / 0.25);
+    --shadow-soft: 0 4px 20px -4px hsl(270 95% 75% / 0.15);
+    --shadow-strong: 0 10px 40px -10px hsl(270 95% 75% / 0.25);
+    --shadow-fun: 0 8px 32px -8px hsl(330 85% 75% / 0.3);
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;

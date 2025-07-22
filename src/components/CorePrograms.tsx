@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { FunButton } from "@/components/ui/fun-button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { BookOpen, Lightbulb, Users2, Building, GraduationCap, Briefcase } from "lucide-react";
@@ -64,9 +64,9 @@ const CorePrograms = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {programs.map((program, index) => (
             <ScrollAnimation key={index} delay={index * 0.1}>
-              <Card className="hover:shadow-lg transition-all duration-300 hover:scale-105 border-border h-full">
+              <Card className="hover:shadow-xl transition-all duration-300 hover:scale-105 hover:rotate-1 border-border h-full bg-gradient-to-br from-white to-secondary/30">
                 <CardHeader>
-                  <program.icon className="w-12 h-12 text-primary mb-4" />
+                  <program.icon className={`w-12 h-12 mb-4 animate-bounce-gentle ${index % 6 === 0 ? 'text-fun-blue' : index % 6 === 1 ? 'text-fun-pink' : index % 6 === 2 ? 'text-fun-green' : index % 6 === 3 ? 'text-fun-yellow' : index % 6 === 4 ? 'text-primary' : 'text-accent'}`} />
                   <CardTitle className="text-xl text-foreground">{program.title}</CardTitle>
                   <CardDescription className="text-muted-foreground">
                     {program.description}
@@ -76,7 +76,7 @@ const CorePrograms = () => {
                   <ul className="space-y-2">
                     {program.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center text-sm text-muted-foreground">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3" />
+                        <div className={`w-1.5 h-1.5 rounded-full mr-3 animate-pulse-slow ${featureIndex % 4 === 0 ? 'bg-fun-blue' : featureIndex % 4 === 1 ? 'bg-fun-pink' : featureIndex % 4 === 2 ? 'bg-fun-green' : 'bg-fun-yellow'}`} />
                         {feature}
                       </li>
                     ))}
@@ -109,12 +109,12 @@ const CorePrograms = () => {
                 in your community, we have programs designed to help you succeed.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button variant="cta" size="lg">
+                <FunButton variant="wiggle" size="lg">
                   Apply for Programs
-                </Button>
-                <Button variant="outline" size="lg">
+                </FunButton>
+                <FunButton variant="secondary" size="lg">
                   Download Brochure
-                </Button>
+                </FunButton>
               </div>
             </div>
           </ScrollAnimation>

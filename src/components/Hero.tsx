@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { FunButton } from "@/components/ui/fun-button";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import heroImage from "@/assets/hero-image.jpg";
 
@@ -12,7 +13,7 @@ const Hero = () => {
           alt="Community upliftment and education"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/60" />
+        <div className="absolute inset-0 bg-gradient-hero opacity-90" />
       </div>
 
       {/* Content */}
@@ -21,7 +22,7 @@ const Hero = () => {
           <ScrollAnimation>
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Empowering Communities Through
-              <span className="block text-gold"> Education & Innovation</span>
+              <span className="block text-fun-yellow animate-pulse-slow"> Education & Innovation</span>
             </h1>
           </ScrollAnimation>
           
@@ -34,32 +35,31 @@ const Hero = () => {
 
           <ScrollAnimation delay={0.4}>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="cta" size="lg" className="text-lg px-8 py-3">
+              <FunButton variant="rainbow" size="lg">
                 Learn About Our Programs
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="text-lg px-8 py-3 text-white border-white hover:bg-white hover:text-primary"
+              </FunButton>
+              <FunButton 
+                variant="bounce" 
+                size="lg"
               >
                 See Our Impact
-              </Button>
+              </FunButton>
             </div>
           </ScrollAnimation>
 
           {/* Stats */}
           <ScrollAnimation delay={0.6}>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-16">
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-gold mb-2">500+</div>
+              <div className="text-center transform hover:scale-110 transition-transform duration-300">
+                <div className="text-3xl md:text-4xl font-bold text-fun-yellow mb-2 animate-bounce-gentle">500+</div>
                 <div className="text-white/80">Students Empowered</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-gold mb-2">15+</div>
+              <div className="text-center transform hover:scale-110 transition-transform duration-300">
+                <div className="text-3xl md:text-4xl font-bold text-fun-pink mb-2 animate-float">15+</div>
                 <div className="text-white/80">Active Programs</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-gold mb-2">5</div>
+              <div className="text-center transform hover:scale-110 transition-transform duration-300">
+                <div className="text-3xl md:text-4xl font-bold text-fun-green mb-2 animate-pulse-slow">5</div>
                 <div className="text-white/80">Years of Impact</div>
               </div>
             </div>

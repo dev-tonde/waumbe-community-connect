@@ -52,6 +52,22 @@ export default {
 					DEFAULT: 'hsl(var(--waumbe))',
 					foreground: 'hsl(var(--waumbe-foreground))'
 				},
+				'fun-blue': {
+					DEFAULT: 'hsl(var(--fun-blue))',
+					foreground: 'hsl(var(--fun-blue-foreground))'
+				},
+				'fun-pink': {
+					DEFAULT: 'hsl(var(--fun-pink))',
+					foreground: 'hsl(var(--fun-pink-foreground))'
+				},
+				'fun-green': {
+					DEFAULT: 'hsl(var(--fun-green))',
+					foreground: 'hsl(var(--fun-green-foreground))'
+				},
+				'fun-yellow': {
+					DEFAULT: 'hsl(var(--fun-yellow))',
+					foreground: 'hsl(var(--fun-yellow-foreground))'
+				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
 					foreground: 'hsl(var(--popover-foreground))'
@@ -122,6 +138,41 @@ export default {
 						opacity: '1',
 						transform: 'scale(1)'
 					}
+				},
+				'bounce-gentle': {
+					'0%, 100%': {
+						transform: 'translateY(0)'
+					},
+					'50%': {
+						transform: 'translateY(-5px)'
+					}
+				},
+				'wiggle': {
+					'0%, 100%': {
+						transform: 'rotate(0deg)'
+					},
+					'25%': {
+						transform: 'rotate(-3deg)'
+					},
+					'75%': {
+						transform: 'rotate(3deg)'
+					}
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0px)'
+					},
+					'50%': {
+						transform: 'translateY(-10px)'
+					}
+				},
+				'pulse-slow': {
+					'0%, 100%': {
+						opacity: '1'
+					},
+					'50%': {
+						opacity: '0.7'
+					}
 				}
 			},
 			animation: {
@@ -129,7 +180,17 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.6s ease-out',
 				'slide-up': 'slide-up 0.6s ease-out',
-				'scale-in': 'scale-in 0.4s ease-out'
+				'scale-in': 'scale-in 0.4s ease-out',
+				'bounce-gentle': 'bounce-gentle 2s ease-in-out infinite',
+				'wiggle': 'wiggle 1s ease-in-out infinite',
+				'float': 'float 3s ease-in-out infinite',
+				'pulse-slow': 'pulse-slow 3s ease-in-out infinite'
+			},
+			backgroundImage: {
+				'gradient-fun': 'var(--gradient-fun)',
+				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-accent': 'var(--gradient-accent)'
 			}
 		}
 	},
