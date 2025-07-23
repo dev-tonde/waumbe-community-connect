@@ -14,6 +14,30 @@ import Donate from "./pages/Donate";
 import Entrepreneurship from "./pages/Entrepreneurship";
 import NotFound from "./pages/NotFound";
 
+// Program pages
+import AcademicDevelopment from "./pages/programs/AcademicDevelopment";
+import CoreSteeringGroup from "./pages/CoreSteeringGroup";
+import SocietalReformation from "./pages/programs/SocietalReformation";
+import Courses from "./pages/programs/Courses";
+import Learnerships from "./pages/programs/Learnerships";
+import Volunteer from "./pages/programs/Volunteer";
+import ProgramsEntrepreneurship from "./pages/programs/Entrepreneurship";
+import SkillsDevelopment from "./pages/programs/SkillsDevelopment";
+
+// Other pages
+import Testimonials from "./pages/Testimonials";
+import Awards from "./pages/testimonials/Awards";
+import FinancialReports from "./pages/FinancialReports";
+import Governance from "./pages/Governance";
+import Gallery from "./pages/Gallery";
+
+// Entrepreneurship site pages
+import EntrepreneurshipCourses from "./pages/entrepreneurship/Courses";
+import EntrepreneurshipLearnership from "./pages/entrepreneurship/Learnership";
+import EntrepreneurshipFundraising from "./pages/entrepreneurship/Fundraising";
+import EntrepreneurshipContact from "./pages/entrepreneurship/Contact";
+import EntrepreneurshipDonate from "./pages/entrepreneurship/Donate";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -27,13 +51,30 @@ const App = () => (
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="programs" element={<Programs />} />
+            <Route path="programs/academic-development" element={<AcademicDevelopment />} />
+            <Route path="core-steering-group" element={<CoreSteeringGroup />} />
+            <Route path="programs/societal-reformation" element={<SocietalReformation />} />
+            <Route path="programs/courses" element={<Courses />} />
+            <Route path="programs/learnerships" element={<Learnerships />} />
+            <Route path="programs/volunteer" element={<Volunteer />} />
+            <Route path="programs/entrepreneurship" element={<ProgramsEntrepreneurship />} />
+            <Route path="programs/skills-development" element={<SkillsDevelopment />} />
+            <Route path="testimonials" element={<Testimonials />} />
+            <Route path="testimonials/awards" element={<Awards />} />
+            <Route path="financial-reports" element={<FinancialReports />} />
+            <Route path="governance" element={<Governance />} />
+            <Route path="gallery" element={<Gallery />} />
             <Route path="team" element={<Team />} />
             <Route path="partners" element={<Partners />} />
             <Route path="contact" element={<Contact />} />
             <Route path="donate" element={<Donate />} />
           </Route>
           <Route path="/entrepreneurship" element={<Entrepreneurship />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/entrepreneurship/courses" element={<EntrepreneurshipCourses />} />
+          <Route path="/entrepreneurship/learnership" element={<EntrepreneurshipLearnership />} />
+          <Route path="/entrepreneurship/fundraising" element={<EntrepreneurshipFundraising />} />
+          <Route path="/entrepreneurship/contact" element={<EntrepreneurshipContact />} />
+          <Route path="/entrepreneurship/donate" element={<EntrepreneurshipDonate />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

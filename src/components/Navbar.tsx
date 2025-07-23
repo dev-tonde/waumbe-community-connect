@@ -16,17 +16,20 @@ const Navbar = () => {
   const isActive = (path: string) => location.pathname === path;
 
   const programsItems = [
-    { name: "Academic Development", path: "/programs" },
-    { name: "Courses", path: "/entrepreneurship" },
-    { name: "Learnerships", path: "/entrepreneurship" },
-    { name: "Youth Empowerment", path: "/programs" },
-    { name: "Innovation Labs", path: "/programs" },
+    { name: "All Programs", path: "/programs" },
+    { name: "Academic Development", path: "/programs/academic-development" },
+    { name: "Core Steering Group", path: "/core-steering-group" },
+    { name: "Societal Reformation", path: "/programs/societal-reformation" },
+    { name: "Courses", path: "/programs/courses" },
+    { name: "Learnerships", path: "/programs/learnerships" },
+    { name: "Volunteer", path: "/programs/volunteer" },
+    { name: "Entrepreneurship", path: "/programs/entrepreneurship" },
+    { name: "Skills Development", path: "/programs/skills-development" },
   ];
 
   const testimonialsItems = [
-    { name: "Student Stories", path: "/testimonials" },
-    { name: "Community Impact", path: "/testimonials" },
-    { name: "Success Stories", path: "/testimonials" },
+    { name: "Testimonials", path: "/testimonials" },
+    { name: "Awards", path: "/testimonials/awards" },
   ];
 
   return (
