@@ -7,6 +7,7 @@ import { FunButton } from "@/components/ui/fun-button";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Heart, GraduationCap, Users, Lightbulb, Home, Utensils } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Donate = () => {
   const [selectedAmount, setSelectedAmount] = useState("");
@@ -54,22 +55,77 @@ const Donate = () => {
     },
   ];
 
-  const handleDonateSubmit = (e: React.FormEvent) => {
+  const handleDonateSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const amount = selectedAmount || customAmount;
     
-    toast({
-      title: "Thank you for your generous donation!",
-      description: `Your R${amount} donation will make a real difference. Redirecting to payment...`,
-    });
-    
-    // Here you would integrate with PayFast
-    setTimeout(() => {
+    if (!amount || !selectedCause) {
       toast({
-        title: "Payment integration coming soon!",
-        description: "PayFast integration will be implemented for secure payment processing.",
+        title: "Please complete the form",
+        description: "Please select an amount and cause before proceeding.",
+        variant: "destructive",
       });
-    }, 2000);
+      return;
+    }
+
+    // Get form data
+    const formData = new FormData(e.target as HTMLFormElement);
+    const donor_name = formData.get('donor_name') as string;
+    const donor_email = formData.get('donor_email') as string;
+    const message = formData.get('message') as string;
+
+    if (!donor_name || !donor_email) {
+      toast({
+        title: "Please fill in required fields",
+        description: "Name and email are required to process your donation.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      toast({
+        title: "Processing your donation...",
+        description: "Please wait while we prepare your payment.",
+      });
+
+      const { data, error } = await supabase.functions.invoke('create-payfast-payment', {
+        body: {
+          amount,
+          donor_name,
+          donor_email,
+          cause: causes.find(c => c.id === selectedCause)?.title || selectedCause,
+          message,
+        },
+      });
+
+      if (error) throw error;
+
+      if (data.success) {
+        // Create a form and submit it to PayFast
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = data.payment_url;
+        
+        Object.entries(data.payment_data).forEach(([key, value]) => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = key;
+          input.value = value as string;
+          form.appendChild(input);
+        });
+
+        document.body.appendChild(form);
+        form.submit();
+      }
+    } catch (error) {
+      console.error('Payment error:', error);
+      toast({
+        title: "Payment Processing Failed",
+        description: "There was an error processing your donation. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   const impactStats = [
@@ -166,11 +222,12 @@ const Donate = () => {
 
                       {/* Personal Details */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <Input placeholder="Full Name" required className="border-fun-pink/30 focus:border-fun-pink" />
-                        <Input placeholder="Email Address" type="email" required className="border-fun-pink/30 focus:border-fun-pink" />
+                        <Input name="donor_name" placeholder="Full Name" required className="border-fun-pink/30 focus:border-fun-pink" />
+                        <Input name="donor_email" placeholder="Email Address" type="email" required className="border-fun-pink/30 focus:border-fun-pink" />
                       </div>
 
                       <Textarea
+                        name="message"
                         placeholder="Leave a message (optional)"
                         className="border-fun-pink/30 focus:border-fun-pink"
                       />

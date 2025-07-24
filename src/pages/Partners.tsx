@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { useState } from "react";
 import Autoplay from "embla-carousel-autoplay";
+import { PartnershipRequestForm } from "@/components/forms/PartnershipRequestForm";
 
 const Partners = () => {
+  const [showPartnershipForm, setShowPartnershipForm] = useState(false);
   const [hoveredPartner, setHoveredPartner] = useState<number | null>(null);
 
   const partners = [
@@ -24,6 +27,34 @@ const Partners = () => {
     { number: "10,000+", label: "Lives Impacted", icon: "🌟" },
     { number: "25", label: "Programs Supported", icon: "📚" },
   ];
+
+  if (showPartnershipForm) {
+    return (
+      <div className="pt-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <ScrollAnimation>
+            <div className="text-center mb-8">
+              <Button 
+                variant="outline" 
+                onClick={() => setShowPartnershipForm(false)}
+                className="mb-4"
+              >
+                ← Back to Partners Information
+              </Button>
+              <h2 className="text-3xl font-bold mb-4">Partner With Us</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Join our mission to transform lives and communities. Fill out the form below to start the conversation.
+              </p>
+            </div>
+          </ScrollAnimation>
+
+          <ScrollAnimation delay={0.1}>
+            <PartnershipRequestForm />
+          </ScrollAnimation>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen pt-16">
@@ -152,6 +183,18 @@ const Partners = () => {
                 </ScrollAnimation>
               </div>
             </div>
+
+            <ScrollAnimation>
+              <div className="text-center mt-16">
+                <Button 
+                  size="lg" 
+                  className="hover:scale-105 transition-transform"
+                  onClick={() => setShowPartnershipForm(true)}
+                >
+                  Become a Partner
+                </Button>
+              </div>
+            </ScrollAnimation>
           </div>
         </section>
       </ScrollAnimation>

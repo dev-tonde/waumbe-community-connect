@@ -422,6 +422,51 @@ export type Database = {
         }
         Relationships: []
       }
+      course_materials: {
+        Row: {
+          course_id: string | null
+          created_at: string | null
+          file_type: string | null
+          file_url: string | null
+          id: string
+          title: string
+          uploaded_by: string | null
+        }
+        Insert: {
+          course_id?: string | null
+          created_at?: string | null
+          file_type?: string | null
+          file_url?: string | null
+          id?: string
+          title: string
+          uploaded_by?: string | null
+        }
+        Update: {
+          course_id?: string | null
+          created_at?: string | null
+          file_type?: string | null
+          file_url?: string | null
+          id?: string
+          title?: string
+          uploaded_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "course_materials_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "course_materials_uploaded_by_fkey"
+            columns: ["uploaded_by"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       courses: {
         Row: {
           created_at: string | null
@@ -459,6 +504,57 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      donations: {
+        Row: {
+          amount: number
+          cause: string | null
+          created_at: string
+          currency: string | null
+          donor_email: string
+          donor_name: string
+          id: string
+          merchant_id: string | null
+          message: string | null
+          payment_id: string | null
+          payment_status: string | null
+          status: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          amount: number
+          cause?: string | null
+          created_at?: string
+          currency?: string | null
+          donor_email: string
+          donor_name: string
+          id?: string
+          merchant_id?: string | null
+          message?: string | null
+          payment_id?: string | null
+          payment_status?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          amount?: number
+          cause?: string | null
+          created_at?: string
+          currency?: string | null
+          donor_email?: string
+          donor_name?: string
+          id?: string
+          merchant_id?: string | null
+          message?: string | null
+          payment_id?: string | null
+          payment_status?: string | null
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
       }
       email_campaigns: {
         Row: {
@@ -654,6 +750,54 @@ export type Database = {
         }
         Relationships: []
       }
+      gallery_items: {
+        Row: {
+          category: string
+          created_at: string
+          description: string | null
+          event_date: string | null
+          id: string
+          image_url: string | null
+          is_featured: boolean | null
+          location: string | null
+          participants_count: number | null
+          status: string | null
+          tags: string[] | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description?: string | null
+          event_date?: string | null
+          id?: string
+          image_url?: string | null
+          is_featured?: boolean | null
+          location?: string | null
+          participants_count?: number | null
+          status?: string | null
+          tags?: string[] | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string | null
+          event_date?: string | null
+          id?: string
+          image_url?: string | null
+          is_featured?: boolean | null
+          location?: string | null
+          participants_count?: number | null
+          status?: string | null
+          tags?: string[] | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       invites: {
         Row: {
           accepted: boolean | null
@@ -698,6 +842,63 @@ export type Database = {
           },
         ]
       }
+      learnership_applications: {
+        Row: {
+          age: number | null
+          availability: string | null
+          created_at: string
+          education_level: string | null
+          email: string
+          emergency_contact: string | null
+          emergency_phone: string | null
+          full_name: string
+          id: string
+          motivation: string
+          phone: string | null
+          previous_experience: string | null
+          program_interest: string
+          status: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          age?: number | null
+          availability?: string | null
+          created_at?: string
+          education_level?: string | null
+          email: string
+          emergency_contact?: string | null
+          emergency_phone?: string | null
+          full_name: string
+          id?: string
+          motivation: string
+          phone?: string | null
+          previous_experience?: string | null
+          program_interest: string
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          age?: number | null
+          availability?: string | null
+          created_at?: string
+          education_level?: string | null
+          email?: string
+          emergency_contact?: string | null
+          emergency_phone?: string | null
+          full_name?: string
+          id?: string
+          motivation?: string
+          phone?: string | null
+          previous_experience?: string | null
+          program_interest?: string
+          status?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       learning_goals: {
         Row: {
           created_at: string | null
@@ -725,6 +926,114 @@ export type Database = {
           user_id?: string | null
           week_start?: string | null
           weekly_xp_goal?: number | null
+        }
+        Relationships: []
+      }
+      live_sessions: {
+        Row: {
+          course_id: string | null
+          created_at: string | null
+          created_by: string | null
+          duration: number | null
+          id: string
+          recording_url: string | null
+          scheduled_time: string
+          status: string | null
+          title: string
+        }
+        Insert: {
+          course_id?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          duration?: number | null
+          id?: string
+          recording_url?: string | null
+          scheduled_time: string
+          status?: string | null
+          title: string
+        }
+        Update: {
+          course_id?: string | null
+          created_at?: string | null
+          created_by?: string | null
+          duration?: number | null
+          id?: string
+          recording_url?: string | null
+          scheduled_time?: string
+          status?: string | null
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "live_sessions_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "live_sessions_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      marketplace_items: {
+        Row: {
+          category: string
+          content: Json
+          created_at: string | null
+          creator_id: string | null
+          description: string | null
+          downloads: number | null
+          id: string
+          is_featured: boolean | null
+          preview_image: string | null
+          price: number | null
+          rating: number | null
+          rating_count: number | null
+          tags: string[] | null
+          title: string
+          type: string
+          updated_at: string | null
+        }
+        Insert: {
+          category: string
+          content: Json
+          created_at?: string | null
+          creator_id?: string | null
+          description?: string | null
+          downloads?: number | null
+          id?: string
+          is_featured?: boolean | null
+          preview_image?: string | null
+          price?: number | null
+          rating?: number | null
+          rating_count?: number | null
+          tags?: string[] | null
+          title: string
+          type: string
+          updated_at?: string | null
+        }
+        Update: {
+          category?: string
+          content?: Json
+          created_at?: string | null
+          creator_id?: string | null
+          description?: string | null
+          downloads?: number | null
+          id?: string
+          is_featured?: boolean | null
+          preview_image?: string | null
+          price?: number | null
+          rating?: number | null
+          rating_count?: number | null
+          tags?: string[] | null
+          title?: string
+          type?: string
+          updated_at?: string | null
         }
         Relationships: []
       }
@@ -940,6 +1249,66 @@ export type Database = {
         }
         Relationships: []
       }
+      partnership_requests: {
+        Row: {
+          additional_info: string | null
+          budget_range: string | null
+          company_name: string
+          company_size: string | null
+          contact_person: string
+          created_at: string
+          email: string
+          goals: string
+          id: string
+          industry: string | null
+          partnership_type: string
+          phone: string | null
+          proposed_contribution: string | null
+          status: string
+          timeline: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          additional_info?: string | null
+          budget_range?: string | null
+          company_name: string
+          company_size?: string | null
+          contact_person: string
+          created_at?: string
+          email: string
+          goals: string
+          id?: string
+          industry?: string | null
+          partnership_type: string
+          phone?: string | null
+          proposed_contribution?: string | null
+          status?: string
+          timeline?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          additional_info?: string | null
+          budget_range?: string | null
+          company_name?: string
+          company_size?: string | null
+          contact_person?: string
+          created_at?: string
+          email?: string
+          goals?: string
+          id?: string
+          industry?: string | null
+          partnership_type?: string
+          phone?: string | null
+          proposed_contribution?: string | null
+          status?: string
+          timeline?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       patients: {
         Row: {
           created_at: string | null
@@ -1002,6 +1371,51 @@ export type Database = {
           id?: string
           module_id?: string
           user_id?: string | null
+        }
+        Relationships: []
+      }
+      projects: {
+        Row: {
+          created_at: string | null
+          demo_url: string | null
+          description: string | null
+          github_url: string | null
+          id: string
+          is_public: boolean | null
+          owner_id: string | null
+          status: string | null
+          tags: string[] | null
+          tech_stack: string[] | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          demo_url?: string | null
+          description?: string | null
+          github_url?: string | null
+          id?: string
+          is_public?: boolean | null
+          owner_id?: string | null
+          status?: string | null
+          tags?: string[] | null
+          tech_stack?: string[] | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          demo_url?: string | null
+          description?: string | null
+          github_url?: string | null
+          id?: string
+          is_public?: boolean | null
+          owner_id?: string | null
+          status?: string | null
+          tags?: string[] | null
+          tech_stack?: string[] | null
+          title?: string
+          updated_at?: string | null
         }
         Relationships: []
       }
@@ -1109,6 +1523,63 @@ export type Database = {
           subject?: string
           updated_at?: string
           user_id?: string | null
+        }
+        Relationships: []
+      }
+      templates: {
+        Row: {
+          category: string
+          code: string | null
+          content: Json
+          created_at: string | null
+          creator_id: string | null
+          description: string | null
+          downloads: number | null
+          id: string
+          is_public: boolean | null
+          rating: number | null
+          rating_count: number | null
+          schema: Json | null
+          tags: string[] | null
+          title: string
+          type: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          category: string
+          code?: string | null
+          content: Json
+          created_at?: string | null
+          creator_id?: string | null
+          description?: string | null
+          downloads?: number | null
+          id?: string
+          is_public?: boolean | null
+          rating?: number | null
+          rating_count?: number | null
+          schema?: Json | null
+          tags?: string[] | null
+          title: string
+          type?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          category?: string
+          code?: string | null
+          content?: Json
+          created_at?: string | null
+          creator_id?: string | null
+          description?: string | null
+          downloads?: number | null
+          id?: string
+          is_public?: boolean | null
+          rating?: number | null
+          rating_count?: number | null
+          schema?: Json | null
+          tags?: string[] | null
+          title?: string
+          type?: string | null
+          updated_at?: string | null
         }
         Relationships: []
       }
@@ -1363,6 +1834,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      cleanup_old_monitoring_logs: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
       get_current_user_role: {
         Args: Record<PropertyKey, never>
         Returns: string
