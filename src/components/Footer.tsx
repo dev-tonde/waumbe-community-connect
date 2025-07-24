@@ -5,22 +5,22 @@ const Footer = () => {
   const quickLinks = [
     { name: "About Us", href: "/about" },
     { name: "Programs", href: "/programs" },
-    { name: "Team", href: "/team" },
-    { name: "Partners", href: "/partners" }
+    { name: "Gallery", href: "/gallery" },
+    { name: "Contact", href: "/contact" }
   ];
 
   const programs = [
-    { name: "Academic Development", href: "/programs" },
-    { name: "Youth Empowerment", href: "/programs" },
-    { name: "Innovation Labs", href: "/programs" },
-    { name: "Entrepreneurship", href: "/entrepreneurship" }
+    { name: "Academic Development", href: "/programs/academic-development" },
+    { name: "Societal Reformation", href: "/programs/societal-reformation" },
+    { name: "Courses", href: "/programs/courses" },
+    { name: "Entrepreneurship", href: "/programs/entrepreneurship" }
   ];
 
   const resources = [
-    { name: "Financial Reports", href: "/reports" },
+    { name: "Financial Reports", href: "/financial-reports" },
     { name: "Governance", href: "/governance" },
     { name: "Testimonials", href: "/testimonials" },
-    { name: "Contact", href: "/contact" }
+    { name: "Awards", href: "/testimonials/awards" }
   ];
 
   return (

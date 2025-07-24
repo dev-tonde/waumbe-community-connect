@@ -8,9 +8,9 @@ export const EntrepreneurshipNavbar = () => {
 
   const navItems = [
     { name: 'Courses', href: '/entrepreneurship/courses' },
-    { name: 'Learnerships', href: '/entrepreneurship/learnerships' },
+    { name: 'Learnership', href: '/entrepreneurship/learnership' },
     { name: 'Fundraising', href: '/entrepreneurship/fundraising' },
-    { name: 'Contact', href: '/entrepreneurship/contact' },
+    { name: 'Contact Us', href: '/entrepreneurship/contact' },
   ];
 
   return (
@@ -33,9 +33,11 @@ export const EntrepreneurshipNavbar = () => {
                 {item.name}
               </Link>
             ))}
-            <Button className="bg-accent hover:bg-accent/90">
-              Donate
-            </Button>
+            <Link to="/entrepreneurship/donate">
+              <Button className="bg-accent hover:bg-accent/90">
+                Donate
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -63,9 +65,11 @@ export const EntrepreneurshipNavbar = () => {
                   {item.name}
                 </Link>
               ))}
-              <Button className="bg-accent hover:bg-accent/90 w-fit">
-                Donate
-              </Button>
+              <Link to="/entrepreneurship/donate">
+                <Button className="bg-accent hover:bg-accent/90 w-fit">
+                  Donate
+                </Button>
+              </Link>
             </div>
           </div>
         )}

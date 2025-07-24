@@ -75,11 +75,40 @@ const Navbar = () => {
                 Team
               </Link>
 
+              <DropdownMenu>
+                <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors">
+                  Testimonials <ChevronDown className="ml-1 h-4 w-4" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="bg-background border border-border shadow-lg">
+                  {testimonialsItems.map((item) => (
+                    <DropdownMenuItem key={item.name} className="hover:bg-muted">
+                      <Link to={item.path} className="w-full">
+                        {item.name}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+
               <Link 
-                to="/partners" 
-                className={`transition-colors ${isActive('/partners') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+                to="/financial-reports" 
+                className={`transition-colors ${isActive('/financial-reports') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
               >
-                Partners
+                Financial Reports
+              </Link>
+
+              <Link 
+                to="/governance" 
+                className={`transition-colors ${isActive('/governance') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+              >
+                Governance
+              </Link>
+
+              <Link 
+                to="/gallery" 
+                className={`transition-colors ${isActive('/gallery') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+              >
+                Gallery
               </Link>
 
               <Link 
@@ -130,11 +159,26 @@ const Navbar = () => {
                   </Link>
                 ))}
               </div>
-              <Link to="/team" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
-                Team
+              <div className="px-3 py-2">
+                <p className="text-sm font-medium text-muted-foreground mb-2">Testimonials</p>
+                {testimonialsItems.map((item) => (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    className="block px-3 py-1 text-sm text-foreground hover:text-primary transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+              <Link to="/financial-reports" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
+                Financial Reports
               </Link>
-              <Link to="/partners" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
-                Partners
+              <Link to="/governance" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
+                Governance
+              </Link>
+              <Link to="/gallery" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
+                Gallery
               </Link>
               <Link to="/contact" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
                 Contact
