@@ -37,13 +37,13 @@ const WhoWeAre = () => {
                 Who We Are
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Waumbe is a Cape Town-based nonprofit organization dedicated to community upliftment 
-                through comprehensive programs that address education, innovation, youth empowerment, 
-                and societal transformation.
+                Waumbe Youth Development is a registered Non-Profit Organisation (PBO Number: 930056934) based in Fisantekraal, an informal community near Durbanville in the northern suburbs of Cape Town.
+              </p>
+              <p className="text-lg text-muted-foreground mb-6">
+                We uplift communities through academic development, learnerships, entrepreneurship support, and social reform initiatives.
               </p>
               <p className="text-lg text-muted-foreground mb-8">
-                Founded on the principles of transparency, community engagement, and sustainable development, 
-                we work closely with local communities in Fisantekraal and beyond to create lasting positive change.
+                Waumbe believes the window to economic freedom lies in education and mental empowerment.
               </p>
               <FunButton variant="primary" size="lg">
                 Learn More About Our Mission

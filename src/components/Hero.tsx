@@ -35,14 +35,15 @@ const Hero = () => {
 
           <ScrollAnimation delay={0.4}>
             <div className="flex flex-col sm:flex-row gap-4">
-              <FunButton variant="rainbow" size="lg">
-                Learn About Our Programs
+              <FunButton variant="rainbow" size="lg" asChild>
+                <a href="/programs">Explore Programs</a>
               </FunButton>
               <FunButton 
                 variant="bounce" 
                 size="lg"
+                asChild
               >
-                See Our Impact
+                <a href="/programs/volunteer">Become a Volunteer</a>
               </FunButton>
             </div>
           </ScrollAnimation>
