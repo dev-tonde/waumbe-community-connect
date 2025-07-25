@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { FunButton } from "@/components/ui/fun-button";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
+import MiniHeroBanner from "@/components/MiniHeroBanner";
 import { Phone, Mail, MapPin, Send, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -22,17 +23,14 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen pt-16">
+      <MiniHeroBanner 
+        title="Get in Touch" 
+        subtitle="Have questions about our programs or want to get involved? We'd love to hear from you."
+      />
+      
       <ScrollAnimation>
         <section className="py-16 bg-gradient-to-br from-fun-blue/5 to-fun-purple/5">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 bg-gradient-to-r from-fun-blue to-fun-purple bg-clip-text text-transparent">
-                Get in Touch
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Have questions about our programs or want to get involved? We'd love to hear from you.
-              </p>
-            </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Contact Form */}

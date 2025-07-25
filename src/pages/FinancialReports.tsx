@@ -1,4 +1,5 @@
 import { ScrollAnimation } from "@/components/ScrollAnimation";
+import MiniHeroBanner from "@/components/MiniHeroBanner";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Download, FileText, DollarSign, TrendingUp } from "lucide-react";
@@ -55,17 +56,12 @@ const FinancialReports = () => {
 
   return (
     <div className="pt-16">
+      <MiniHeroBanner 
+        title="Financial Reports" 
+        subtitle="We believe in complete transparency. Access our annual financial reports to see how your donations and support create real impact in our communities."
+      />
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <ScrollAnimation>
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text">
-              Financial Reports
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We believe in complete transparency. Access our annual financial reports to see how your donations and support create real impact in our communities.
-            </p>
-          </div>
-        </ScrollAnimation>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {highlights.map((highlight, index) => (

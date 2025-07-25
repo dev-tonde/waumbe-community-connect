@@ -1,4 +1,5 @@
 import { ScrollAnimation } from "@/components/ScrollAnimation";
+import MiniHeroBanner from "@/components/MiniHeroBanner";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Shield, Users, FileText, Scale } from "lucide-react";
 
@@ -76,17 +77,12 @@ const Governance = () => {
 
   return (
     <div className="pt-16">
+      <MiniHeroBanner 
+        title="Governance" 
+        subtitle="Strong governance is the foundation of our organization. Learn about our board, policies, and commitment to transparency and accountability."
+      />
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <ScrollAnimation>
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text">
-              Governance
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Strong governance is the foundation of our organization. Learn about our board, policies, and commitment to transparency and accountability.
-            </p>
-          </div>
-        </ScrollAnimation>
 
         <ScrollAnimation>
           <div className="mb-16">

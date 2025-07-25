@@ -1,6 +1,7 @@
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import TeamSection from "@/components/TeamSection";
 import PartnersSection from "@/components/PartnersSection";
+import MiniHeroBanner from "@/components/MiniHeroBanner";
 import { Card, CardContent } from "@/components/ui/card";
 import { FunButton } from "@/components/ui/fun-button";
 import { Mail, Phone, MapPin, Users, Target, Award, BookOpen } from "lucide-react";
@@ -61,14 +62,16 @@ const About = () => {
 
   return (
     <div className="pt-16">
+      <MiniHeroBanner 
+        title="About Waumbe Youth Development" 
+        subtitle="Empowering communities through education, innovation, and sustainable development since 2014"
+      />
+      
       {/* Organisational Overview */}
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
             <div className="text-center mb-16">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                About Waumbe Youth Development
-              </h1>
               <div className="max-w-4xl mx-auto">
                 <p className="text-lg text-muted-foreground mb-6">
                   Waumbe Youth Development is a registered Non-Profit Organisation (PBO Number: 930056934) based in Fisantekraal, a peri-urban farming community near Durbanville, Cape Town. Since our establishment in 2014, we've impacted over 30,000 youth, and in 2024 we celebrated 10 years of empowering Africa's next generation.

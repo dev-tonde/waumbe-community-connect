@@ -1,4 +1,5 @@
 import { ScrollAnimation } from "@/components/ScrollAnimation";
+import MiniHeroBanner from "@/components/MiniHeroBanner";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Quote, Star, User } from "lucide-react";
@@ -44,17 +45,12 @@ const Testimonials = () => {
 
   return (
     <div className="pt-16">
+      <MiniHeroBanner 
+        title="Testimonials" 
+        subtitle="Hear from the people whose lives have been transformed through our programs and initiatives."
+      />
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <ScrollAnimation>
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text">
-              Testimonials
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Hear from the people whose lives have been transformed through our programs and initiatives.
-            </p>
-          </div>
-        </ScrollAnimation>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {testimonials.map((testimonial, index) => (

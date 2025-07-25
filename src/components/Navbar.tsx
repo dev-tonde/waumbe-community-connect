@@ -68,12 +68,6 @@ const Navbar = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              <Link 
-                to="/team" 
-                className={`transition-colors ${isActive('/team') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
-              >
-                Team
-              </Link>
 
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors">
