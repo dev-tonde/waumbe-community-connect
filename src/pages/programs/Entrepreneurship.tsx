@@ -1,98 +1,324 @@
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Lightbulb, TrendingUp, DollarSign, Users } from "lucide-react";
 import { Link } from "react-router-dom";
+import MiniHeroBanner from "@/components/MiniHeroBanner";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const Entrepreneurship = () => {
-  const programs = [
-    {
-      icon: Lightbulb,
-      title: "Business Idea Development",
-      description: "Turn your innovative ideas into viable business concepts",
-      features: ["Ideation workshops", "Market research", "Concept validation"]
-    },
-    {
-      icon: TrendingUp,
-      title: "Growth Acceleration",
-      description: "Scale your existing business with strategic guidance",
-      features: ["Growth strategies", "Marketing support", "Performance metrics"]
-    },
-    {
-      icon: DollarSign,
-      title: "Funding Assistance",
-      description: "Access funding opportunities and investor networks",
-      features: ["Grant applications", "Investor matching", "Pitch preparation"]
-    },
-    {
-      icon: Users,
-      title: "Mentorship Network",
-      description: "Connect with experienced entrepreneurs and business leaders",
-      features: ["One-on-one mentoring", "Peer networks", "Industry expertise"]
-    }
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isEntrepreneurshipModalOpen, setIsEntrepreneurshipModalOpen] = useState(false);
+  const [isInternetCafeModalOpen, setIsInternetCafeModalOpen] = useState(false);
+  const [entrepreneurshipFormData, setEntrepreneurshipFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    businessSupport: ""
+  });
+  const [internetCafeFormData, setInternetCafeFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    serviceNeeds: ""
+  });
+
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Programs", href: "/programs" },
+    { label: "Entrepreneurship" }
   ];
 
+  const handleEntrepreneurshipSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      toast({
+        title: "Request submitted!",
+        description: "Thank you for your interest in our entrepreneurship support.",
+      });
+      setEntrepreneurshipFormData({ fullName: "", email: "", phone: "", businessSupport: "" });
+      setIsEntrepreneurshipModalOpen(false);
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleInternetCafeSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      toast({
+        title: "Request submitted!",
+        description: "Thank you for your interest in our internet cafe services.",
+      });
+      setInternetCafeFormData({ fullName: "", email: "", phone: "", serviceNeeds: "" });
+      setIsInternetCafeModalOpen(false);
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleEntrepreneurshipInputChange = (field: string, value: string) => {
+    setEntrepreneurshipFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleInternetCafeInputChange = (field: string, value: string) => {
+    setInternetCafeFormData(prev => ({ ...prev, [field]: value }));
+  };
+
   return (
-    <div className="pt-16">
+    <>
+      <MiniHeroBanner 
+        title="Entrepreneurship"
+        subtitle="Discover some of our entrepreneurship programs"
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <Breadcrumbs items={breadcrumbItems} />
+        
         <ScrollAnimation>
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text">
-              Entrepreneurship Program
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Empowering aspiring entrepreneurs with the tools, knowledge, and support needed to build successful businesses.
-            </p>
+          <div className="mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Entrepreneurship</h1>
           </div>
         </ScrollAnimation>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {programs.map((program, index) => (
-            <ScrollAnimation key={index} delay={index * 0.1}>
-              <Card className="h-full hover:shadow-lg transition-all duration-300 hover:scale-105">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <program.icon className="w-5 h-5 text-primary" />
-                    {program.title}
-                  </CardTitle>
-                  <CardDescription>{program.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 mb-4">
-                    {program.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-sm">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Button className="w-full">Learn More</Button>
-                </CardContent>
-              </Card>
+        <Tabs defaultValue="entrepreneurship" className="w-full">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="entrepreneurship">Entrepreneurship</TabsTrigger>
+            <TabsTrigger value="internet-cafe">Internet Cafe</TabsTrigger>
+          </TabsList>
+          
+          <TabsContent value="entrepreneurship">
+            <ScrollAnimation>
+              <div className="space-y-8">
+                <p className="text-lg text-muted-foreground">
+                  Our Entrepreneurial Development Program is designed to foster economic growth and empowerment in our community. We achieve this through a multi-faceted approach:
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Revenue Generation</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="text-muted-foreground space-y-1 text-sm">
+                        <li>• Internet Café operations</li>
+                        <li>• Hosting revenue-generating events</li>
+                        <li>• Fundraising initiatives</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Business Support Services</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="text-muted-foreground space-y-1 text-sm">
+                        <li>• Expert advice and guidance for small businesses</li>
+                        <li>• Assistance with marketing materials (flyers, brochures, etc.)</li>
+                        <li>• Website and social media setup support</li>
+                        <li>• Access to relevant conferences and workshops</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Capacity Building</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="text-muted-foreground space-y-1 text-sm">
+                        <li>• Learnerships and courses to enhance skills and knowledge</li>
+                        <li>• Funding opportunities for entrepreneurial ventures</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="text-center">
+                  <Dialog open={isEntrepreneurshipModalOpen} onOpenChange={setIsEntrepreneurshipModalOpen}>
+                    <DialogTrigger asChild>
+                      <Button size="lg">Request Entrepreneurship Assistance</Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px]">
+                      <DialogHeader>
+                        <DialogTitle>Request Entrepreneurship Assistance</DialogTitle>
+                        <DialogDescription>
+                          Tell us how we can support your business venture.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <form onSubmit={handleEntrepreneurshipSubmit} className="space-y-4">
+                        <div>
+                          <Label htmlFor="entrepreneurship-fullName">Full name</Label>
+                          <Input
+                            id="entrepreneurship-fullName"
+                            value={entrepreneurshipFormData.fullName}
+                            onChange={(e) => handleEntrepreneurshipInputChange("fullName", e.target.value)}
+                            required
+                          />
+                        </div>
+                        
+                        <div>
+                          <Label htmlFor="entrepreneurship-email">Email Address</Label>
+                          <Input
+                            id="entrepreneurship-email"
+                            type="email"
+                            value={entrepreneurshipFormData.email}
+                            onChange={(e) => handleEntrepreneurshipInputChange("email", e.target.value)}
+                            required
+                          />
+                        </div>
+                        
+                        <div>
+                          <Label htmlFor="entrepreneurship-phone">Phone Number</Label>
+                          <Input
+                            id="entrepreneurship-phone"
+                            value={entrepreneurshipFormData.phone}
+                            onChange={(e) => handleEntrepreneurshipInputChange("phone", e.target.value)}
+                            required
+                          />
+                        </div>
+                        
+                        <div>
+                          <Label htmlFor="entrepreneurship-businessSupport">Tell us how we can support your business</Label>
+                          <Textarea
+                            id="entrepreneurship-businessSupport"
+                            value={entrepreneurshipFormData.businessSupport}
+                            onChange={(e) => handleEntrepreneurshipInputChange("businessSupport", e.target.value)}
+                            rows={3}
+                            required
+                          />
+                        </div>
+                        
+                        <Button type="submit" className="w-full" disabled={isSubmitting}>
+                          {isSubmitting ? "Submitting..." : "Submit Request"}
+                        </Button>
+                      </form>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+              </div>
             </ScrollAnimation>
-          ))}
-        </div>
+          </TabsContent>
+          
+          <TabsContent value="internet-cafe">
+            <ScrollAnimation>
+              <div className="space-y-8">
+                <p className="text-lg text-muted-foreground">
+                  Our Internet Café provides affordable digital access and services to the local community, including printing, scanning, basic training, and connectivity.
+                </p>
 
-        <ScrollAnimation>
-          <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-8 text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready to Start Your Business Journey?</h2>
-            <p className="text-lg text-muted-foreground mb-6">
-              Join our entrepreneurship program and transform your business ideas into reality.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/entrepreneurship">
-                <Button size="lg">
-                  Visit Entrepreneurship Hub
-                </Button>
-              </Link>
-              <Button size="lg" variant="outline">
-                Apply Now
-              </Button>
-            </div>
-          </div>
-        </ScrollAnimation>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Services Available</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="text-muted-foreground space-y-2 text-sm">
+                        <li>• Internet access & PC use</li>
+                        <li>• Printing and scanning services</li>
+                        <li>• Assistance with CV creation & job applications</li>
+                        <li>• Introductory computer literacy support</li>
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="text-center">
+                  <Dialog open={isInternetCafeModalOpen} onOpenChange={setIsInternetCafeModalOpen}>
+                    <DialogTrigger asChild>
+                      <Button size="lg">Request Internet Cafe Services</Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px]">
+                      <DialogHeader>
+                        <DialogTitle>Request Internet Cafe Services</DialogTitle>
+                        <DialogDescription>
+                          Tell us what services you need from our internet cafe.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <form onSubmit={handleInternetCafeSubmit} className="space-y-4">
+                        <div>
+                          <Label htmlFor="internetcafe-fullName">Full name</Label>
+                          <Input
+                            id="internetcafe-fullName"
+                            value={internetCafeFormData.fullName}
+                            onChange={(e) => handleInternetCafeInputChange("fullName", e.target.value)}
+                            required
+                          />
+                        </div>
+                        
+                        <div>
+                          <Label htmlFor="internetcafe-email">Email Address</Label>
+                          <Input
+                            id="internetcafe-email"
+                            type="email"
+                            value={internetCafeFormData.email}
+                            onChange={(e) => handleInternetCafeInputChange("email", e.target.value)}
+                            required
+                          />
+                        </div>
+                        
+                        <div>
+                          <Label htmlFor="internetcafe-phone">Phone Number</Label>
+                          <Input
+                            id="internetcafe-phone"
+                            value={internetCafeFormData.phone}
+                            onChange={(e) => handleInternetCafeInputChange("phone", e.target.value)}
+                            required
+                          />
+                        </div>
+                        
+                        <div>
+                          <Label htmlFor="internetcafe-serviceNeeds">Tell us how we can support your needs</Label>
+                          <Textarea
+                            id="internetcafe-serviceNeeds"
+                            value={internetCafeFormData.serviceNeeds}
+                            onChange={(e) => handleInternetCafeInputChange("serviceNeeds", e.target.value)}
+                            rows={3}
+                            required
+                          />
+                        </div>
+                        
+                        <Button type="submit" className="w-full" disabled={isSubmitting}>
+                          {isSubmitting ? "Submitting..." : "Submit Request"}
+                        </Button>
+                      </form>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+              </div>
+            </ScrollAnimation>
+          </TabsContent>
+        </Tabs>
       </div>
-    </div>
+    </>
   );
 };
 

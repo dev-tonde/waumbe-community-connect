@@ -1,60 +1,63 @@
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { GraduationCap, Briefcase, Calendar, MapPin } from "lucide-react";
+import MiniHeroBanner from "@/components/MiniHeroBanner";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const Learnerships = () => {
-  const programs = [
-    {
-      title: "Business Administration",
-      description: "Learn essential business skills with hands-on workplace experience",
-      duration: "18 months",
-      location: "Cape Town Office",
-      qualification: "NQF Level 4"
-    },
-    {
-      title: "Information Technology",
-      description: "Develop IT skills through practical training and real projects", 
-      duration: "24 months",
-      location: "Technology Center",
-      qualification: "NQF Level 5"
-    },
-    {
-      title: "Community Development",
-      description: "Build skills in community engagement and social development",
-      duration: "12 months",
-      location: "Community Centers", 
-      qualification: "NQF Level 4"
-    },
-    {
-      title: "Project Management",
-      description: "Master project planning and management methodologies",
-      duration: "18 months",
-      location: "Multiple Sites",
-      qualification: "NQF Level 5"
-    }
-  ];
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLearnershipModalOpen, setIsLearnershipModalOpen] = useState(false);
+  const [isPartnerModalOpen, setIsPartnerModalOpen] = useState(false);
+  const [learnershipFormData, setLearnershipFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    background: ""
+  });
+  const [partnerFormData, setPartnerFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    teamSupport: ""
+  });
 
-  const benefits = [
-    "Earn while you learn with monthly stipends",
-    "Gain recognized qualifications", 
-    "Receive mentorship and support",
-    "Access to job placement assistance",
-    "Build professional networks",
-    "Develop practical work experience"
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Programs", href: "/programs" },
+    { label: "Learnerships" }
   ];
 
   return (
-    <div className="pt-16">
+    <>
+      <MiniHeroBanner 
+        title="Learnerships"
+        subtitle="Explore current learnership opportunities available through Waumbe."
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <Breadcrumbs items={breadcrumbItems} />
+        
         <ScrollAnimation>
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text">
-              Learnerships
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Combine learning with earning through our comprehensive learnership programs that bridge education and employment.
+          <div className="mb-16">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Learnerships</h1>
+            <p className="text-lg text-muted-foreground max-w-4xl">
+              Our Learnership is designed to provide individuals with the skills and knowledge required to succeed in their chosen careers...
             </p>
+            <div className="mt-8">
+              <h2 className="text-2xl font-bold mb-4">We are accredited by MICT SETA for the following:</h2>
+              <ul className="text-muted-foreground space-y-2">
+                <li>• End User Computing NQF 3</li>
+                <li>• Business Administration NQF 3</li>
+                <li>• Technical Support & Information Technology NQF 4</li>
+              </ul>
+            </div>
           </div>
         </ScrollAnimation>
 
