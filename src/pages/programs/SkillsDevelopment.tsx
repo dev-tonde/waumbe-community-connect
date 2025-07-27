@@ -12,6 +12,51 @@ const SkillsDevelopment = () => {
     { label: "Skills Development" }
   ];
 
+  const skillAreas = [
+    {
+      title: "Digital Literacy",
+      description: "Essential computer and internet skills",
+      icon: Code,
+      skills: ["Basic Computing", "Internet Navigation", "Email Management", "Online Safety"]
+    },
+    {
+      title: "Technical Skills",
+      description: "Hands-on technical training",
+      icon: Wrench,
+      skills: ["Hardware Basics", "Software Installation", "Troubleshooting", "Network Setup"]
+    },
+    {
+      title: "Creative Skills",
+      description: "Design and multimedia training",
+      icon: Palette,
+      skills: ["Graphic Design", "Video Editing", "Web Design", "Digital Marketing"]
+    },
+    {
+      title: "Communication",
+      description: "Professional communication skills",
+      icon: Mic,
+      skills: ["Public Speaking", "Written Communication", "Presentation Skills", "Interview Prep"]
+    }
+  ];
+
+  const programs = [
+    {
+      title: "End User Computing",
+      description: "Comprehensive computer literacy program",
+      duration: "3 months"
+    },
+    {
+      title: "Business Administration",
+      description: "Administrative and office skills training",
+      duration: "3 months"
+    },
+    {
+      title: "Technical Support",
+      description: "IT support and troubleshooting skills",
+      duration: "6 months"
+    }
+  ];
+
   return (
     <>
       <MiniHeroBanner 
@@ -112,7 +157,7 @@ const SkillsDevelopment = () => {
           </div>
         </ScrollAnimation>
       </div>
-    </div>
+    </>
   );
 };
 

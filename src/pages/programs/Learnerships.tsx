@@ -35,6 +35,87 @@ const Learnerships = () => {
     { label: "Learnerships" }
   ];
 
+  const programs = [
+    {
+      title: "End User Computing NQF 3",
+      description: "Comprehensive computer skills training program",
+      duration: "12 months",
+      location: "Fisantekraal",
+      qualification: "NQF Level 3"
+    },
+    {
+      title: "Business Administration NQF 3", 
+      description: "Essential business and administrative skills",
+      duration: "12 months",
+      location: "Fisantekraal",
+      qualification: "NQF Level 3"
+    },
+    {
+      title: "Technical Support & IT NQF 4",
+      description: "Advanced technical support and IT skills",
+      duration: "12 months", 
+      location: "Fisantekraal",
+      qualification: "NQF Level 4"
+    }
+  ];
+
+  const benefits = [
+    "MICT SETA accredited programs",
+    "Workplace experience component",
+    "Monthly stipend during training",
+    "Job placement assistance",
+    "Industry-recognized certification",
+    "Career guidance and mentorship"
+  ];
+
+  const handleLearnershipSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      toast({
+        title: "Application Submitted",
+        description: "We'll review your application and get back to you soon.",
+      });
+      setIsLearnershipModalOpen(false);
+      setLearnershipFormData({ fullName: "", email: "", phone: "", background: "" });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handlePartnerSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      toast({
+        title: "Inquiry Sent",
+        description: "We'll contact you about partnership opportunities.",
+      });
+      setIsPartnerModalOpen(false);
+      setPartnerFormData({ fullName: "", email: "", phone: "", teamSupport: "" });
+    } catch (error) {
+      toast({
+        title: "Error", 
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <>
       <MiniHeroBanner 
@@ -82,12 +163,66 @@ const Learnerships = () => {
                       <MapPin className="w-4 h-4 text-muted-foreground" />
                       <span>Location: {program.location}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm">
+                   <div className="flex items-center gap-2 text-sm">
                       <Briefcase className="w-4 h-4 text-muted-foreground" />
                       <span>Qualification: {program.qualification}</span>
                     </div>
                   </div>
-                  <Button className="w-full">Apply Now</Button>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="w-full" onClick={() => setIsLearnershipModalOpen(true)}>Apply Now</Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Apply for a Learnership</DialogTitle>
+                        <DialogDescription>
+                          Fill out the form below to apply for our learnership program.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <form onSubmit={handleLearnershipSubmit} className="space-y-4">
+                        <div>
+                          <Label htmlFor="fullName">Full Name</Label>
+                          <Input
+                            id="fullName"
+                            value={learnershipFormData.fullName}
+                            onChange={(e) => setLearnershipFormData(prev => ({ ...prev, fullName: e.target.value }))}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="email">Email Address</Label>
+                          <Input
+                            id="email"
+                            type="email"
+                            value={learnershipFormData.email}
+                            onChange={(e) => setLearnershipFormData(prev => ({ ...prev, email: e.target.value }))}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="phone">Phone Number</Label>
+                          <Input
+                            id="phone"
+                            value={learnershipFormData.phone}
+                            onChange={(e) => setLearnershipFormData(prev => ({ ...prev, phone: e.target.value }))}
+                            required
+                          />
+                        </div>
+                        <div>
+                          <Label htmlFor="background">Tell us about your background</Label>
+                          <Textarea
+                            id="background"
+                            value={learnershipFormData.background}
+                            onChange={(e) => setLearnershipFormData(prev => ({ ...prev, background: e.target.value }))}
+                            required
+                          />
+                        </div>
+                        <Button type="submit" disabled={isSubmitting} className="w-full">
+                          {isSubmitting ? "Submitting..." : "Submit Application"}
+                        </Button>
+                      </form>
+                    </DialogContent>
+                  </Dialog>
                 </CardContent>
               </Card>
             </ScrollAnimation>
@@ -109,18 +244,72 @@ const Learnerships = () => {
         </ScrollAnimation>
 
         <ScrollAnimation>
-          <div className="text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready to Start Your Journey?</h2>
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold mb-6">Partner with Us</h2>
             <p className="text-lg text-muted-foreground mb-6">
-              Take the first step towards a brighter future with our learnership programs.
+              We also offer learnership solutions for companies to help upskill their employees.
             </p>
-            <Button size="lg">
-              View Application Requirements
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button size="lg" onClick={() => setIsPartnerModalOpen(true)}>
+                  Partner with Us
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Partner with us</DialogTitle>
+                  <DialogDescription>
+                    Tell us how we can help upskill your team.
+                  </DialogDescription>
+                </DialogHeader>
+                <form onSubmit={handlePartnerSubmit} className="space-y-4">
+                  <div>
+                    <Label htmlFor="partnerName">Full Name</Label>
+                    <Input
+                      id="partnerName"
+                      value={partnerFormData.fullName}
+                      onChange={(e) => setPartnerFormData(prev => ({ ...prev, fullName: e.target.value }))}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="partnerEmail">Email Address</Label>
+                    <Input
+                      id="partnerEmail"
+                      type="email"
+                      value={partnerFormData.email}
+                      onChange={(e) => setPartnerFormData(prev => ({ ...prev, email: e.target.value }))}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="partnerPhone">Phone Number</Label>
+                    <Input
+                      id="partnerPhone"
+                      value={partnerFormData.phone}
+                      onChange={(e) => setPartnerFormData(prev => ({ ...prev, phone: e.target.value }))}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="teamSupport">How can we support your team?</Label>
+                    <Textarea
+                      id="teamSupport"
+                      value={partnerFormData.teamSupport}
+                      onChange={(e) => setPartnerFormData(prev => ({ ...prev, teamSupport: e.target.value }))}
+                      required
+                    />
+                  </div>
+                  <Button type="submit" disabled={isSubmitting} className="w-full">
+                    {isSubmitting ? "Sending..." : "Send Inquiry"}
+                  </Button>
+                </form>
+              </DialogContent>
+            </Dialog>
           </div>
         </ScrollAnimation>
       </div>
-    </div>
+    </>
   );
 };
 
