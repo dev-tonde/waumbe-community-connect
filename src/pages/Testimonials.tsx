@@ -1,84 +1,75 @@
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import MiniHeroBanner from "@/components/MiniHeroBanner";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Quote, Star, User } from "lucide-react";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { User } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const Testimonials = () => {
   const testimonials = [
     {
-      name: "Sarah Mthembu",
-      role: "Program Graduate",
-      content: "Waumbe changed my life. Through their skills development program, I learned valuable computer skills and now work as an administrative assistant.",
-      rating: 5,
-      program: "Digital Literacy"
+      name: "Lwando Mzoyi",
+      content: "My name is Lwando Mzoyi. I am the sixth child of nine siblings. I am passionate about youth development, education, and change. I currently reside in Fisantekraal, a small developing community outside Durbanville, and I'm completing my accounting studies.\n\nGrowing up in the city was extremely challenging. My father was the sole breadwinner, and at times we had to skip school due to the lack of necessities. After Grade 9, I had to attend Hector Peterson Senior Secondary in Kraaifontein, as our community school didn't go beyond Grade 9.\n\nLiving in Fisantekraal, one is surrounded by alcohol abuse, teenage pregnancy, gangsterism, and school dropouts. Peer pressure is intense, especially with the lack of role models. I knew I wanted to change my situation and began surrounding myself with empowering individuals.\n\nWaumbe Youth Organization brought a new perspective to my life. It created opportunities for youth in our community, providing educational support and skill development. High school learners from Grades 8 to 12 received extra lessons, improving academic outcomes and mindsets.\n\nFailure only happens when you stop trying. I encourage young people to understand their passions, strengths, weaknesses, and interests. The journey won't be easy, but the obstacles are stepping stones."
     },
     {
-      name: "Michael Jacobs",
-      role: "Entrepreneur",
-      content: "The mentorship I received helped me start my own catering business. Today, I employ 5 people from my community.",
-      rating: 5,
-      program: "Entrepreneurship"
+      name: "Amore Fortuin",
+      content: "After graduating from the University of Cape Town, I began my career as a Geography educator at Kraaifontein High School.\n\nMy dedication paid off, with a remarkable 98% pass rate in Geography in 2024, earning me an award from the Metro East Education District.\n\nI have since transitioned to teaching Agriculture Management Practices and Agriculture Technology, while also taking on leadership roles as Head of Department and Grade 12 Head.\n\nIn addition to my teaching expertise, I hold certificates in welding, drone flying, and greenhouse management.\n\nI am currently furthering my qualifications with a Diploma in Governance and Administration."
     },
     {
-      name: "Thandiwe Ndaba",
-      role: "Student",
-      content: "The academic support program helped me pass my matric with distinction. I'm now studying at university thanks to Waumbe.",
-      rating: 5,
-      program: "Academic Development"
+      name: "Michaela Mustafa",
+      content: "From the very beginning, I could feel the genuine compassion and dedication from every team member. They don't just run programs, they truly care about each person who walks through their doors. Waumbe is a supportive and empowering community that genuinely cares about the growth and potential of every individual. What stands out most is the way Waumbe blends learning with compassion. They don't just teach, they uplift.\n\nWhat makes Waumbe stand out is how proactive they are in addressing the needs of the youth and the community. Whether it's offering academic support or mentorship, they are always one step ahead. They are creating opportunities and encouraging growth in meaningful ways. It's also clear that the people behind Waumbe truly enjoy what they do. Their energy, enthusiasm and love for the work they do are contagious. It creates an environment where you feel safe, valued, and motivated to become your best self.\n\nI'm proud to be a part of this journey and excited for all the lives they will continue to touch. I truly believe that with more resources, they can continue to do even greater things for the youth of Fisantekraal and beyond."
     },
     {
-      name: "James Williams",
-      role: "Volunteer",
-      content: "Volunteering with Waumbe has been incredibly rewarding. Seeing the positive impact on young people's lives motivates me every day.",
-      rating: 5,
-      program: "Volunteer Program"
+      name: "Curt Van Schalkwyk",
+      content: "My name is Curt Van Schalkwyk; I am from the community of Fisantekraal, I Attended Primary and High School in Fisantekraal. I met Mr Mdu Menze in 2015 when I was in Matric; I received an award from Waumbe for 3rd Place in English. Already that small acknowledgement from Waumbe is what kept me motivated in achieving my goals.\n\nI officially started working for Waumbe in 2019, when I was still very much inexperience of life and at a dark point of my life where it felt like I will not be able to achieve my dreams and goals.\n\nWith the many opportunities that Waumbe offered, I was able to learn many life skills and was able to impart all of that knowledge to other young people in the community. I have seen the hopelessness became hopeful; I have seen how a person of such low self- Esteem can stand on the biggest stages and share their journey.\n\nThrough impacting others, I never knew that also a part of me was growing at the same time. I have become confident, Inspiring and have gain so much of life skills.\n\nToday I can say proudly that Waumbe transformed my life for the better. With the support and Motivation from Waumbe I was able to complete my Degree, I married the love of my life and I could bring a child in this world knowing that I have what it takes to be a father, husband and also a community leader, bringing hope, love and light to other young people."
+    },
+    {
+      name: "Sive Maliwa",
+      content: "My name is Sive Maliwa, and I am a proud graduate of the University of the Western Cape with a degree in Computer Science. Today, I work as a Systems Analyst at one of South Africa's fastest-growing banks — a role I am passionate about and grateful for.\n\nMy journey began in high school, where I was introduced to Waumbe, a youth development initiative that played a significant role in shaping my path. Through their guidance and support, I was able to stay focused on my studies and envision a brighter future. They didn't just offer encouragement — they helped lay the foundation for my academic and professional success.\n\nTo the youth of Fisantekraal: your future is in your hands. I urge you to believe in yourselves, stay committed to your goals, and never underestimate the power of education. Focus on your studies, surround yourself with positive influences, and remember — no dream is too big when you are willing to work for it.\n\nYour journey starts now. Make it count."
     }
   ];
 
-  const stats = [
-    { number: "500+", label: "Lives Transformed" },
-    { number: "95%", label: "Success Rate" },
-    { number: "50+", label: "Community Partners" },
-    { number: "10", label: "Years of Impact" }
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Testimonials" }
   ];
 
   return (
     <div className="pt-16">
       <MiniHeroBanner 
         title="Testimonials" 
-        subtitle="Hear from the people whose lives have been transformed through our programs and initiatives."
+        subtitle="Read stories of impact from the young people we've supported."
       />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <Breadcrumbs items={breadcrumbItems} />
+        <ScrollAnimation>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold mb-4">Testimonials</h2>
+            <p className="text-lg text-muted-foreground">
+              Hear from the individuals whose lives have been impacted through Waumbe's programs.
+            </p>
+          </div>
+        </ScrollAnimation>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="space-y-16">
           {testimonials.map((testimonial, index) => (
             <ScrollAnimation key={index} delay={index * 0.1}>
-              <Card className="h-full hover:shadow-lg transition-all duration-300 hover:scale-105">
-                <CardHeader>
-                  <div className="flex items-center gap-2 mb-2">
-                    <Quote className="w-5 h-5 text-primary" />
-                    <div className="flex">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                  </div>
-                  <CardDescription className="text-base italic">
-                    "{testimonial.content}"
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                      <User className="w-5 h-5 text-primary" />
+              <Card className="p-8 hover:shadow-lg transition-all duration-300">
+                <CardContent className="space-y-6">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+                      <User className="w-8 h-8 text-primary" />
                     </div>
                     <div>
-                      <CardTitle className="text-sm">{testimonial.name}</CardTitle>
-                      <p className="text-xs text-muted-foreground">{testimonial.role}</p>
-                      <p className="text-xs text-primary">{testimonial.program}</p>
+                      <CardTitle className="text-2xl">{testimonial.name}</CardTitle>
                     </div>
+                  </div>
+                  <div className="prose max-w-none">
+                    {testimonial.content.split('\n\n').map((paragraph, pIndex) => (
+                      <p key={pIndex} className="text-muted-foreground leading-relaxed mb-4">
+                        {paragraph}
+                      </p>
+                    ))}
                   </div>
                 </CardContent>
               </Card>
@@ -87,28 +78,10 @@ const Testimonials = () => {
         </div>
 
         <ScrollAnimation>
-          <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-8 mb-16">
-            <h2 className="text-3xl font-bold text-center mb-8">Our Impact in Numbers</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-4xl font-bold text-primary mb-2">{stat.number}</div>
-                  <div className="text-muted-foreground">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </ScrollAnimation>
-
-        <ScrollAnimation>
-          <div className="text-center">
-            <h2 className="text-3xl font-bold mb-4">Share Your Story</h2>
-            <p className="text-lg text-muted-foreground mb-6">
-              Have you been impacted by our programs? We'd love to hear from you and share your success story.
+          <div className="mt-16 text-center p-8 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg">
+            <p className="text-lg text-muted-foreground italic">
+              "Through these programs, we help youth reimagine their potential and reshape their future—personally, socially, and economically."
             </p>
-            <Button size="lg">
-              Submit Your Testimonial
-            </Button>
           </div>
         </ScrollAnimation>
       </div>

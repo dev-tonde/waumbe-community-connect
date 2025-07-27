@@ -1,170 +1,154 @@
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import MiniHeroBanner from "@/components/MiniHeroBanner";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Shield, Users, FileText, Scale } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Building, Phone, Mail, Users, FileText } from "lucide-react";
 
 const Governance = () => {
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Governance" }
+  ];
+
   const boardMembers = [
     {
-      name: "Dr. Elizabeth Mthembu",
-      role: "Chairperson",
-      qualifications: "PhD in Social Development, 25+ years experience",
-      bio: "Leading expert in community development and non-profit governance"
+      name: "Jannie Isaacs",
+      role: "Chairperson"
     },
     {
-      name: "Michael Johnson",
-      role: "Vice Chairperson",
-      qualifications: "MBA, Former Corporate Executive",
-      bio: "Brings strategic business acumen and leadership experience"
+      name: "Mdu Menze",
+      role: "Executive Director"
     },
     {
-      name: "Sarah Williams",
-      role: "Secretary",
-      qualifications: "LLB, Legal Practitioner",
-      bio: "Ensures legal compliance and governance best practices"
+      name: "Delphino Machikicho",
+      role: "Executive Director"
     },
     {
-      name: "David Chen",
-      role: "Treasurer",
-      qualifications: "CA(SA), Financial Services Expert",
-      bio: "Oversees financial management and fiscal responsibility"
-    },
-    {
-      name: "Thandiwe Ndaba",
-      role: "Board Member",
-      qualifications: "Community Leader, Education Specialist",
-      bio: "Represents community interests and educational expertise"
-    },
-    {
-      name: "James Roberts",
-      role: "Board Member",
-      qualifications: "Entrepreneur, Youth Development Advocate",
-      bio: "Champions youth empowerment and innovation programs"
+      name: "Karen Zaaiman",
+      role: "Non-Executive Director"
     }
   ];
 
-  const policies = [
-    {
-      icon: Shield,
-      title: "Code of Ethics",
-      description: "Comprehensive ethical guidelines governing all organizational activities"
-    },
-    {
-      icon: FileText,
-      title: "Financial Management Policy",
-      description: "Strict protocols for financial oversight and accountability"
-    },
-    {
-      icon: Users,
-      title: "Governance Framework",
-      description: "Clear structure for decision-making and organizational oversight"
-    },
-    {
-      icon: Scale,
-      title: "Conflict of Interest Policy",
-      description: "Guidelines to prevent and manage potential conflicts of interest"
-    }
+  const legalDetails = [
+    { label: "Organization Name", value: "Waumbe Youth Development Centre" },
+    { label: "NPO Number", value: "178-970" },
+    { label: "PBO Number", value: "930056934" },
+    { label: "NPC Registration", value: "2015/166063/08" }
   ];
 
-  const principles = [
-    "Transparency in all operations and decision-making",
-    "Accountability to stakeholders and beneficiaries",
-    "Integrity in financial management and reporting",
-    "Community-centered approach to program development",
-    "Continuous improvement and innovation",
-    "Compliance with all regulatory requirements"
+  const auditorDetails = [
+    { label: "Auditing Firm", value: "Bright Path" },
+    { label: "Contact Person", value: "Tlou Ledwaba" },
+    { label: "Telephone", value: "021 330 5001" },
+    { label: "Cell", value: "076 181 5634" },
+    { label: "Email", value: "Consultants@bright-path.co.za" }
+  ];
+
+  const managementTeam = [
+    "Programs Team Leader",
+    "Human Resource Administrator", 
+    "Monitoring and Evaluation Officer",
+    "Program Facilitators",
+    "Operations Team Leader"
   ];
 
   return (
     <div className="pt-16">
       <MiniHeroBanner 
         title="Governance" 
-        subtitle="Strong governance is the foundation of our organization. Learn about our board, policies, and commitment to transparency and accountability."
+        subtitle="Our commitment to transparency, accountability, and community representation."
       />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <Breadcrumbs items={breadcrumbItems} />
 
         <ScrollAnimation>
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold text-center mb-12">Board of Directors</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {boardMembers.map((member, index) => (
-                <Card key={index} className="h-full hover:shadow-lg transition-all duration-300 hover:scale-105">
-                  <CardHeader>
-                    <CardTitle className="text-lg">{member.name}</CardTitle>
-                    <CardDescription className="text-primary font-semibold">{member.role}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground mb-3">{member.qualifications}</p>
-                    <p className="text-sm">{member.bio}</p>
-                  </CardContent>
-                </Card>
-              ))}
+          <div className="mb-12 text-center">
+            <div className="bg-muted/50 rounded-lg p-8 mb-8">
+              <Building className="w-16 h-16 mx-auto mb-4 text-primary" />
+              <h2 className="text-2xl font-bold mb-4">Waumbe Organisation Organogram</h2>
+              <p className="text-muted-foreground">Waumbe Organisation Structure (2025)</p>
             </div>
           </div>
         </ScrollAnimation>
 
         <ScrollAnimation>
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-center mb-12">Governance Policies</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {policies.map((policy, index) => (
-                <Card key={index} className="text-center hover:shadow-lg transition-all duration-300">
-                  <CardHeader>
-                    <policy.icon className="w-12 h-12 mx-auto mb-4 text-primary" />
-                    <CardTitle>{policy.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription>{policy.description}</CardDescription>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </ScrollAnimation>
-
-        <ScrollAnimation>
-          <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-8 mb-16">
-            <h2 className="text-3xl font-bold mb-6">Our Governance Principles</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {principles.map((principle, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span className="text-muted-foreground">{principle}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </ScrollAnimation>
-
-        <ScrollAnimation>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-4">Board Meetings</h3>
-              <p className="text-muted-foreground mb-4">
-                Our board meets quarterly to review organizational performance, 
-                approve strategic decisions, and ensure effective governance.
-              </p>
-              <ul className="space-y-2 text-sm">
-                <li>• Quarterly board meetings</li>
-                <li>• Annual general meeting</li>
-                <li>• Special meetings as required</li>
-                <li>• Committee meetings monthly</li>
-              </ul>
+            <h2 className="text-3xl font-bold mb-8">Legal Registration</h2>
+            <Card className="p-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {legalDetails.map((detail, index) => (
+                  <div key={index} className="flex justify-between items-center p-4 bg-muted/50 rounded-lg">
+                    <span className="font-medium">{detail.label}:</span>
+                    <span className="text-muted-foreground">{detail.value}</span>
+                  </div>
+                ))}
+              </div>
             </Card>
-            
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold mb-4">Regulatory Compliance</h3>
-              <p className="text-muted-foreground mb-4">
-                We maintain full compliance with all relevant legislation and 
-                regulatory requirements for non-profit organizations.
+          </div>
+        </ScrollAnimation>
+
+        <ScrollAnimation>
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">Board of Directors</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {boardMembers.map((member, index) => (
+                <Card key={index} className="text-center p-6 hover:shadow-lg transition-all duration-300">
+                  <CardHeader>
+                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Users className="w-8 h-8 text-primary" />
+                    </div>
+                    <CardTitle className="text-lg">{member.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-primary font-semibold">{member.role}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </ScrollAnimation>
+
+        <ScrollAnimation>
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">Auditors</h2>
+            <Card className="p-6">
+              <div className="space-y-4">
+                {auditorDetails.map((detail, index) => (
+                  <div key={index} className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
+                    {detail.label === "Email" && <Mail className="w-5 h-5 text-primary" />}
+                    {(detail.label === "Telephone" || detail.label === "Cell") && <Phone className="w-5 h-5 text-primary" />}
+                    {(detail.label === "Auditing Firm" || detail.label === "Contact Person") && <FileText className="w-5 h-5 text-primary" />}
+                    <div className="flex-1">
+                      <span className="font-medium">{detail.label}: </span>
+                      <span className="text-muted-foreground">{detail.value}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Card>
+          </div>
+        </ScrollAnimation>
+
+        <ScrollAnimation>
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">Management</h2>
+            <Card className="p-6">
+              <p className="text-muted-foreground mb-6">
+                Waumbe is led by a dedicated team of six permanent staff members including:
               </p>
-              <ul className="space-y-2 text-sm">
-                <li>• NPO Act compliance</li>
-                <li>• SARS tax exemption status</li>
-                <li>• B-BBEE certification</li>
-                <li>• Fundraising compliance</li>
-              </ul>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {managementTeam.map((role, index) => (
+                  <div key={index} className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                    <span>{role}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-muted-foreground mt-6 text-sm">
+                Contract staff are hired through our partnership with The Learning Trust (SEF), 
+                and we regularly collaborate with over 20 volunteers, university students, and young professionals.
+              </p>
             </Card>
           </div>
         </ScrollAnimation>
