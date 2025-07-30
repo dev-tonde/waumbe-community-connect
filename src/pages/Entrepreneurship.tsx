@@ -2,10 +2,28 @@ import { EntrepreneurshipNavbar } from '@/components/entrepreneurship/Entreprene
 import { ScrollAnimation } from '@/components/ScrollAnimation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowLeft, BookOpen, Users, TrendingUp, Mail } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { ArrowLeft, BookOpen, Users, TrendingUp, DollarSign, Lightbulb, GraduationCap } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import TeamSection from '@/components/TeamSection';
+import PartnersSection from '@/components/PartnersSection';
+import { useState } from 'react';
+import { toast } from '@/components/ui/use-toast';
 
 export default function Entrepreneurship() {
+  const [email, setEmail] = useState('');
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      toast({
+        title: "Successfully subscribed!",
+        description: "You'll receive updates on business training, events, and funding.",
+      });
+      setEmail('');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <EntrepreneurshipNavbar />
@@ -21,12 +39,12 @@ export default function Entrepreneurship() {
       </div>
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-waumbe/10 to-accent/10">
+      <section className="py-20 bg-gradient-to-br from-primary/10 to-accent/10">
         <div className="container mx-auto px-4 text-center">
           <ScrollAnimation>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               Entrepreneurship
-              <span className="text-waumbe block mt-2">Hub</span>
+              <span className="text-primary block mt-2">Hub</span>
             </h1>
           </ScrollAnimation>
           <ScrollAnimation delay={0.2}>
@@ -36,38 +54,93 @@ export default function Entrepreneurship() {
             </p>
           </ScrollAnimation>
           <ScrollAnimation delay={0.4}>
-            <Button size="lg" className="bg-waumbe hover:bg-waumbe/90">
+            <Button size="lg" className="bg-primary hover:bg-primary/90">
               Start Your Journey
             </Button>
           </ScrollAnimation>
         </div>
       </section>
 
-      {/* Programs Section */}
+      {/* What We Do Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <ScrollAnimation>
-            <h2 className="text-3xl font-bold text-center mb-12">
-              Our Programs
-            </h2>
+            <h2 className="text-3xl font-bold text-center mb-6">What We Do</h2>
+            <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
+              Our Entrepreneurship Programme fosters economic growth through:
+            </p>
           </ScrollAnimation>
           
           <div className="grid md:grid-cols-3 gap-8">
             <ScrollAnimation delay={0.1}>
               <Card className="h-full">
                 <CardHeader>
-                  <BookOpen className="h-12 w-12 text-waumbe mb-4" />
+                  <DollarSign className="h-12 w-12 text-primary mb-4" />
+                  <CardTitle>Revenue Generation</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li>• Internet Café operations</li>
+                    <li>• Hosting events</li>
+                    <li>• Fundraising initiatives</li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </ScrollAnimation>
+
+            <ScrollAnimation delay={0.2}>
+              <Card className="h-full">
+                <CardHeader>
+                  <Lightbulb className="h-12 w-12 text-primary mb-4" />
+                  <CardTitle>Business Support</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li>• Small business guidance</li>
+                    <li>• Marketing assistance</li>
+                    <li>• Social media setup</li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </ScrollAnimation>
+
+            <ScrollAnimation delay={0.3}>
+              <Card className="h-full">
+                <CardHeader>
+                  <GraduationCap className="h-12 w-12 text-primary mb-4" />
+                  <CardTitle>Capacity Building</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li>• Learnerships & courses</li>
+                    <li>• Funding opportunities</li>
+                    <li>• Mentorship</li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </ScrollAnimation>
+          </div>
+        </div>
+      </section>
+
+      {/* Entrepreneurship Programs Section */}
+      <section className="py-20 bg-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8">
+            <ScrollAnimation delay={0.1}>
+              <Card className="h-full">
+                <CardHeader>
+                  <BookOpen className="h-12 w-12 text-primary mb-4" />
                   <CardTitle>Courses</CardTitle>
                   <CardDescription>
-                    Comprehensive business and entrepreneurship courses
+                    Practical business education & training.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground mb-4">
-                    Learn the fundamentals of business, from idea generation to scaling your venture.
-                  </p>
-                  <Button variant="outline" className="w-full">
-                    Explore Courses
+                  <Button asChild className="w-full">
+                    <Link to="/entrepreneurship/courses">
+                      Learn more about courses
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -76,18 +149,17 @@ export default function Entrepreneurship() {
             <ScrollAnimation delay={0.2}>
               <Card className="h-full">
                 <CardHeader>
-                  <Users className="h-12 w-12 text-waumbe mb-4" />
+                  <Users className="h-12 w-12 text-primary mb-4" />
                   <CardTitle>Learnerships</CardTitle>
                   <CardDescription>
-                    Hands-on learning with real businesses
+                    Work-based training programs.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground mb-4">
-                    Gain practical experience through structured learning programs with local enterprises.
-                  </p>
-                  <Button variant="outline" className="w-full">
-                    Apply Now
+                  <Button asChild className="w-full">
+                    <Link to="/entrepreneurship/learnership">
+                      Learn more about learnerships
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -96,18 +168,17 @@ export default function Entrepreneurship() {
             <ScrollAnimation delay={0.3}>
               <Card className="h-full">
                 <CardHeader>
-                  <TrendingUp className="h-12 w-12 text-waumbe mb-4" />
+                  <TrendingUp className="h-12 w-12 text-primary mb-4" />
                   <CardTitle>Fundraising</CardTitle>
                   <CardDescription>
-                    Support and funding for promising ventures
+                    Support our entrepreneurial initiatives.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground mb-4">
-                    Connect with investors and access funding opportunities to grow your business.
-                  </p>
-                  <Button variant="outline" className="w-full">
-                    Learn More
+                  <Button asChild className="w-full">
+                    <Link to="/entrepreneurship/fundraising">
+                      Learn more about fundraising
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -116,32 +187,36 @@ export default function Entrepreneurship() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-waumbe text-waumbe-foreground">
-        <div className="container mx-auto px-4 text-center">
+      {/* Newsletter Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
           <ScrollAnimation>
-            <h2 className="text-3xl font-bold mb-6">
-              Ready to Start Your Entrepreneurial Journey?
-            </h2>
-          </ScrollAnimation>
-          <ScrollAnimation delay={0.2}>
-            <p className="text-xl mb-8 opacity-90">
-              Join thousands of aspiring entrepreneurs who have transformed their ideas into successful businesses.
-            </p>
-          </ScrollAnimation>
-          <ScrollAnimation delay={0.4}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary">
-                Get Started Today
-              </Button>
-              <Button size="lg" variant="outline" className="bg-transparent border-white text-white hover:bg-white hover:text-waumbe">
-                <Mail className="h-4 w-4 mr-2" />
-                Contact Us
-              </Button>
+            <div className="max-w-2xl mx-auto text-center">
+              <h2 className="text-3xl font-bold mb-4">Stay Informed</h2>
+              <p className="text-muted-foreground mb-8">
+                Subscribe for updates on business training, events, and funding
+              </p>
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4">
+                <Input
+                  type="email"
+                  placeholder="Email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="flex-1"
+                  required
+                />
+                <Button type="submit">Subscribe</Button>
+              </form>
             </div>
           </ScrollAnimation>
         </div>
       </section>
+
+      {/* Meet our Team Section */}
+      <TeamSection />
+
+      {/* Our Partners Section */}
+      <PartnersSection />
     </div>
   );
 }

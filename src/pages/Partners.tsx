@@ -91,7 +91,7 @@ const Partners = () => {
                     delay: 3000,
                     stopOnInteraction: false,
                     stopOnMouseEnter: false,
-                  }),
+                  }) as any,
                 ]}
                 className="w-full"
                 opts={{
