@@ -1,5 +1,11 @@
 import { ScrollAnimation } from "@/components/ScrollAnimation";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/EntrepreneurshipNavbar";
 import { BookOpen, Clock, Users, Award, Star } from "lucide-react";
@@ -8,46 +14,64 @@ const Courses = () => {
   const courses = [
     {
       title: "Business Fundamentals",
-      description: "Learn the basics of starting and running a successful business",
+      description:
+        "Learn the basics of starting and running a successful business",
       duration: "6 weeks",
       level: "Beginner",
       price: "R500",
       rating: 4.8,
-      modules: ["Business Planning", "Market Research", "Financial Basics", "Legal Requirements"]
+      modules: [
+        "Business Planning",
+        "Market Research",
+        "Financial Basics",
+        "Legal Requirements",
+      ],
     },
     {
       title: "Digital Marketing Mastery",
       description: "Master online marketing strategies to grow your business",
-      duration: "8 weeks", 
+      duration: "8 weeks",
       level: "Intermediate",
       price: "R750",
       rating: 4.9,
-      modules: ["Social Media Marketing", "Content Creation", "Email Marketing", "Analytics"]
+      modules: [
+        "Social Media Marketing",
+        "Content Creation",
+        "Email Marketing",
+        "Analytics",
+      ],
     },
     {
       title: "Financial Management",
-      description: "Comprehensive financial planning and management for entrepreneurs",
+      description:
+        "Comprehensive financial planning and management for entrepreneurs",
       duration: "10 weeks",
       level: "Intermediate",
       price: "R850",
       rating: 4.7,
-      modules: ["Budgeting", "Cash Flow", "Investment", "Tax Planning"]
+      modules: ["Budgeting", "Cash Flow", "Investment", "Tax Planning"],
     },
     {
       title: "Leadership & Management",
-      description: "Develop leadership skills to build and manage effective teams",
+      description:
+        "Develop leadership skills to build and manage effective teams",
       duration: "12 weeks",
       level: "Advanced",
       price: "R1000",
       rating: 4.9,
-      modules: ["Team Building", "Communication", "Conflict Resolution", "Performance Management"]
-    }
+      modules: [
+        "Team Building",
+        "Communication",
+        "Conflict Resolution",
+        "Performance Management",
+      ],
+    },
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <EntrepreneurshipNavbar />
-      
+
       <div className="pt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <ScrollAnimation>
@@ -56,7 +80,9 @@ const Courses = () => {
                 Entrepreneurship Courses
               </h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Transform your business ideas into reality with our comprehensive online courses designed for aspiring entrepreneurs.
+                Transform your business ideas into reality with our
+                comprehensive online courses designed for aspiring
+                entrepreneurs.
               </p>
             </div>
           </ScrollAnimation>
@@ -68,11 +94,15 @@ const Courses = () => {
                   <CardHeader>
                     <div className="flex items-center justify-between mb-2">
                       <div className="bg-primary/10 px-3 py-1 rounded-full">
-                        <span className="text-sm font-semibold text-primary">{course.level}</span>
+                        <span className="text-sm font-semibold text-primary">
+                          {course.level}
+                        </span>
                       </div>
                       <div className="flex items-center gap-1">
                         <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                        <span className="text-sm font-semibold">{course.rating}</span>
+                        <span className="text-sm font-semibold">
+                          {course.rating}
+                        </span>
                       </div>
                     </div>
                     <CardTitle className="flex items-center gap-2">
@@ -92,19 +122,22 @@ const Courses = () => {
                         <span>Price: {course.price}</span>
                       </div>
                     </div>
-                    
+
                     <div className="mb-6">
                       <h4 className="font-semibold mb-2">Course Modules:</h4>
                       <ul className="space-y-1">
                         {course.modules.map((module, idx) => (
-                          <li key={idx} className="flex items-center gap-2 text-sm">
+                          <li
+                            key={idx}
+                            className="flex items-center gap-2 text-sm"
+                          >
                             <div className="w-2 h-2 bg-primary rounded-full"></div>
                             <span>{module}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
-                    
+
                     <Button className="w-full">Enroll Now</Button>
                   </CardContent>
                 </Card>
@@ -114,13 +147,18 @@ const Courses = () => {
 
           <ScrollAnimation>
             <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-8 text-center">
-              <h2 className="text-3xl font-bold mb-4">Ready to Start Learning?</h2>
+              <h2 className="text-3xl font-bold mb-4">
+                Ready to Start Learning?
+              </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Join thousands of successful entrepreneurs who started their journey with our courses.
+                Join thousands of successful entrepreneurs who started their
+                journey with our courses.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg">Browse All Courses</Button>
-                <Button size="lg" variant="outline">Contact an Advisor</Button>
+                <Button size="lg" variant="outline">
+                  Contact an Advisor
+                </Button>
               </div>
             </div>
           </ScrollAnimation>

@@ -1,5 +1,12 @@
 import { ScrollAnimation } from "@/components/ScrollAnimation";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from "react-router-dom";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Wrench, Code, Palette, Mic } from "lucide-react";
 import MiniHeroBanner from "@/components/MiniHeroBanner";
@@ -9,7 +16,7 @@ const SkillsDevelopment = () => {
   const breadcrumbItems = [
     { label: "Home", href: "/" },
     { label: "Programs", href: "/programs" },
-    { label: "Skills Development" }
+    { label: "Skills Development" },
   ];
 
   const skillAreas = [
@@ -17,58 +24,80 @@ const SkillsDevelopment = () => {
       title: "Digital Literacy",
       description: "Essential computer and internet skills",
       icon: Code,
-      skills: ["Basic Computing", "Internet Navigation", "Email Management", "Online Safety"]
+      skills: [
+        "Basic Computing",
+        "Internet Navigation",
+        "Email Management",
+        "Online Safety",
+      ],
     },
     {
       title: "Technical Skills",
       description: "Hands-on technical training",
       icon: Wrench,
-      skills: ["Hardware Basics", "Software Installation", "Troubleshooting", "Network Setup"]
+      skills: [
+        "Hardware Basics",
+        "Software Installation",
+        "Troubleshooting",
+        "Network Setup",
+      ],
     },
     {
       title: "Creative Skills",
       description: "Design and multimedia training",
       icon: Palette,
-      skills: ["Graphic Design", "Video Editing", "Web Design", "Digital Marketing"]
+      skills: [
+        "Graphic Design",
+        "Video Editing",
+        "Web Design",
+        "Digital Marketing",
+      ],
     },
     {
       title: "Communication",
       description: "Professional communication skills",
       icon: Mic,
-      skills: ["Public Speaking", "Written Communication", "Presentation Skills", "Interview Prep"]
-    }
+      skills: [
+        "Public Speaking",
+        "Written Communication",
+        "Presentation Skills",
+        "Interview Prep",
+      ],
+    },
   ];
 
   const programs = [
     {
       title: "End User Computing",
       description: "Comprehensive computer literacy program",
-      duration: "3 months"
+      duration: "3 months",
     },
     {
       title: "Business Administration",
       description: "Administrative and office skills training",
-      duration: "3 months"
+      duration: "3 months",
     },
     {
       title: "Technical Support",
       description: "IT support and troubleshooting skills",
-      duration: "6 months"
-    }
+      duration: "6 months",
+    },
   ];
 
   return (
     <>
-      <MiniHeroBanner 
+      <MiniHeroBanner
         title="Skills Development & Training"
         subtitle="Practical training that prepares youth for meaningful employment and entrepreneurship."
       />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <Breadcrumbs items={breadcrumbItems} />
-        
+
         <ScrollAnimation>
           <div className="mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Learnerships</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              Learnerships
+            </h1>
             <p className="text-lg text-muted-foreground max-w-4xl mb-8">
               Waumbe facilitates MICT SETA-accredited Learnerships in:
             </p>
@@ -78,7 +107,11 @@ const SkillsDevelopment = () => {
               <li>• Technical Support (NQF Level 4)</li>
             </ul>
             <p className="text-muted-foreground">
-              These one-year programs are geared toward unemployed youth and combine theoretical knowledge with workplace experience. Learnerships are implemented in partnership with accredited training providers and funders like The Learning Trust and MICT SETA.
+              These one-year programs are geared toward unemployed youth and
+              combine theoretical knowledge with workplace experience.
+              Learnerships are implemented in partnership with accredited
+              training providers and funders like The Learning Trust and MICT
+              SETA.
             </p>
           </div>
         </ScrollAnimation>
@@ -87,7 +120,9 @@ const SkillsDevelopment = () => {
           <div className="mb-16">
             <h2 className="text-3xl font-bold mb-6">Short Courses</h2>
             <p className="text-lg text-muted-foreground mb-6">
-              Waumbe runs modular, community-based courses designed to quickly equip young people with income-generating or job-ready skills. Our focus areas include:
+              Waumbe runs modular, community-based courses designed to quickly
+              equip young people with income-generating or job-ready skills. Our
+              focus areas include:
             </p>
             <ul className="text-muted-foreground space-y-2">
               <li>• Digital Literacy & Coding</li>
@@ -96,7 +131,9 @@ const SkillsDevelopment = () => {
               <li>• Entrepreneurial Thinking & Idea Development</li>
             </ul>
             <p className="text-muted-foreground mt-6">
-              These programs are regularly updated based on market trends, and can be delivered online, in person, or hybrid — allowing more youth from rural or underconnected communities to access training.
+              These programs are regularly updated based on market trends, and
+              can be delivered online, in person, or hybrid — allowing more
+              youth from rural or underconnected communities to access training.
             </p>
           </div>
         </ScrollAnimation>
@@ -127,17 +164,23 @@ const SkillsDevelopment = () => {
 
         <ScrollAnimation>
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-center mb-12">Training Programs</h2>
+            <h2 className="text-3xl font-bold text-center mb-12">
+              Training Programs
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {programs.map((program, index) => (
-                <Card key={index} className="text-center hover:shadow-lg transition-all duration-300">
+                <Card
+                  key={index}
+                  className="text-center hover:shadow-lg transition-all duration-300"
+                >
                   <CardHeader>
                     <CardTitle>{program.title}</CardTitle>
                     <CardDescription>{program.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold text-primary mb-4">{program.duration}</div>
-                    <Button className="w-full">Enroll Now</Button>
+                    <div className="text-2xl font-bold text-primary mb-4">
+                      {program.duration}
+                    </div>
                   </CardContent>
                 </Card>
               ))}
@@ -149,11 +192,12 @@ const SkillsDevelopment = () => {
           <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-8 text-center">
             <h2 className="text-3xl font-bold mb-4">Invest in Your Future</h2>
             <p className="text-lg text-muted-foreground mb-6">
-              Develop the skills that employers want and create new opportunities for yourself and your community.
+              Develop the skills that employers want and create new
+              opportunities for yourself and your community.
             </p>
-            <Button size="lg">
-              Browse All Programs
-            </Button>
+            <Link to="/programs">
+              <Button size="lg">Browse All Programs</Button>
+            </Link>
           </div>
         </ScrollAnimation>
       </div>

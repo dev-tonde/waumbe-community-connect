@@ -2,14 +2,20 @@ import { ScrollAnimation } from "@/components/ScrollAnimation";
 
 const PartnersSection = () => {
   const partners = [
-    { name: "University of Cape Town", logo: "/placeholder.svg" },
-    { name: "City of Cape Town", logo: "/placeholder.svg" },
-    { name: "Standard Bank", logo: "/placeholder.svg" },
-    { name: "Shoprite Holdings", logo: "/placeholder.svg" },
-    { name: "MTN Foundation", logo: "/placeholder.svg" },
-    { name: "Vodacom Foundation", logo: "/placeholder.svg" },
-    { name: "FirstRand Foundation", logo: "/placeholder.svg" },
-    { name: "Anglo American", logo: "/placeholder.svg" }
+    {
+      name: "Grand Slots",
+      logo: "/src/assets/partners/sponsor1.png",
+    },
+    {
+      name: "King Bausuin Foundation",
+      logo: "/src/assets/partners/sponsor2.png",
+    },
+    { name: "MegChem", logo: "/src/assets/partners/sponsor3.png" },
+    { name: "SPZA", logo: "/src/assets/partners/sponsor4.png" },
+    { name: "100Years", logo: "/src/assets/partners/sponsor5.jpg" },
+    { name: "EXEO", logo: "/src/assets/partners/sponsor6.jpg" },
+    { name: "Sub Slots", logo: "/src/assets/partners/sponsor7.png" },
+    { name: "Learning Trust", logo: "/src/assets/partners/sponsor8.png" },
   ];
 
   return (
@@ -49,7 +55,6 @@ const PartnersSection = () => {
           </div>
         </ScrollAnimation>
       </div>
-      
     </section>
   );
 };
