@@ -1,148 +1,168 @@
+import { useState } from "react";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/EntrepreneurshipNavbar";
-import { GraduationCap, Briefcase, Calendar, MapPin, DollarSign } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import MiniHeroBanner from "@/components/MiniHeroBanner";
+import { useToast } from "@/hooks/use-toast";
 
 const Learnership = () => {
-  const programs = [
-    {
-      title: "Startup Accelerator Program",
-      description: "18-month intensive program for high-potential startups",
-      duration: "18 months",
-      location: "Cape Town Hub",
-      stipend: "R3,500/month",
-      qualification: "NQF Level 5",
-      features: ["Mentorship", "Funding opportunities", "Office space", "Legal support"]
-    },
-    {
-      title: "Digital Entrepreneur Track",
-      description: "Focus on online businesses and digital platforms",
-      duration: "12 months",
-      location: "Online + Hub",
-      stipend: "R2,800/month", 
-      qualification: "NQF Level 4",
-      features: ["Tech training", "Website development", "E-commerce setup", "Digital marketing"]
-    },
-    {
-      title: "Social Enterprise Program",
-      description: "Build businesses that create positive social impact",
-      duration: "15 months",
-      location: "Community Centers",
-      stipend: "R3,200/month",
-      qualification: "NQF Level 5",
-      features: ["Impact measurement", "Grant writing", "Community engagement", "Sustainability planning"]
-    },
-    {
-      title: "Retail & Service Business",
-      description: "Traditional business models with modern strategies",
-      duration: "12 months",
-      location: "Business District",
-      stipend: "R3,000/month",
-      qualification: "NQF Level 4",
-      features: ["Store management", "Customer service", "Supply chain", "Financial management"]
-    }
+  const [isApplyModalOpen, setIsApplyModalOpen] = useState(false);
+  const [isPartnerModalOpen, setIsPartnerModalOpen] = useState(false);
+  const { toast } = useToast();
+
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Entrepreneurship", href: "/entrepreneurship" },
+    { label: "Learnership" }
   ];
 
-  const requirements = [
-    "South African citizen or permanent resident",
-    "Age 18-35 years old",
-    "Grade 12 qualification or equivalent",
-    "Unemployed or earning less than R5,000/month",
-    "Passionate about entrepreneurship",
-    "Committed to completing the full program"
-  ];
+  const handleApplySubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: "Application submitted successfully!",
+      description: "We'll review your application and get back to you soon.",
+    });
+    setIsApplyModalOpen(false);
+  };
+
+  const handlePartnerSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: "Inquiry sent successfully!",
+      description: "We'll contact you to discuss partnership opportunities.",
+    });
+    setIsPartnerModalOpen(false);
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <EntrepreneurshipNavbar />
       
       <div className="pt-16">
+        <MiniHeroBanner
+          title="Learnerships"
+          subtitle="Explore current learnership opportunities available through Waumbe."
+        />
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <Breadcrumbs items={breadcrumbItems} />
+
           <ScrollAnimation>
-            <div className="text-center mb-16">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text">
-                Entrepreneurship Learnership
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Earn while you learn through our accredited learnership programs that combine theoretical knowledge with practical business experience.
+            <div className="mb-16">
+              <h2 className="text-3xl font-bold mb-6">Our Learnerships</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Our Learnership program is designed to provide individuals with the skills and knowledge required to succeed in their chosen careers. We offer a range of learnerships, facilitated by our accredited facilitator, to ensure high-quality training and support.
               </p>
             </div>
           </ScrollAnimation>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            {programs.map((program, index) => (
-              <ScrollAnimation key={index} delay={index * 0.1}>
-                <Card className="h-full hover:shadow-lg transition-all duration-300 hover:scale-105">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <GraduationCap className="w-5 h-5 text-primary" />
-                      {program.title}
-                    </CardTitle>
-                    <CardDescription>{program.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-2 mb-6">
-                      <div className="flex items-center gap-2 text-sm">
-                        <Calendar className="w-4 h-4 text-muted-foreground" />
-                        <span>Duration: {program.duration}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm">
-                        <MapPin className="w-4 h-4 text-muted-foreground" />
-                        <span>Location: {program.location}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm">
-                        <DollarSign className="w-4 h-4 text-muted-foreground" />
-                        <span>Stipend: {program.stipend}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm">
-                        <Briefcase className="w-4 h-4 text-muted-foreground" />
-                        <span>Qualification: {program.qualification}</span>
-                      </div>
-                    </div>
-                    
-                    <div className="mb-6">
-                      <h4 className="font-semibold mb-2">Program Features:</h4>
-                      <ul className="space-y-1">
-                        {program.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center gap-2 text-sm">
-                            <div className="w-2 h-2 bg-primary rounded-full"></div>
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <Button className="w-full">Apply Now</Button>
+          <ScrollAnimation>
+            <div className="mb-16">
+              <h3 className="text-2xl font-bold mb-6">We are accredited by MICT SETA for:</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <Card className="text-center hover:shadow-lg transition-all duration-300">
+                  <CardContent className="p-6">
+                    <h4 className="font-semibold mb-2">End User Computing</h4>
+                    <p className="text-muted-foreground">NQF 3</p>
                   </CardContent>
                 </Card>
-              </ScrollAnimation>
-            ))}
-          </div>
-
-          <ScrollAnimation>
-            <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-8 mb-16">
-              <h2 className="text-3xl font-bold mb-6">Application Requirements</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {requirements.map((requirement, index) => (
-                  <div key={index} className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-muted-foreground">{requirement}</span>
-                  </div>
-                ))}
+                <Card className="text-center hover:shadow-lg transition-all duration-300">
+                  <CardContent className="p-6">
+                    <h4 className="font-semibold mb-2">Business Administration</h4>
+                    <p className="text-muted-foreground">NQF 3</p>
+                  </CardContent>
+                </Card>
+                <Card className="text-center hover:shadow-lg transition-all duration-300">
+                  <CardContent className="p-6">
+                    <h4 className="font-semibold mb-2">Technical Support & Information Technology</h4>
+                    <p className="text-muted-foreground">NQF 4</p>
+                  </CardContent>
+                </Card>
               </div>
             </div>
           </ScrollAnimation>
 
           <ScrollAnimation>
-            <div className="text-center">
-              <h2 className="text-3xl font-bold mb-4">Start Your Entrepreneurial Journey</h2>
-              <p className="text-lg text-muted-foreground mb-6">
-                Applications are now open for our next intake. Don't miss this opportunity to build your business while earning a qualification.
-              </p>
+            <div className="mb-16">
+              <Card className="p-8">
+                <CardHeader>
+                  <CardTitle className="text-2xl">Partner with Us</CardTitle>
+                  <CardDescription className="text-lg">
+                    We also offer learnership solutions for companies to help upskill their employees. If you're interested in partnering with us, please contact us to discuss how we can support your training needs.
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </div>
+          </ScrollAnimation>
+
+          <ScrollAnimation>
+            <div className="text-center space-y-4">
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg">Apply Today</Button>
-                <Button size="lg" variant="outline">Download Brochure</Button>
+                <Dialog open={isApplyModalOpen} onOpenChange={setIsApplyModalOpen}>
+                  <DialogTrigger asChild>
+                    <Button size="lg">Apply for a Learnership</Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-md">
+                    <DialogHeader>
+                      <DialogTitle>Apply for a Learnership</DialogTitle>
+                    </DialogHeader>
+                    <form onSubmit={handleApplySubmit} className="space-y-4">
+                      <div>
+                        <Label htmlFor="fullName">Full Name</Label>
+                        <Input id="fullName" required />
+                      </div>
+                      <div>
+                        <Label htmlFor="email">Email Address</Label>
+                        <Input id="email" type="email" required />
+                      </div>
+                      <div>
+                        <Label htmlFor="phone">Phone Number</Label>
+                        <Input id="phone" type="tel" required />
+                      </div>
+                      <div>
+                        <Label htmlFor="background">Tell us about your background</Label>
+                        <Textarea id="background" required />
+                      </div>
+                      <Button type="submit" className="w-full">Submit Application</Button>
+                    </form>
+                  </DialogContent>
+                </Dialog>
+
+                <Dialog open={isPartnerModalOpen} onOpenChange={setIsPartnerModalOpen}>
+                  <DialogTrigger asChild>
+                    <Button size="lg" variant="outline">Partner with Us</Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-md">
+                    <DialogHeader>
+                      <DialogTitle>Partner with Us</DialogTitle>
+                    </DialogHeader>
+                    <form onSubmit={handlePartnerSubmit} className="space-y-4">
+                      <div>
+                        <Label htmlFor="companyName">Company Name</Label>
+                        <Input id="companyName" required />
+                      </div>
+                      <div>
+                        <Label htmlFor="contactEmail">Contact Email</Label>
+                        <Input id="contactEmail" type="email" required />
+                      </div>
+                      <div>
+                        <Label htmlFor="contactPhone">Phone Number</Label>
+                        <Input id="contactPhone" type="tel" required />
+                      </div>
+                      <div>
+                        <Label htmlFor="support">How can we support your team?</Label>
+                        <Textarea id="support" required />
+                      </div>
+                      <Button type="submit" className="w-full">Send Inquiry</Button>
+                    </form>
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
           </ScrollAnimation>

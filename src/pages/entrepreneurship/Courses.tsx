@@ -1,165 +1,160 @@
+import { useState } from "react";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/EntrepreneurshipNavbar";
-import { BookOpen, Clock, Users, Award, Star } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import MiniHeroBanner from "@/components/MiniHeroBanner";
+import { useToast } from "@/hooks/use-toast";
 
 const Courses = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { toast } = useToast();
+
+  const breadcrumbItems = [
+    { label: "Home", href: "/" },
+    { label: "Entrepreneurship", href: "/entrepreneurship" },
+    { label: "Courses" }
+  ];
+
   const courses = [
     {
-      title: "Business Fundamentals",
-      description:
-        "Learn the basics of starting and running a successful business",
-      duration: "6 weeks",
-      level: "Beginner",
-      price: "R500",
-      rating: 4.8,
-      modules: [
-        "Business Planning",
-        "Market Research",
-        "Financial Basics",
-        "Legal Requirements",
-      ],
+      title: "End User Computing",
+      description: "Our End User Computing course provides a comprehensive introduction to computer skills, covering:",
+      features: [
+        "Basic computer concepts",
+        "Hardware and software components", 
+        "Operating systems",
+        "Microsoft Office applications"
+      ]
     },
     {
-      title: "Digital Marketing Mastery",
-      description: "Master online marketing strategies to grow your business",
-      duration: "8 weeks",
-      level: "Intermediate",
-      price: "R750",
-      rating: 4.9,
-      modules: [
-        "Social Media Marketing",
-        "Content Creation",
-        "Email Marketing",
-        "Analytics",
-      ],
+      title: "Administration",
+      description: "Our short courses are designed to provide focused training in specific areas, including:",
+      features: [
+        "Computer literacy",
+        "Data management",
+        "Microsoft Office applications",
+        "Internet and email basics",
+        "Typing and keyboard skills"
+      ]
     },
     {
-      title: "Financial Management",
-      description:
-        "Comprehensive financial planning and management for entrepreneurs",
-      duration: "10 weeks",
-      level: "Intermediate",
-      price: "R850",
-      rating: 4.7,
-      modules: ["Budgeting", "Cash Flow", "Investment", "Tax Planning"],
+      title: "Skills Development",
+      description: "Our Skills Development Program is designed to help individuals acquire the skills and confidence needed to succeed in the job market."
     },
     {
-      title: "Leadership & Management",
-      description:
-        "Develop leadership skills to build and manage effective teams",
-      duration: "12 weeks",
-      level: "Advanced",
-      price: "R1000",
-      rating: 4.9,
-      modules: [
-        "Team Building",
-        "Communication",
-        "Conflict Resolution",
-        "Performance Management",
-      ],
-    },
+      title: "Data Management",
+      description: "Our Skills Development Program is designed to help individuals acquire the skills and confidence needed to succeed in the job market."
+    }
   ];
+
+  const handleApplicationSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: "Application submitted successfully!",
+      description: "We'll review your application and get back to you soon.",
+    });
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <EntrepreneurshipNavbar />
-
+      
       <div className="pt-16">
+        <MiniHeroBanner
+          title="Courses"
+          subtitle="Discover our available courses and educational programs."
+        />
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <Breadcrumbs items={breadcrumbItems} />
+
           <ScrollAnimation>
-            <div className="text-center mb-16">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text">
-                Entrepreneurship Courses
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Transform your business ideas into reality with our
-                comprehensive online courses designed for aspiring
-                entrepreneurs.
+            <div className="mb-16">
+              <h2 className="text-3xl font-bold mb-6">Courses</h2>
+              <p className="text-lg text-muted-foreground">
+                We offer a range of courses designed to equip individuals with essential skills and knowledge.
               </p>
             </div>
           </ScrollAnimation>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <div className="space-y-12 mb-16">
             {courses.map((course, index) => (
               <ScrollAnimation key={index} delay={index * 0.1}>
-                <Card className="h-full hover:shadow-lg transition-all duration-300 hover:scale-105">
+                <Card className="p-8 hover:shadow-lg transition-all duration-300">
                   <CardHeader>
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="bg-primary/10 px-3 py-1 rounded-full">
-                        <span className="text-sm font-semibold text-primary">
-                          {course.level}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                        <span className="text-sm font-semibold">
-                          {course.rating}
-                        </span>
-                      </div>
-                    </div>
-                    <CardTitle className="flex items-center gap-2">
-                      <BookOpen className="w-5 h-5 text-primary" />
-                      {course.title}
-                    </CardTitle>
-                    <CardDescription>{course.description}</CardDescription>
+                    <CardTitle className="text-2xl">{course.title}</CardTitle>
+                    <CardDescription className="text-lg">{course.description}</CardDescription>
                   </CardHeader>
-                  <CardContent>
-                    <div className="space-y-3 mb-6">
-                      <div className="flex items-center gap-2 text-sm">
-                        <Clock className="w-4 h-4 text-muted-foreground" />
-                        <span>Duration: {course.duration}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm">
-                        <Award className="w-4 h-4 text-muted-foreground" />
-                        <span>Price: {course.price}</span>
-                      </div>
-                    </div>
-
-                    <div className="mb-6">
-                      <h4 className="font-semibold mb-2">Course Modules:</h4>
-                      <ul className="space-y-1">
-                        {course.modules.map((module, idx) => (
-                          <li
-                            key={idx}
-                            className="flex items-center gap-2 text-sm"
-                          >
+                  {course.features && (
+                    <CardContent>
+                      <ul className="space-y-2">
+                        {course.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-center gap-2">
                             <div className="w-2 h-2 bg-primary rounded-full"></div>
-                            <span>{module}</span>
+                            <span>{feature}</span>
                           </li>
                         ))}
                       </ul>
-                    </div>
-
-                    <Button className="w-full">Enroll Now</Button>
-                  </CardContent>
+                    </CardContent>
+                  )}
                 </Card>
               </ScrollAnimation>
             ))}
           </div>
 
           <ScrollAnimation>
-            <div className="bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-8 text-center">
-              <h2 className="text-3xl font-bold mb-4">
-                Ready to Start Learning?
-              </h2>
-              <p className="text-lg text-muted-foreground mb-6">
-                Join thousands of successful entrepreneurs who started their
-                journey with our courses.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg">Browse All Courses</Button>
-                <Button size="lg" variant="outline">
-                  Contact an Advisor
-                </Button>
-              </div>
+            <div className="text-center">
+              <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+                <DialogTrigger asChild>
+                  <Button size="lg">Apply for a Course</Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>Course Application</DialogTitle>
+                  </DialogHeader>
+                  <form onSubmit={handleApplicationSubmit} className="space-y-4">
+                    <div>
+                      <Label htmlFor="fullName">Full Name</Label>
+                      <Input id="fullName" required />
+                    </div>
+                    <div>
+                      <Label htmlFor="email">Email Address</Label>
+                      <Input id="email" type="email" required />
+                    </div>
+                    <div>
+                      <Label htmlFor="phone">Phone Number</Label>
+                      <Input id="phone" type="tel" required />
+                    </div>
+                    <div>
+                      <Label htmlFor="course">Select a Course</Label>
+                      <Select required>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Choose a course" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="end-user-computing">End User Computing</SelectItem>
+                          <SelectItem value="administration">Administration</SelectItem>
+                          <SelectItem value="skills-development">Skills Development</SelectItem>
+                          <SelectItem value="data-management">Data Management</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div>
+                      <Label htmlFor="interest">Why are you interested in this course?</Label>
+                      <Textarea id="interest" required />
+                    </div>
+                    <Button type="submit" className="w-full">Submit Application</Button>
+                  </form>
+                </DialogContent>
+              </Dialog>
             </div>
           </ScrollAnimation>
         </div>

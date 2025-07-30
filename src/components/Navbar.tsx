@@ -44,7 +44,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <div className="ml-10 flex items-baseline space-x-8">
               <Link 
                 to="/about" 
@@ -57,7 +57,7 @@ const Navbar = () => {
                 <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors">
                   Programs <ChevronDown className="ml-1 h-4 w-4" />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-background border border-border shadow-lg">
+                <DropdownMenuContent className="bg-background border border-border shadow-lg z-50">
                   {programsItems.map((item) => (
                     <DropdownMenuItem key={item.name} className="hover:bg-muted">
                       <Link to={item.path} className="w-full">
@@ -73,7 +73,7 @@ const Navbar = () => {
                 <DropdownMenuTrigger className="flex items-center text-foreground hover:text-primary transition-colors">
                   Testimonials <ChevronDown className="ml-1 h-4 w-4" />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-background border border-border shadow-lg">
+                <DropdownMenuContent className="bg-background border border-border shadow-lg z-50">
                   {testimonialsItems.map((item) => (
                     <DropdownMenuItem key={item.name} className="hover:bg-muted">
                       <Link to={item.path} className="w-full">
@@ -114,31 +114,32 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Donate Button */}
-          <div className="hidden md:block">
+          {/* Donate Button - Always visible on desktop and tablet/mobile */}
+          <div className="flex items-center gap-2">
             <Link to="/donate">
               <Button variant="donate" size="lg">
                 Donate Now
               </Button>
             </Link>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
+            
+            {/* Mobile menu button */}
+            <div className="lg:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-foreground hover:text-primary transition-colors"
+              >
+                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile/Tablet Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-t border-border">
-              <Link to="/about" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
+              <Link to="/about" className="block px-3 py-2 text-foreground hover:text-primary transition-colors"
+                onClick={() => setIsMenuOpen(false)}>
                 About Us
               </Link>
               <div className="px-3 py-2">
@@ -148,6 +149,7 @@ const Navbar = () => {
                     key={item.name}
                     to={item.path}
                     className="block px-3 py-1 text-sm text-foreground hover:text-primary transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
                   </Link>
@@ -160,30 +162,28 @@ const Navbar = () => {
                     key={item.name}
                     to={item.path}
                     className="block px-3 py-1 text-sm text-foreground hover:text-primary transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
                   </Link>
                 ))}
               </div>
-              <Link to="/financial-reports" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
+              <Link to="/financial-reports" className="block px-3 py-2 text-foreground hover:text-primary transition-colors"
+                onClick={() => setIsMenuOpen(false)}>
                 Financial Reports
               </Link>
-              <Link to="/governance" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
+              <Link to="/governance" className="block px-3 py-2 text-foreground hover:text-primary transition-colors"
+                onClick={() => setIsMenuOpen(false)}>
                 Governance
               </Link>
-              <Link to="/gallery" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
+              <Link to="/gallery" className="block px-3 py-2 text-foreground hover:text-primary transition-colors"
+                onClick={() => setIsMenuOpen(false)}>
                 Gallery
               </Link>
-              <Link to="/contact" className="block px-3 py-2 text-foreground hover:text-primary transition-colors">
+              <Link to="/contact" className="block px-3 py-2 text-foreground hover:text-primary transition-colors"
+                onClick={() => setIsMenuOpen(false)}>
                 Contact
               </Link>
-              <div className="px-3 py-2">
-                <Link to="/donate">
-                  <Button variant="donate" className="w-full">
-                    Donate Now
-                  </Button>
-                </Link>
-              </div>
             </div>
           </div>
         )}
