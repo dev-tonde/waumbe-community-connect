@@ -52,24 +52,25 @@ export const LearnershipApplicationForm = () => {
   const onSubmit = async (data: LearnershipFormData) => {
     setIsSubmitting(true);
     try {
-      const { error } = await supabase
-        .from('learnership_applications')
-        .insert({
-          full_name: data.full_name,
-          email: data.email,
-          phone: data.phone,
-          age: data.age,
-          education_level: data.education_level,
-          program_interest: data.program_interest,
-          motivation: data.motivation,
-          previous_experience: data.previous_experience,
-          availability: data.availability,
-          emergency_contact: data.emergency_contact,
-          emergency_phone: data.emergency_phone,
-          status: 'pending'
-        });
-
-      if (error) throw error;
+      // Send email notification
+      await supabase.functions.invoke('send-form-email', {
+        body: {
+          formType: 'learnership_application',
+          formData: {
+            full_name: data.full_name,
+            email: data.email,
+            phone: data.phone,
+            age: data.age,
+            education_level: data.education_level,
+            program_interest: data.program_interest,
+            motivation: data.motivation,
+            previous_experience: data.previous_experience,
+            availability: data.availability,
+            emergency_contact: data.emergency_contact,
+            emergency_phone: data.emergency_phone
+          }
+        }
+      });
 
       toast({
         title: "Application Submitted!",

@@ -72,73 +72,119 @@ const Donate = () => {
                   <CardDescription>Choose an amount and help us create the next generation of successful entrepreneurs.</CardDescription>
                 </CardHeader>
                 <CardContent className="px-0">
-                  <form className="space-y-6">
-                    <div>
-                      <label className="block text-sm font-medium mb-4">Select Amount</label>
-                      <div className="grid grid-cols-3 gap-3 mb-4">
-                        {donationAmounts.map((amount) => (
-                          <Button
-                            key={amount}
-                            type="button"
-                            variant="outline"
-                            className="text-center"
-                          >
-                            R{amount}
-                          </Button>
-                        ))}
+                    <form name="PayFastPayNowForm" action="https://payment.payfast.io/eng/process" method="post" className="space-y-6">
+                      <input type="hidden" name="cmd" value="_paynow" />
+                      <input type="hidden" name="receiver" value="27185441" />
+                      <input type="hidden" name="return_url" value="https://www.waumbe.org.za" />
+                      <input type="hidden" name="cancel_url" value="https://www.waumbe.org.za" />
+                      <input type="hidden" name="notify_url" value="https://www.waumbe.org.za" />
+                      <input type="hidden" name="item_name" value="Donation" />
+                      
+                      <div>
+                        <label className="block text-sm font-medium mb-4">Select Amount</label>
+                        <div className="grid grid-cols-3 gap-3 mb-4">
+                          {donationAmounts.map((amount) => (
+                            <Button
+                              key={amount}
+                              type="button"
+                              variant="outline"
+                              className="text-center"
+                              onClick={() => {
+                                const amountInput = document.querySelector('input[name="amount"]') as HTMLInputElement;
+                                if (amountInput) amountInput.value = amount.toString();
+                              }}
+                            >
+                              R{amount}
+                            </Button>
+                          ))}
+                        </div>
+                        <div className="relative">
+                          <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                          <Input 
+                            type="number" 
+                            name="amount"
+                            placeholder="Custom amount" 
+                            className="pl-10"
+                            min="5.00"
+                            step="0.01"
+                            required
+                          />
+                        </div>
                       </div>
-                      <div className="relative">
-                        <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                        <Input 
-                          type="number" 
-                          placeholder="Custom amount" 
-                          className="pl-10"
+                      
+                      <div>
+                        <label className="block text-sm font-medium mb-2">Focus Area</label>
+                        <select className="w-full px-3 py-2 border border-input rounded-md bg-background">
+                          <option>Where needed most</option>
+                          <option>Startup Funding</option>
+                          <option>Mentorship Programs</option>
+                          <option>Skills Training</option>
+                          <option>Equipment & Resources</option>
+                        </select>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-sm font-medium mb-2">First Name</label>
+                          <Input placeholder="Your first name" />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium mb-2">Last Name</label>
+                          <Input placeholder="Your last name" />
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <label className="block text-sm font-medium mb-2">Email</label>
+                        <Input type="email" placeholder="your.email@example.com" />
+                      </div>
+
+                      {/* Address Section */}
+                      <div className="space-y-4">
+                        <h3 className="font-medium text-foreground">Shipping Address</h3>
+                        <Input name="line1" placeholder="Address Line 1" required />
+                        <Input name="line2" placeholder="Address Line 2 (Optional)" />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <Input name="city" placeholder="City" required />
+                          <Input name="region" placeholder="Province" required />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <select name="country" required className="w-full px-3 py-2 border border-input rounded-md bg-background">
+                            <option value="">- Select Country -</option>
+                            <option value="South Africa">South Africa</option>
+                            <option value="">------------------------</option>
+                            <option value="Botswana">Botswana</option>
+                            <option value="Lesotho">Lesotho</option>
+                            <option value="Mauritius">Mauritius</option>
+                            <option value="Mozambique">Mozambique</option>
+                            <option value="Swaziland">Swaziland</option>
+                            <option value="Zimbabwe">Zimbabwe</option>
+                          </select>
+                          <Input name="code" type="number" placeholder="Postal Code" required />
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center space-x-2">
+                        <input type="checkbox" id="newsletter" className="rounded" />
+                        <label htmlFor="newsletter" className="text-sm">
+                          Subscribe to our newsletter for impact updates
+                        </label>
+                      </div>
+                      
+                      <div className="text-center">
+                        <input 
+                          type="image" 
+                          src="https://my.payfast.io/images/buttons/DonateNow/Dark-Large-DonateNow.png" 
+                          alt="Donate Now" 
+                          title="Donate Now with Payfast"
+                          className="mx-auto"
                         />
                       </div>
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Focus Area</label>
-                      <select className="w-full px-3 py-2 border border-input rounded-md bg-background">
-                        <option>Where needed most</option>
-                        <option>Startup Funding</option>
-                        <option>Mentorship Programs</option>
-                        <option>Skills Training</option>
-                        <option>Equipment & Resources</option>
-                      </select>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium mb-2">First Name</label>
-                        <Input placeholder="Your first name" />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium mb-2">Last Name</label>
-                        <Input placeholder="Your last name" />
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <label className="block text-sm font-medium mb-2">Email</label>
-                      <Input type="email" placeholder="your.email@example.com" />
-                    </div>
-                    
-                    <div className="flex items-center space-x-2">
-                      <input type="checkbox" id="newsletter" className="rounded" />
-                      <label htmlFor="newsletter" className="text-sm">
-                        Subscribe to our newsletter for impact updates
-                      </label>
-                    </div>
-                    
-                    <Button className="w-full" size="lg">
-                      Donate Now
-                    </Button>
-                    
-                    <p className="text-xs text-muted-foreground text-center">
-                      Your donation is secure and you'll receive a Section 18A tax certificate
-                    </p>
-                  </form>
+                      
+                      <p className="text-xs text-muted-foreground text-center">
+                        Your donation is secure and you'll receive a Section 18A tax certificate
+                      </p>
+                    </form>
                 </CardContent>
               </Card>
             </ScrollAnimation>

@@ -3,10 +3,7 @@ import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
+import CourseApplicationForm from "@/components/forms/CourseApplicationForm";
 import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/EntrepreneurshipNavbar";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import MiniHeroBanner from "@/components/MiniHeroBanner";
@@ -112,47 +109,15 @@ const Courses = () => {
 
           <ScrollAnimation>
             <div className="text-center">
-              <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+              <Dialog>
                 <DialogTrigger asChild>
                   <Button size="lg">Apply for a Course</Button>
                 </DialogTrigger>
-                <DialogContent className="max-w-md">
+                <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
                   <DialogHeader>
                     <DialogTitle>Course Application</DialogTitle>
                   </DialogHeader>
-                  <form onSubmit={handleApplicationSubmit} className="space-y-4">
-                    <div>
-                      <Label htmlFor="fullName">Full Name</Label>
-                      <Input id="fullName" required />
-                    </div>
-                    <div>
-                      <Label htmlFor="email">Email Address</Label>
-                      <Input id="email" type="email" required />
-                    </div>
-                    <div>
-                      <Label htmlFor="phone">Phone Number</Label>
-                      <Input id="phone" type="tel" required />
-                    </div>
-                    <div>
-                      <Label htmlFor="course">Select a Course</Label>
-                      <Select required>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Choose a course" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="end-user-computing">End User Computing</SelectItem>
-                          <SelectItem value="administration">Administration</SelectItem>
-                          <SelectItem value="skills-development">Skills Development</SelectItem>
-                          <SelectItem value="data-management">Data Management</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div>
-                      <Label htmlFor="interest">Why are you interested in this course?</Label>
-                      <Textarea id="interest" required />
-                    </div>
-                    <Button type="submit" className="w-full">Submit Application</Button>
-                  </form>
+                  <CourseApplicationForm />
                 </DialogContent>
               </Dialog>
             </div>

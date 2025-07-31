@@ -73,11 +73,16 @@ const Donate = () => {
     const donor_name = formData.get('donor_name') as string;
     const donor_email = formData.get('donor_email') as string;
     const message = formData.get('message') as string;
+    const line1 = formData.get('line1') as string;
+    const city = formData.get('city') as string;
+    const region = formData.get('region') as string;
+    const country = formData.get('country') as string;
+    const code = formData.get('code') as string;
 
-    if (!donor_name || !donor_email) {
+    if (!donor_name || !donor_email || !line1 || !city || !region || !country || !code) {
       toast({
-        title: "Please fill in required fields",
-        description: "Name and email are required to process your donation.",
+        title: "Please fill in all required fields",
+        description: "All fields including address information are required.",
         variant: "destructive",
       });
       return;
@@ -85,43 +90,61 @@ const Donate = () => {
 
     try {
       toast({
-        title: "Processing your donation...",
-        description: "Please wait while we prepare your payment.",
+        title: "Redirecting to payment...",
+        description: "You will be redirected to PayFast to complete your donation.",
       });
 
-      const { data, error } = await supabase.functions.invoke('create-payfast-payment', {
+      // Send email notification
+      await supabase.functions.invoke('send-form-email', {
         body: {
-          amount,
-          donor_name,
-          donor_email,
-          cause: causes.find(c => c.id === selectedCause)?.title || selectedCause,
-          message,
-        },
+          formType: 'donation',
+          formData: {
+            donor_name,
+            donor_email,
+            amount,
+            cause: causes.find(c => c.id === selectedCause)?.title || selectedCause,
+            message,
+            address: `${line1}, ${city}, ${region}, ${country}, ${code}`
+          }
+        }
       });
 
-      if (error) throw error;
+      // Create and submit PayFast form
+      const form = document.createElement('form');
+      form.name = 'PayFastPayNowForm';
+      form.action = 'https://payment.payfast.io/eng/process';
+      form.method = 'post';
 
-      if (data.success) {
-        // Create a form and submit it to PayFast
-        const form = document.createElement('form');
-        form.method = 'POST';
-        form.action = data.payment_url;
-        
-        Object.entries(data.payment_data).forEach(([key, value]) => {
-          const input = document.createElement('input');
-          input.type = 'hidden';
-          input.name = key;
-          input.value = value as string;
-          form.appendChild(input);
-        });
+      const fields = {
+        cmd: '_paynow',
+        receiver: '27185441',
+        return_url: 'https://www.waumbe.org.za',
+        cancel_url: 'https://www.waumbe.org.za',
+        notify_url: 'https://www.waumbe.org.za',
+        amount: amount,
+        item_name: 'Donation',
+        line1: line1,
+        line2: formData.get('line2') || '',
+        city: city,
+        region: region,
+        country: country,
+        code: code
+      };
 
-        document.body.appendChild(form);
-        form.submit();
-      }
+      Object.entries(fields).forEach(([key, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value.toString();
+        form.appendChild(input);
+      });
+
+      document.body.appendChild(form);
+      form.submit();
     } catch (error) {
-      console.error('Payment error:', error);
+      console.error('Donation error:', error);
       toast({
-        title: "Payment Processing Failed",
+        title: "Error",
         description: "There was an error processing your donation. Please try again.",
         variant: "destructive",
       });
@@ -222,8 +245,33 @@ const Donate = () => {
 
                       {/* Personal Details */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <Input name="donor_name" placeholder="Full Name" required className="border-fun-pink/30 focus:border-fun-pink" />
+                      <Input name="donor_name" placeholder="Full Name" required className="border-fun-pink/30 focus:border-fun-pink" />
                         <Input name="donor_email" placeholder="Email Address" type="email" required className="border-fun-pink/30 focus:border-fun-pink" />
+                      </div>
+
+                      {/* Address Fields */}
+                      <div className="space-y-4">
+                        <h3 className="font-medium text-foreground">Address Information</h3>
+                        <Input name="line1" placeholder="Address Line 1" required className="border-fun-pink/30 focus:border-fun-pink" />
+                        <Input name="line2" placeholder="Address Line 2 (Optional)" className="border-fun-pink/30 focus:border-fun-pink" />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <Input name="city" placeholder="City" required className="border-fun-pink/30 focus:border-fun-pink" />
+                          <Input name="region" placeholder="Province" required className="border-fun-pink/30 focus:border-fun-pink" />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <select name="country" required className="w-full px-3 py-2 border border-fun-pink/30 rounded-md bg-background focus:border-fun-pink">
+                            <option value="">- Select Country -</option>
+                            <option value="South Africa">South Africa</option>
+                            <option value="">------------------------</option>
+                            <option value="Botswana">Botswana</option>
+                            <option value="Lesotho">Lesotho</option>
+                            <option value="Mauritius">Mauritius</option>
+                            <option value="Mozambique">Mozambique</option>
+                            <option value="Swaziland">Swaziland</option>
+                            <option value="Zimbabwe">Zimbabwe</option>
+                          </select>
+                          <Input name="code" type="number" placeholder="Postal Code" required className="border-fun-pink/30 focus:border-fun-pink" />
+                        </div>
                       </div>
 
                       <Textarea

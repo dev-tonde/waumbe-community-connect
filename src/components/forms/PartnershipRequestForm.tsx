@@ -54,25 +54,26 @@ export const PartnershipRequestForm = () => {
   const onSubmit = async (data: PartnershipFormData) => {
     setIsSubmitting(true);
     try {
-      const { error } = await supabase
-        .from('partnership_requests')
-        .insert({
-          company_name: data.company_name,
-          contact_person: data.contact_person,
-          email: data.email,
-          phone: data.phone,
-          company_size: data.company_size,
-          industry: data.industry,
-          partnership_type: data.partnership_type,
-          proposed_contribution: data.proposed_contribution,
-          goals: data.goals,
-          timeline: data.timeline,
-          budget_range: data.budget_range,
-          additional_info: data.additional_info,
-          status: 'pending'
-        });
-
-      if (error) throw error;
+      // Send email notification
+      await supabase.functions.invoke('send-form-email', {
+        body: {
+          formType: 'partnership_request',
+          formData: {
+            company_name: data.company_name,
+            contact_person: data.contact_person,
+            email: data.email,
+            phone: data.phone,
+            company_size: data.company_size,
+            industry: data.industry,
+            partnership_type: data.partnership_type,
+            proposed_contribution: data.proposed_contribution,
+            goals: data.goals,
+            timeline: data.timeline,
+            budget_range: data.budget_range,
+            additional_info: data.additional_info
+          }
+        }
+      });
 
       toast({
         title: "Partnership Request Submitted!",

@@ -33,10 +33,9 @@ const Gallery = () => {
   const fetchGalleryItems = async () => {
     try {
       const { data, error } = await supabase
-        .from('gallery_items')
+        .from('gallery_images')
         .select('*')
-        .eq('status', 'published')
-        .order('event_date', { ascending: false });
+        .order('created_at', { ascending: false });
 
       if (error) throw error;
       setGalleryItems(data || []);
