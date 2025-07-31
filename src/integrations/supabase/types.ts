@@ -14,7 +14,213 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      contact_submissions: {
+        Row: {
+          created_at: string | null
+          email: string
+          form_type: string | null
+          id: string
+          message: string
+          name: string
+          phone: string | null
+          status: string | null
+          subject: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          form_type?: string | null
+          id?: string
+          message: string
+          name: string
+          phone?: string | null
+          status?: string | null
+          subject?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          form_type?: string | null
+          id?: string
+          message?: string
+          name?: string
+          phone?: string | null
+          status?: string | null
+          subject?: string | null
+        }
+        Relationships: []
+      }
+      course_applications: {
+        Row: {
+          created_at: string | null
+          email: string
+          full_name: string
+          id: string
+          interest_reason: string | null
+          phone: string
+          selected_course: string
+          status: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          full_name: string
+          id?: string
+          interest_reason?: string | null
+          phone: string
+          selected_course: string
+          status?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          full_name?: string
+          id?: string
+          interest_reason?: string | null
+          phone?: string
+          selected_course?: string
+          status?: string | null
+        }
+        Relationships: []
+      }
+      gallery_images: {
+        Row: {
+          category: string | null
+          created_at: string | null
+          description: string | null
+          id: string
+          image_url: string
+          title: string
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          image_url: string
+          title: string
+        }
+        Update: {
+          category?: string | null
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          image_url?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      learnership_applications: {
+        Row: {
+          age: number | null
+          availability: string | null
+          created_at: string | null
+          education_level: string | null
+          email: string
+          emergency_contact: string | null
+          emergency_phone: string | null
+          full_name: string
+          id: string
+          motivation: string | null
+          phone: string
+          previous_experience: string | null
+          program_interest: string | null
+          status: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          age?: number | null
+          availability?: string | null
+          created_at?: string | null
+          education_level?: string | null
+          email: string
+          emergency_contact?: string | null
+          emergency_phone?: string | null
+          full_name: string
+          id?: string
+          motivation?: string | null
+          phone: string
+          previous_experience?: string | null
+          program_interest?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          age?: number | null
+          availability?: string | null
+          created_at?: string | null
+          education_level?: string | null
+          email?: string
+          emergency_contact?: string | null
+          emergency_phone?: string | null
+          full_name?: string
+          id?: string
+          motivation?: string | null
+          phone?: string
+          previous_experience?: string | null
+          program_interest?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      partnership_requests: {
+        Row: {
+          additional_info: string | null
+          budget_range: string | null
+          company_name: string
+          company_size: string | null
+          contact_person: string
+          created_at: string | null
+          email: string
+          goals: string | null
+          id: string
+          industry: string | null
+          partnership_type: string | null
+          phone: string
+          proposed_contribution: string | null
+          status: string | null
+          timeline: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          additional_info?: string | null
+          budget_range?: string | null
+          company_name: string
+          company_size?: string | null
+          contact_person: string
+          created_at?: string | null
+          email: string
+          goals?: string | null
+          id?: string
+          industry?: string | null
+          partnership_type?: string | null
+          phone: string
+          proposed_contribution?: string | null
+          status?: string | null
+          timeline?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          additional_info?: string | null
+          budget_range?: string | null
+          company_name?: string
+          company_size?: string | null
+          contact_person?: string
+          created_at?: string | null
+          email?: string
+          goals?: string | null
+          id?: string
+          industry?: string | null
+          partnership_type?: string | null
+          phone?: string
+          proposed_contribution?: string | null
+          status?: string | null
+          timeline?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
