@@ -12,13 +12,33 @@ const StayConnected = () => {
   const [message, setMessage] = useState("");
   const { toast } = useToast();
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Thank you for subscribing!",
-      description: "You'll receive our latest updates and impact stories.",
-    });
-    setEmail("");
+    try {
+      await fetch('/functions/v1/send-form-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          formType: 'newsletter',
+          formData: { email },
+          recipientEmail: 'waumbedata@gmail.com'
+        }),
+      });
+      
+      toast({
+        title: "Thank you for subscribing!",
+        description: "You'll receive our latest updates and impact stories.",
+      });
+      setEmail("");
+    } catch (error) {
+      toast({
+        title: "Subscription failed",
+        description: "Please try again later.",
+        variant: "destructive"
+      });
+    }
   };
 
   const handleContactSubmit = (e: React.FormEvent) => {
@@ -82,27 +102,34 @@ const StayConnected = () => {
         {/* Contact Information */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
           <ScrollAnimation delay={0.3}>
-            <div className="text-center transform hover:scale-110 transition-transform duration-300">
-              <Phone className="w-8 h-8 text-fun-blue mx-auto mb-4 animate-bounce-gentle" />
-              <h3 className="text-lg font-semibold text-foreground mb-2">Call Us</h3>
-              <p className="text-muted-foreground">+27 (0) 21 123 4567</p>
-            </div>
+             <div className="text-center transform hover:scale-110 transition-transform duration-300">
+               <Phone className="w-8 h-8 text-fun-blue mx-auto mb-4 animate-bounce-gentle" />
+               <h3 className="text-lg font-semibold text-foreground mb-2">Call Us</h3>
+               <div className="text-muted-foreground">
+                 <p>+27 75 340 6751</p>
+                 <p>+27 61 455 6192</p>
+               </div>
+             </div>
           </ScrollAnimation>
           
           <ScrollAnimation delay={0.4}>
-            <div className="text-center transform hover:scale-110 transition-transform duration-300">
-              <Mail className="w-8 h-8 text-fun-pink mx-auto mb-4 animate-float" />
-              <h3 className="text-lg font-semibold text-foreground mb-2">Email</h3>
-              <p className="text-muted-foreground">info@waumbe.org.za</p>
-            </div>
+             <div className="text-center transform hover:scale-110 transition-transform duration-300">
+               <Mail className="w-8 h-8 text-fun-pink mx-auto mb-4 animate-float" />
+               <h3 className="text-lg font-semibold text-foreground mb-2">Email</h3>
+               <div className="text-muted-foreground">
+                 <p>terencewillemse@waumbe.org.za</p>
+                 <p>asiphekhemtse@waumbe.org.za</p>
+                 <p>info@waumbe.org.za</p>
+               </div>
+             </div>
           </ScrollAnimation>
           
           <ScrollAnimation delay={0.5}>
-            <div className="text-center transform hover:scale-110 transition-transform duration-300">
-              <MapPin className="w-8 h-8 text-fun-green mx-auto mb-4 animate-pulse-slow" />
-              <h3 className="text-lg font-semibold text-foreground mb-2">Visit Us</h3>
-              <p className="text-muted-foreground">Fisantekraal, Cape Town</p>
-            </div>
+             <div className="text-center transform hover:scale-110 transition-transform duration-300">
+               <MapPin className="w-8 h-8 text-fun-green mx-auto mb-4 animate-pulse-slow" />
+               <h3 className="text-lg font-semibold text-foreground mb-2">Visit Us</h3>
+               <p className="text-muted-foreground">14 Moses Mabhida Street, Fisantekraal, Cape Town, 7550</p>
+             </div>
           </ScrollAnimation>
         </div>
 
@@ -117,14 +144,14 @@ const StayConnected = () => {
                 Join us in transforming communities through education, innovation, and empowerment. 
                 Every contribution makes a lasting impact.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <FunButton variant="warning" size="lg">
-                  Donate Now
-                </FunButton>
-                <FunButton variant="bounce" size="lg">
-                  Volunteer With Us
-                </FunButton>
-              </div>
+               <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                 <FunButton variant="warning" size="lg" asChild>
+                   <a href="/donate">Donate Now</a>
+                 </FunButton>
+                 <FunButton variant="bounce" size="lg" asChild>
+                   <a href="/programs/volunteer">Volunteer With Us</a>
+                 </FunButton>
+               </div>
             </div>
           </div>
         </ScrollAnimation>

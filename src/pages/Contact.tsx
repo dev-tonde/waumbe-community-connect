@@ -78,11 +78,11 @@ const Contact = () => {
                         </div>
                         <div>
                           <h3 className="text-lg font-semibold text-foreground mb-2">Visit Our Office</h3>
-                          <p className="text-muted-foreground">
-                            123 Community Center Street<br />
-                            Fisantekraal, Cape Town<br />
-                            7570, South Africa
-                          </p>
+                           <p className="text-muted-foreground">
+                             14 Moses Mabhida Street<br />
+                             Fisantekraal, Cape Town<br />
+                             7550, South Africa
+                           </p>
                         </div>
                       </div>
                     </CardContent>
@@ -98,10 +98,10 @@ const Contact = () => {
                         </div>
                         <div>
                           <h3 className="text-lg font-semibold text-foreground mb-2">Call Us</h3>
-                          <p className="text-muted-foreground">
-                            +27 (0) 21 123 4567<br />
-                            +27 (0) 82 987 6543
-                          </p>
+                           <p className="text-muted-foreground">
+                             +27 75 340 6751<br />
+                             +27 61 455 6192
+                           </p>
                         </div>
                       </div>
                     </CardContent>
@@ -117,10 +117,11 @@ const Contact = () => {
                         </div>
                         <div>
                           <h3 className="text-lg font-semibold text-foreground mb-2">Email Us</h3>
-                          <p className="text-muted-foreground">
-                            info@waumbe.org.za<br />
-                            programs@waumbe.org.za
-                          </p>
+                           <p className="text-muted-foreground">
+                             terencewillemse@waumbe.org.za<br />
+                             asiphekhemtse@waumbe.org.za<br />
+                             info@waumbe.org.za
+                           </p>
                         </div>
                       </div>
                     </CardContent>

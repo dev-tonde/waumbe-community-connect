@@ -9,13 +9,33 @@ const Newsletter = () => {
   const [email, setEmail] = useState("");
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Thank you for subscribing!",
-      description: "You'll receive our latest updates and impact stories.",
-    });
-    setEmail("");
+    try {
+      await fetch('/functions/v1/send-form-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          formType: 'newsletter',
+          formData: { email },
+          recipientEmail: 'waumbedata@gmail.com'
+        }),
+      });
+      
+      toast({
+        title: "Thank you for subscribing!",
+        description: "You'll receive our latest updates and impact stories.",
+      });
+      setEmail("");
+    } catch (error) {
+      toast({
+        title: "Subscription failed",
+        description: "Please try again later.",
+        variant: "destructive"
+      });
+    }
   };
 
   return (

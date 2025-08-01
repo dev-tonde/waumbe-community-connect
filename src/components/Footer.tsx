@@ -36,18 +36,25 @@ const Footer = () => {
               and sustainable development programs.
             </p>
             <div className="space-y-3">
-              <div className="flex items-center">
-                <MapPin className="w-5 h-5 mr-3 text-gold" />
-                <span className="text-white/80">Fisantekraal, Cape Town</span>
-              </div>
-              <div className="flex items-center">
-                <Phone className="w-5 h-5 mr-3 text-gold" />
-                <span className="text-white/80">+27 (0) 21 123 4567</span>
-              </div>
-              <div className="flex items-center">
-                <Mail className="w-5 h-5 mr-3 text-gold" />
-                <span className="text-white/80">info@waumbe.org.za</span>
-              </div>
+               <div className="flex items-center">
+                 <MapPin className="w-5 h-5 mr-3 text-gold" />
+                 <span className="text-white/80">14 Moses Mabhida Street, Fisantekraal, Cape Town, 7550</span>
+               </div>
+               <div className="flex items-center">
+                 <Phone className="w-5 h-5 mr-3 text-gold" />
+                 <div className="text-white/80">
+                   <div>+27 75 340 6751</div>
+                   <div>+27 61 455 6192</div>
+                 </div>
+               </div>
+               <div className="flex items-center">
+                 <Mail className="w-5 h-5 mr-3 text-gold" />
+                 <div className="text-white/80">
+                   <div>terencewillemse@waumbe.org.za</div>
+                   <div>asiphekhemtse@waumbe.org.za</div>
+                   <div>info@waumbe.org.za</div>
+                 </div>
+               </div>
             </div>
           </div>
 
@@ -104,20 +111,20 @@ const Footer = () => {
             {/* Social Media */}
             <div>
               <h5 className="text-sm font-semibold mb-3 text-gold">Follow Us</h5>
-              <div className="flex space-x-4">
-                <a href="#" className="text-white/80 hover:text-gold transition-colors">
-                  <Facebook className="w-5 h-5" />
-                </a>
-                <a href="#" className="text-white/80 hover:text-gold transition-colors">
-                  <Twitter className="w-5 h-5" />
-                </a>
-                <a href="#" className="text-white/80 hover:text-gold transition-colors">
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a href="#" className="text-white/80 hover:text-gold transition-colors">
-                  <Linkedin className="w-5 h-5" />
-                </a>
-              </div>
+               <div className="flex space-x-4">
+                 <a href="https://www.facebook.com/share/16UJyPDtTQ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-gold transition-colors">
+                   <Facebook className="w-5 h-5" />
+                 </a>
+                 <a href="#" className="text-white/80 hover:text-gold transition-colors">
+                   <Twitter className="w-5 h-5" />
+                 </a>
+                 <a href="https://www.instagram.com/waumbe?igsh=OXk3NzFhajFmZDAx" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-gold transition-colors">
+                   <Instagram className="w-5 h-5" />
+                 </a>
+                 <a href="#" className="text-white/80 hover:text-gold transition-colors">
+                   <Linkedin className="w-5 h-5" />
+                 </a>
+               </div>
             </div>
           </div>
         </div>
@@ -130,16 +137,35 @@ const Footer = () => {
               Subscribe to our newsletter for the latest updates on our programs, 
               success stories, and community impact.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-gold"
-              />
-              <button className="bg-gold text-foreground px-6 py-2 rounded-lg font-semibold hover:bg-gold/90 transition-colors">
-                Subscribe
-              </button>
-            </div>
+             <form onSubmit={async (e) => {
+               e.preventDefault();
+               const email = (e.target as HTMLFormElement).email.value;
+               try {
+                 await fetch('/functions/v1/send-form-email', {
+                   method: 'POST',
+                   headers: { 'Content-Type': 'application/json' },
+                   body: JSON.stringify({
+                     formType: 'newsletter',
+                     formData: { email },
+                     recipientEmail: 'waumbedata@gmail.com'
+                   }),
+                 });
+                 (e.target as HTMLFormElement).reset();
+               } catch (error) {
+                 console.error('Newsletter subscription failed:', error);
+               }
+             }} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+               <input
+                 type="email"
+                 name="email"
+                 placeholder="Enter your email"
+                 required
+                 className="flex-1 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-gold"
+               />
+               <button type="submit" className="bg-gold text-foreground px-6 py-2 rounded-lg font-semibold hover:bg-gold/90 transition-colors">
+                 Subscribe
+               </button>
+             </form>
           </div>
         </div>
 

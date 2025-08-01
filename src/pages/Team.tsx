@@ -136,17 +136,19 @@ const Team = () => {
                             </CardContent>
                           </Card>
 
-                          {/* Back of card */}
-                          <Card className="absolute inset-0 w-full h-full backface-hidden rotateY-180 bg-gradient-to-br from-fun-green/10 to-fun-yellow/10 border-2 border-fun-green/20">
-                            <CardContent className="p-6 flex flex-col justify-center h-full text-center">
-                              <h3 className="text-lg font-bold text-foreground mb-4">
-                                {member.name}
-                              </h3>
-                              <p className="text-muted-foreground leading-relaxed">
-                                {member.bio}
-                              </p>
-                            </CardContent>
-                          </Card>
+                           {/* Back of card */}
+                           <Card className="absolute inset-0 w-full h-full backface-hidden rotateY-180 bg-gradient-to-br from-fun-green/10 to-fun-yellow/10 border-2 border-fun-green/20">
+                             <CardContent className="p-6 flex flex-col h-full text-center">
+                               <h3 className="text-lg font-bold text-foreground mb-4">
+                                 {member.name}
+                               </h3>
+                               <div className="flex-1 overflow-y-auto">
+                                 <p className="text-muted-foreground leading-relaxed text-sm">
+                                   {member.bio}
+                                 </p>
+                               </div>
+                             </CardContent>
+                           </Card>
                         </motion.div>
                       </motion.div>
                     </CarouselItem>

@@ -133,21 +133,23 @@ const TeamSection = () => {
                               </div>
                             </motion.div>
                           ) : (
-                            <motion.div
-                              key={`back-${index}`}
-                              initial={{ rotateY: 90 }}
-                              animate={{ rotateY: 0 }}
-                              exit={{ rotateY: 90 }}
-                              transition={{ duration: 0.3 }}
-                              className="absolute inset-0 backface-hidden bg-gradient-fun p-6 flex flex-col justify-center text-white"
-                            >
-                              <h3 className="text-xl font-semibold mb-4">
-                                {member.name}
-                              </h3>
-                              <p className="text-sm leading-relaxed">
-                                {member.bio}
-                              </p>
-                            </motion.div>
+                             <motion.div
+                               key={`back-${index}`}
+                               initial={{ rotateY: 90 }}
+                               animate={{ rotateY: 0 }}
+                               exit={{ rotateY: 90 }}
+                               transition={{ duration: 0.3 }}
+                               className="absolute inset-0 backface-hidden bg-gradient-fun p-6 flex flex-col text-white"
+                             >
+                               <h3 className="text-xl font-semibold mb-4">
+                                 {member.name}
+                               </h3>
+                               <div className="flex-1 overflow-y-auto">
+                                 <p className="text-sm leading-relaxed">
+                                   {member.bio}
+                                 </p>
+                               </div>
+                             </motion.div>
                           )}
                         </AnimatePresence>
                       </CardContent>
