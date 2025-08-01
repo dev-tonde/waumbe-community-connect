@@ -1,6 +1,8 @@
 import { FunButton } from "@/components/ui/fun-button";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Heart, Users, Target, Award } from "lucide-react";
+import Link from "next/link";
+
 
 const WhoWeAre = () => {
   const values = [
