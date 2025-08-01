@@ -45,8 +45,8 @@ const WhoWeAre = () => {
               <p className="text-lg text-muted-foreground mb-8">
                 Waumbe believes the window to economic freedom lies in education and mental empowerment.
               </p>
-              <FunButton variant="primary" size="lg">
-                Learn More About Our Mission
+              <FunButton asChild variant="primary" size="lg">
+                <Link href="/about">Learn More About Our Mission</Link>
               </FunButton>
             </div>
           </ScrollAnimation>
