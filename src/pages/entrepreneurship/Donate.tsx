@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/EntrepreneurshipNavbar";
+import EntrepreneurshipFooter from "@/components/entrepreneurship/EntrepreneurshipFooter";
 import { Heart, DollarSign, Users, TrendingUp, Star, Target } from "lucide-react";
 
 const Donate = () => {
@@ -255,6 +256,8 @@ const Donate = () => {
           </ScrollAnimation>
         </div>
       </div>
+      
+      <EntrepreneurshipFooter />
     </div>
   );
 };

@@ -7,6 +7,7 @@ import { ArrowLeft, BookOpen, Users, TrendingUp, DollarSign, Lightbulb, Graduati
 import { Link } from 'react-router-dom';
 import TeamSection from '@/components/TeamSection';
 import PartnersSection from '@/components/PartnersSection';
+import EntrepreneurshipFooter from '@/components/entrepreneurship/EntrepreneurshipFooter';
 import { useState } from 'react';
 import { toast } from '@/components/ui/use-toast';
 
@@ -217,6 +218,9 @@ export default function Entrepreneurship() {
 
       {/* Our Partners Section */}
       <PartnersSection />
+      
+      {/* Entrepreneurship Footer */}
+      <EntrepreneurshipFooter />
     </div>
   );
 }

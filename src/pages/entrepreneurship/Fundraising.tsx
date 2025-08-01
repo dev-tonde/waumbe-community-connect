@@ -1,6 +1,7 @@
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/EntrepreneurshipNavbar";
+import EntrepreneurshipFooter from "@/components/entrepreneurship/EntrepreneurshipFooter";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import MiniHeroBanner from "@/components/MiniHeroBanner";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -326,6 +327,8 @@ const Fundraising = () => {
           </ScrollAnimation>
         </div>
       </div>
+      
+      <EntrepreneurshipFooter />
     </div>
   );
 };

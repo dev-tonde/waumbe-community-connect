@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import CourseApplicationForm from "@/components/forms/CourseApplicationForm";
 import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/EntrepreneurshipNavbar";
+import EntrepreneurshipFooter from "@/components/entrepreneurship/EntrepreneurshipFooter";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import MiniHeroBanner from "@/components/MiniHeroBanner";
 import { useToast } from "@/hooks/use-toast";
@@ -124,6 +125,8 @@ const Courses = () => {
           </ScrollAnimation>
         </div>
       </div>
+      
+      <EntrepreneurshipFooter />
     </div>
   );
 };

@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/EntrepreneurshipNavbar";
+import EntrepreneurshipFooter from "@/components/entrepreneurship/EntrepreneurshipFooter";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import MiniHeroBanner from "@/components/MiniHeroBanner";
 import { useToast } from "@/hooks/use-toast";
@@ -168,6 +169,8 @@ const Learnership = () => {
           </ScrollAnimation>
         </div>
       </div>
+      
+      <EntrepreneurshipFooter />
     </div>
   );
 };

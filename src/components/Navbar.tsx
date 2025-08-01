@@ -98,12 +98,6 @@ const Navbar = () => {
                 Governance
               </Link>
 
-              <Link 
-                to="/gallery" 
-                className={`transition-colors ${isActive('/gallery') ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
-              >
-                Gallery
-              </Link>
 
               <Link 
                 to="/contact" 
@@ -175,10 +169,6 @@ const Navbar = () => {
               <Link to="/governance" className="block px-3 py-2 text-foreground hover:text-primary transition-colors"
                 onClick={() => setIsMenuOpen(false)}>
                 Governance
-              </Link>
-              <Link to="/gallery" className="block px-3 py-2 text-foreground hover:text-primary transition-colors"
-                onClick={() => setIsMenuOpen(false)}>
-                Gallery
               </Link>
               <Link to="/contact" className="block px-3 py-2 text-foreground hover:text-primary transition-colors"
                 onClick={() => setIsMenuOpen(false)}>
