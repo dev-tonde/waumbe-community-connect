@@ -8,7 +8,7 @@ const Testimonials = () => {
   const testimonials = [
     {
       name: "Lwando Mzoyi",
-      image: "/src/assets/testimonials/Lwando.jpg",
+      image: "src/assets/testimonials/Lwando.jpg",
       slug: "lwando-mzoyi",
       shortBlurb: "From overcoming challenges in Fisantekraal to pursuing accounting studies, Lwando's journey shows the power of determination and youth development.",
       content:
@@ -16,7 +16,7 @@ const Testimonials = () => {
     },
     {
       name: "Amore Fortuin",
-      image: "/src/assets/testimonials/Amore.jpg",
+      image: "src/assets/testimonials/Amore.jpg",
       slug: "amore-fortuin",
       shortBlurb: "A UCT graduate and award-winning Geography educator who achieved a 98% pass rate and now leads in Agriculture education.",
       content:
@@ -24,7 +24,7 @@ const Testimonials = () => {
     },
     {
       name: "Michaela Mustafa",
-      image: "/src/assets/testimonials/Michaela.jpeg",
+      image: "src/assets/testimonials/Michaela.jpeg",
       slug: "michaela-mustafa",
       shortBlurb: "Praising Waumbe's compassionate approach and proactive community work that creates opportunities and encourages meaningful growth.",
       content:
@@ -32,7 +32,7 @@ const Testimonials = () => {
     },
     {
       name: "Curt Van Schalkwyk",
-      image: "/src/assets/testimonials/Curt.jpg",
+      image: "src/assets/testimonials/Curt.jpg",
       slug: "curt-van-schalkwyk",
       shortBlurb: "From receiving his first award in Matric to becoming a confident community leader, father, and husband through Waumbe's support.",
       content:
@@ -40,7 +40,7 @@ const Testimonials = () => {
     },
     {
       name: "Sive Maliwa",
-      image: "/src/assets/testimonials/Sive.jpg",
+      image: "src/assets/testimonials/Sive.jpg",
       slug: "sive-maliwa",
       shortBlurb: "UWC Computer Science graduate now working as a Systems Analyst, inspiring Fisantekraal youth to pursue their dreams through education.",
       content:
@@ -77,7 +77,7 @@ const Testimonials = () => {
             <ScrollAnimation key={index} delay={index * 0.1}>
               <Link to={`/testimonials/${testimonial.slug}`}>
                 <Card className="cursor-pointer hover:shadow-lg transition-all duration-300 hover:scale-105 h-full">
-                  <div className="aspect-video overflow-hidden rounded-t-lg">
+                  <div className="aspect-square overflow-hidden rounded-t-lg">
                     <img
                       src={testimonial.image}
                       alt={testimonial.name}

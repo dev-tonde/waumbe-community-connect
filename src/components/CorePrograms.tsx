@@ -170,11 +170,11 @@ const CorePrograms = () => {
                 make a difference in your community, we have programs designed
                 to help you succeed.
               </p>
-               <div className="flex flex-col sm:flex-row gap-4">
-                 <FunButton variant="wiggle" size="lg" asChild>
-                   <a href="/programs/courses">Apply for Programs</a>
-                 </FunButton>
-               </div>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <FunButton variant="wiggle" size="lg" asChild>
+                    <a href="/programs/courses">Apply for Programs</a>
+                  </FunButton>
+                </div>
             </div>
           </ScrollAnimation>
         </div>

@@ -43,7 +43,7 @@ const Hero = () => {
                 size="lg"
                 asChild
               >
-                <a href="/programs/volunteer">Become a Volunteer</a>
+                <a href="/volunteer">Become a Volunteer</a>
               </FunButton>
             </div>
           </ScrollAnimation>

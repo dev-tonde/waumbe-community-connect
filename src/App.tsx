@@ -20,12 +20,13 @@ import CoreSteeringGroup from "./pages/CoreSteeringGroup";
 import SocietalReformation from "./pages/programs/SocietalReformation";
 import Courses from "./pages/programs/Courses";
 import Learnerships from "./pages/programs/Learnerships";
-import Volunteer from "./pages/programs/Volunteer";
+import Volunteer from "./pages/Volunteer";
 import ProgramsEntrepreneurship from "./pages/programs/Entrepreneurship";
 import SkillsDevelopment from "./pages/programs/SkillsDevelopment";
 
 // Other pages
 import Testimonials from "./pages/Testimonials";
+import TestimonialDetail from "./pages/testimonials/TestimonialDetail";
 import Awards from "./pages/testimonials/Awards";
 import FinancialReports from "./pages/FinancialReports";
 import Governance from "./pages/Governance";
@@ -56,10 +57,12 @@ const App = () => (
             <Route path="programs/societal-reformation" element={<SocietalReformation />} />
             <Route path="programs/courses" element={<Courses />} />
             <Route path="programs/learnerships" element={<Learnerships />} />
+            <Route path="volunteer" element={<Volunteer />} />
             <Route path="programs/volunteer" element={<Volunteer />} />
             <Route path="programs/entrepreneurship" element={<ProgramsEntrepreneurship />} />
             <Route path="programs/skills-development" element={<SkillsDevelopment />} />
             <Route path="testimonials" element={<Testimonials />} />
+            <Route path="testimonials/:slug" element={<TestimonialDetail />} />
             <Route path="testimonials/awards" element={<Awards />} />
             <Route path="financial-reports" element={<FinancialReports />} />
             <Route path="governance" element={<Governance />} />
