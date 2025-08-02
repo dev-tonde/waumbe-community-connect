@@ -8,6 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import waumbelogo from "@/assets/logo.png";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,8 +39,13 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className="text-2xl font-bold text-primary hover:scale-105 transition-transform">
-              Waumbe
+            <Link to="/" className="flex items-center gap-3 hover:scale-105 transition-transform">
+              <img 
+                src={waumbelogo} 
+                alt="Waumbe Logo" 
+                className="h-10 w-auto"
+              />
+              <span className="text-2xl font-bold text-primary">Waumbe</span>
             </Link>
           </div>
 
