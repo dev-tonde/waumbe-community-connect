@@ -4,6 +4,7 @@ import CorePrograms from "@/components/CorePrograms";
 import Newsletter from "@/components/Newsletter";
 import TeamSection from "@/components/TeamSection";
 import PartnersSection from "@/components/PartnersSection";
+import { FloatingEntrepreneurshipModal } from "@/components/FloatingEntrepreneurshipModal";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <Newsletter />
       <TeamSection />
       <PartnersSection />
+      <FloatingEntrepreneurshipModal />
     </div>
   );
 };

@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import TeamSection from '@/components/TeamSection';
 import PartnersSection from '@/components/PartnersSection';
 import EntrepreneurshipFooter from '@/components/entrepreneurship/EntrepreneurshipFooter';
+import { FloatingMainSiteButton } from '@/components/FloatingMainSiteButton';
 import { useState } from 'react';
 import { toast } from '@/components/ui/use-toast';
 
@@ -221,6 +222,7 @@ export default function Entrepreneurship() {
       
       {/* Entrepreneurship Footer */}
       <EntrepreneurshipFooter />
+      <FloatingMainSiteButton />
     </div>
   );
 }
