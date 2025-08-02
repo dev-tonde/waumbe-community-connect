@@ -34,7 +34,20 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-background border-b border-border shadow-sm sticky top-0 z-50">
+    <>
+      {/* Annual Report Banner */}
+      <div className="bg-primary text-primary-foreground py-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <Link 
+            to="/financial-reports" 
+            className="text-sm font-medium hover:underline transition-all"
+          >
+            📊 View our 2023-2024 Annual Report
+          </Link>
+        </div>
+      </div>
+      
+      <nav className="bg-background border-b border-border shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -185,6 +198,7 @@ const Navbar = () => {
         )}
       </div>
     </nav>
+    </>
   );
 };
 

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import waumbelogo from "@/assets/logo.png";
 
 export const EntrepreneurshipNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,8 +19,13 @@ export const EntrepreneurshipNavbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/entrepreneurship" className="font-bold text-xl text-waumbe">
-            Waumbe Entrepreneurship
+          <Link to="/entrepreneurship" className="flex items-center gap-3 hover:scale-105 transition-transform">
+            <img 
+              src={waumbelogo} 
+              alt="Waumbe Logo" 
+              className="h-10 w-auto"
+            />
+            <span className="font-bold text-xl text-waumbe">Waumbe</span>
           </Link>
 
           {/* Desktop Navigation */}
