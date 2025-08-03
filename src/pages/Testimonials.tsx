@@ -4,11 +4,18 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
+// Import testimonial images
+import LwandoImage from "@/assets/testimonials/Lwando.jpg";
+import AmoreImage from "@/assets/testimonials/Amore.jpg";
+import MichaelaImage from "@/assets/testimonials/Michaela.jpeg";
+import CurtImage from "@/assets/testimonials/Curt.jpg";
+import SiveImage from "@/assets/testimonials/Sive.jpg";
+
 const Testimonials = () => {
   const testimonials = [
     {
       name: "Lwando Mzoyi",
-      image: "src/assets/testimonials/Lwando.jpg",
+      image: LwandoImage,
       slug: "lwando-mzoyi",
       shortBlurb: "From overcoming challenges in Fisantekraal to pursuing accounting studies, Lwando's journey shows the power of determination and youth development.",
       content:
@@ -16,7 +23,7 @@ const Testimonials = () => {
     },
     {
       name: "Amore Fortuin",
-      image: "src/assets/testimonials/Amore.jpg",
+      image: AmoreImage,
       slug: "amore-fortuin",
       shortBlurb: "A UCT graduate and award-winning Geography educator who achieved a 98% pass rate and now leads in Agriculture education.",
       content:
@@ -24,7 +31,7 @@ const Testimonials = () => {
     },
     {
       name: "Michaela Mustafa",
-      image: "src/assets/testimonials/Michaela.jpeg",
+      image: MichaelaImage,
       slug: "michaela-mustafa",
       shortBlurb: "Praising Waumbe's compassionate approach and proactive community work that creates opportunities and encourages meaningful growth.",
       content:
@@ -32,7 +39,7 @@ const Testimonials = () => {
     },
     {
       name: "Curt Van Schalkwyk",
-      image: "src/assets/testimonials/Curt.jpg",
+      image: CurtImage,
       slug: "curt-van-schalkwyk",
       shortBlurb: "From receiving his first award in Matric to becoming a confident community leader, father, and husband through Waumbe's support.",
       content:
@@ -40,7 +47,7 @@ const Testimonials = () => {
     },
     {
       name: "Sive Maliwa",
-      image: "src/assets/testimonials/Sive.jpg",
+      image: SiveImage,
       slug: "sive-maliwa",
       shortBlurb: "UWC Computer Science graduate now working as a Systems Analyst, inspiring Fisantekraal youth to pursue their dreams through education.",
       content:

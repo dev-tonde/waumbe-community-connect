@@ -146,7 +146,7 @@ const StayConnected = () => {
               </p>
                <div className="flex flex-col sm:flex-row gap-4 justify-center">
                  <FunButton variant="warning" size="lg" asChild>
-                   <a href="/donate">Donate Now</a>
+                   <a href="/donate">Donate</a>
                  </FunButton>
                  <FunButton variant="bounce" size="lg" asChild>
                    <a href="/programs/volunteer">Volunteer With Us</a>
