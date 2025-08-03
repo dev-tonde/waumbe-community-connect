@@ -103,6 +103,35 @@ const handler = async (req: Request): Promise<Response> => {
         `;
         break;
 
+      case "testimonial":
+        subject = `New Testimonial Submission - ${formData.full_name}`;
+        htmlContent = `
+          <h2>New Testimonial Submission</h2>
+          <p><strong>Name:</strong> ${formData.full_name}</p>
+          <p><strong>Email:</strong> ${formData.email}</p>
+          <p><strong>Phone:</strong> ${formData.phone}</p>
+          <p><strong>Program:</strong> ${formData.program}</p>
+          <p><strong>Year Participated:</strong> ${formData.year_participated}</p>
+          <p><strong>Permission to Publish:</strong> ${formData.permission_to_publish}</p>
+          <p><strong>Testimonial:</strong></p>
+          <div style="background: #f5f5f5; padding: 15px; border-left: 4px solid #007cba; margin: 10px 0;">
+            ${formData.testimonial.replace(/\n/g, '<br>')}
+          </div>
+          <hr>
+          <p><em>Submitted on: ${new Date().toLocaleString()}</em></p>
+        `;
+        break;
+
+      case "newsletter":
+        subject = `New Newsletter Subscription - ${formData.email}`;
+        htmlContent = `
+          <h2>New Newsletter Subscription</h2>
+          <p><strong>Email:</strong> ${formData.email}</p>
+          <hr>
+          <p><em>Subscribed on: ${new Date().toLocaleString()}</em></p>
+        `;
+        break;
+
       default:
         subject = "New Form Submission";
         htmlContent = `

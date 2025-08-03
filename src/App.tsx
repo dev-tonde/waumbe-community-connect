@@ -27,6 +27,7 @@ import SkillsDevelopment from "./pages/programs/SkillsDevelopment";
 // Other pages
 import Testimonials from "./pages/Testimonials";
 import TestimonialDetail from "./pages/testimonials/TestimonialDetail";
+import ShareTestimonial from "./pages/ShareTestimonial";
 import Awards from "./pages/testimonials/Awards";
 import FinancialReports from "./pages/FinancialReports";
 import Governance from "./pages/Governance";
@@ -63,6 +64,7 @@ const App = () => (
             <Route path="programs/skills-development" element={<SkillsDevelopment />} />
             <Route path="testimonials" element={<Testimonials />} />
             <Route path="testimonials/:slug" element={<TestimonialDetail />} />
+            <Route path="testimonials/share" element={<ShareTestimonial />} />
             <Route path="testimonials/awards" element={<Awards />} />
             <Route path="financial-reports" element={<FinancialReports />} />
             <Route path="governance" element={<Governance />} />

@@ -4,29 +4,26 @@ import { Input } from "@/components/ui/input";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 const Newsletter = () => {
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
+    
     try {
-      await fetch('/functions/v1/send-form-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          formType: 'newsletter',
-          formData: { email },
-          recipientEmail: 'waumbedata@gmail.com'
-        }),
+      await supabase.functions.invoke('send-newsletter-email', {
+        body: { email }
       });
       
       toast({
-        title: "Thank you for subscribing!",
-        description: "You'll receive our latest updates and impact stories.",
+        title: "Welcome to our community!",
+        description: "Check your email for a welcome message and stay tuned for updates.",
       });
       setEmail("");
     } catch (error) {
@@ -35,6 +32,8 @@ const Newsletter = () => {
         description: "Please try again later.",
         variant: "destructive"
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -46,7 +45,7 @@ const Newsletter = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
             Stay Updated
           </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p id="newsletter-description" className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             Subscribe to our newsletter for the latest updates on our programs, 
             success stories, and opportunities to make a difference.
           </p>
@@ -61,9 +60,24 @@ const Newsletter = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
               className="flex-1"
+              disabled={isLoading}
+              aria-label="Email address for newsletter subscription"
+              aria-describedby="newsletter-description"
             />
-            <FunButton type="submit" variant="primary">
-              Subscribe
+            <FunButton 
+              type="submit" 
+              variant="primary" 
+              disabled={isLoading}
+              aria-label={isLoading ? "Subscribing..." : "Subscribe to newsletter"}
+            >
+              {isLoading ? (
+                <>
+                  <LoadingSpinner size="sm" className="mr-2" />
+                  Subscribing...
+                </>
+              ) : (
+                "Subscribe"
+              )}
             </FunButton>
           </form>
         </ScrollAnimation>

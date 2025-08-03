@@ -144,4 +144,30 @@ All colors MUST be HSL.
   .rotateY-180 {
     transform: rotateY(180deg);
   }
+
+  /* Improved focus indicators for accessibility */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+
+  /* High contrast for better readability */
+  @media (prefers-contrast: high) {
+    :root {
+      --foreground: 0 0% 0%;
+      --background: 0 0% 100%;
+      --border: 0 0% 0%;
+    }
+  }
+
+  /* Reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }

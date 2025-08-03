@@ -3,6 +3,7 @@ import MiniHeroBanner from "@/components/MiniHeroBanner";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import SEOHelmet from "@/components/SEOHelmet";
 
 // Import testimonial images
 import LwandoImage from "@/assets/testimonials/Lwando.jpg";
@@ -62,6 +63,11 @@ const Testimonials = () => {
 
   return (
     <div className="pt-16">
+      <SEOHelmet 
+        title="Testimonials"
+        description="Read inspiring success stories from young people who have participated in Waumbe's programs. Discover how education and mentorship transform lives."
+        keywords="testimonials, success stories, youth empowerment, student achievements, Cape Town education, nonprofit impact"
+      />
       <MiniHeroBanner
         title="Testimonials"
         subtitle="Read stories of impact from the young people we've supported."
@@ -105,10 +111,17 @@ const Testimonials = () => {
 
         <ScrollAnimation>
           <div className="mt-16 text-center p-8 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg">
-            <p className="text-lg text-muted-foreground italic">
+            <p className="text-lg text-muted-foreground italic mb-6">
               "Through these programs, we help youth reimagine their potential
               and reshape their future—personally, socially, and economically."
             </p>
+            <Link 
+              to="/testimonials/share" 
+              className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg hover:bg-primary/90 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+              aria-label="Share your testimonial with Waumbe"
+            >
+              Share Your Story
+            </Link>
           </div>
         </ScrollAnimation>
       </div>

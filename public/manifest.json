@@ -1,0 +1,30 @@
+{
+  "name": "Waumbe - Empowering Communities",
+  "short_name": "Waumbe",
+  "description": "Cape Town-based nonprofit transforming communities through education, youth empowerment, entrepreneurship, and innovation programs.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#b794f6",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["education", "nonprofit", "community"],
+  "lang": "en",
+  "dir": "ltr"
+}
