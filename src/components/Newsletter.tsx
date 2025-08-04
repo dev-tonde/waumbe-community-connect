@@ -52,7 +52,7 @@ const Newsletter = () => {
         </ScrollAnimation>
         
         <ScrollAnimation delay={0.2}>
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto w-full">
             <Input
               type="email"
               placeholder="Enter your email"
