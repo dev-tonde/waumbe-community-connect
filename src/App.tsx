@@ -42,49 +42,51 @@ import EntrepreneurshipDonate from "./pages/entrepreneurship/Donate";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="about" element={<About />} />
-            <Route path="programs" element={<Programs />} />
-            <Route path="programs/academic-development" element={<AcademicDevelopment />} />
-            <Route path="core-steering-group" element={<CoreSteeringGroup />} />
-            <Route path="programs/societal-reformation" element={<SocietalReformation />} />
-            <Route path="programs/courses" element={<Courses />} />
-            <Route path="programs/learnerships" element={<Learnerships />} />
-            <Route path="volunteer" element={<Volunteer />} />
-            <Route path="programs/volunteer" element={<Volunteer />} />
-            <Route path="programs/entrepreneurship" element={<ProgramsEntrepreneurship />} />
-            <Route path="programs/skills-development" element={<SkillsDevelopment />} />
-            <Route path="testimonials" element={<Testimonials />} />
-            <Route path="testimonials/:slug" element={<TestimonialDetail />} />
-            <Route path="testimonials/share" element={<ShareTestimonial />} />
-            <Route path="testimonials/awards" element={<Awards />} />
-            <Route path="financial-reports" element={<FinancialReports />} />
-            <Route path="governance" element={<Governance />} />
-            <Route path="gallery" element={<Gallery />} />
-            <Route path="team" element={<Team />} />
-            <Route path="partners" element={<Partners />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="donate" element={<Donate />} />
-          </Route>
-          <Route path="/entrepreneurship" element={<Entrepreneurship />} />
-          <Route path="/entrepreneurship/courses" element={<EntrepreneurshipCourses />} />
-          <Route path="/entrepreneurship/learnership" element={<EntrepreneurshipLearnership />} />
-          <Route path="/entrepreneurship/fundraising" element={<EntrepreneurshipFundraising />} />
-          <Route path="/entrepreneurship/contact" element={<EntrepreneurshipContact />} />
-          <Route path="/entrepreneurship/donate" element={<EntrepreneurshipDonate />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="about" element={<About />} />
+              <Route path="programs" element={<Programs />} />
+              <Route path="programs/academic-development" element={<AcademicDevelopment />} />
+              <Route path="core-steering-group" element={<CoreSteeringGroup />} />
+              <Route path="programs/societal-reformation" element={<SocietalReformation />} />
+              <Route path="programs/courses" element={<Courses />} />
+              <Route path="programs/learnerships" element={<Learnerships />} />
+              <Route path="volunteer" element={<Volunteer />} />
+              <Route path="programs/volunteer" element={<Volunteer />} />
+              <Route path="programs/entrepreneurship" element={<ProgramsEntrepreneurship />} />
+              <Route path="programs/skills-development" element={<SkillsDevelopment />} />
+              <Route path="testimonials" element={<Testimonials />} />
+              <Route path="testimonials/:slug" element={<TestimonialDetail />} />
+              <Route path="testimonials/share" element={<ShareTestimonial />} />
+              <Route path="testimonials/awards" element={<Awards />} />
+              <Route path="financial-reports" element={<FinancialReports />} />
+              <Route path="governance" element={<Governance />} />
+              <Route path="gallery" element={<Gallery />} />
+              <Route path="team" element={<Team />} />
+              <Route path="partners" element={<Partners />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="donate" element={<Donate />} />
+            </Route>
+            <Route path="/entrepreneurship" element={<Entrepreneurship />} />
+            <Route path="/entrepreneurship/courses" element={<EntrepreneurshipCourses />} />
+            <Route path="/entrepreneurship/learnership" element={<EntrepreneurshipLearnership />} />
+            <Route path="/entrepreneurship/fundraising" element={<EntrepreneurshipFundraising />} />
+            <Route path="/entrepreneurship/contact" element={<EntrepreneurshipContact />} />
+            <Route path="/entrepreneurship/donate" element={<EntrepreneurshipDonate />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
