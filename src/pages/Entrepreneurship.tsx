@@ -9,6 +9,7 @@ import TeamSection from '@/components/TeamSection';
 import PartnersSection from '@/components/PartnersSection';
 import EntrepreneurshipFooter from '@/components/entrepreneurship/EntrepreneurshipFooter';
 import { FloatingMainSiteButton } from '@/components/FloatingMainSiteButton';
+import SEOHelmet from '@/components/SEOHelmet';
 import { useState } from 'react';
 import { toast } from '@/components/ui/use-toast';
 
@@ -28,38 +29,84 @@ export default function Entrepreneurship() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHelmet 
+        title="Entrepreneurship Hub - Waumbe"
+        description="Empowering the next generation of entrepreneurs through education, mentorship, and funding opportunities. Join our comprehensive entrepreneurship programs."
+        keywords="entrepreneurship, business training, mentorship, funding, skills development, Cape Town, South Africa"
+        url="https://www.waumbe.org.za/entrepreneurship"
+      />
       <EntrepreneurshipNavbar />
       
-      {/* Back to Main Site Button */}
-      <div className="container mx-auto px-4 py-4">
-        <Button variant="outline" asChild>
-          <Link to="/" className="flex items-center gap-2">
-            <ArrowLeft className="h-4 w-4" />
-            Back to Main Site
-          </Link>
-        </Button>
-      </div>
-
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/10 to-accent/10">
-        <div className="container mx-auto px-4 text-center">
-          <ScrollAnimation>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Entrepreneurship
-              <span className="text-primary block mt-2">Hub</span>
-            </h1>
-          </ScrollAnimation>
-          <ScrollAnimation delay={0.2}>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Empowering the next generation of entrepreneurs through education, 
-              mentorship, and funding opportunities.
-            </p>
-          </ScrollAnimation>
-          <ScrollAnimation delay={0.4}>
-            <Button size="lg" className="bg-primary hover:bg-primary/90">
-              Start Your Journey
-            </Button>
-          </ScrollAnimation>
+      <section className="relative min-h-screen flex items-center">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1553484771-371a605b060b?auto=format&fit=crop&w=1920&q=80"
+            alt="Entrepreneurship and innovation"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-hero opacity-90" />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+          <div className="max-w-3xl">
+            <ScrollAnimation>
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                Entrepreneurship
+                <span className="block text-fun-yellow animate-pulse-slow">Hub</span>
+              </h1>
+            </ScrollAnimation>
+            
+            <ScrollAnimation delay={0.2}>
+              <p className="text-xl md:text-2xl text-white/90 mb-8">
+                Empowering the next generation of entrepreneurs through education, 
+                mentorship, and funding opportunities.
+              </p>
+            </ScrollAnimation>
+
+            <ScrollAnimation delay={0.4}>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="bg-fun-yellow text-foreground hover:bg-fun-yellow/90">
+                  Start Your Journey
+                </Button>
+                <Button 
+                  size="lg"
+                  variant="outline"
+                  className="border-white text-white hover:bg-white hover:text-foreground"
+                  asChild
+                >
+                  <Link to="/entrepreneurship/courses">Explore Courses</Link>
+                </Button>
+              </div>
+            </ScrollAnimation>
+
+            {/* Stats */}
+            <ScrollAnimation delay={0.6}>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-16">
+                <div className="text-center transform hover:scale-110 transition-transform duration-300">
+                  <div className="text-3xl md:text-4xl font-bold text-fun-yellow mb-2 animate-bounce-gentle">150+</div>
+                  <div className="text-white/80">Businesses Funded</div>
+                </div>
+                <div className="text-center transform hover:scale-110 transition-transform duration-300">
+                  <div className="text-3xl md:text-4xl font-bold text-fun-pink mb-2 animate-float">500+</div>
+                  <div className="text-white/80">Jobs Created</div>
+                </div>
+                <div className="text-center transform hover:scale-110 transition-transform duration-300">
+                  <div className="text-3xl md:text-4xl font-bold text-fun-green mb-2 animate-pulse-slow">R2.5M</div>
+                  <div className="text-white/80">Economic Impact</div>
+                </div>
+              </div>
+            </ScrollAnimation>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-bounce" />
+          </div>
         </div>
       </section>
 

@@ -8,6 +8,8 @@ import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/Entreprene
 import EntrepreneurshipFooter from "@/components/entrepreneurship/EntrepreneurshipFooter";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import MiniHeroBanner from "@/components/MiniHeroBanner";
+import SEOHelmet from "@/components/SEOHelmet";
+import { FloatingMainSiteButton } from "@/components/FloatingMainSiteButton";
 import { useToast } from "@/hooks/use-toast";
 
 const Courses = () => {
@@ -63,6 +65,12 @@ const Courses = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHelmet 
+        title="Entrepreneurship Courses - Waumbe"
+        description="Discover our comprehensive range of entrepreneurship courses including End User Computing, Administration, Skills Development, and Data Management."
+        keywords="entrepreneurship courses, business training, computer skills, data management, administration, skills development"
+        url="https://www.waumbe.org.za/entrepreneurship/courses"
+      />
       <EntrepreneurshipNavbar />
       
       <div className="pt-16">
@@ -127,6 +135,7 @@ const Courses = () => {
       </div>
       
       <EntrepreneurshipFooter />
+      <FloatingMainSiteButton />
     </div>
   );
 };

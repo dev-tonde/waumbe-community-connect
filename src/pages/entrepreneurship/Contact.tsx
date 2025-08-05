@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import SEOHelmet from "@/components/SEOHelmet";
+import { FloatingMainSiteButton } from "@/components/FloatingMainSiteButton";
 import { toast } from "@/components/ui/use-toast";
 
 const Contact = () => {
@@ -42,6 +44,12 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHelmet 
+        title="Contact Us - Waumbe Entrepreneurship"
+        description="Get in touch with our entrepreneurship team. Contact us for program information, partnerships, or general inquiries."
+        keywords="contact, entrepreneurship, business support, partnerships, program information"
+        url="https://www.waumbe.org.za/entrepreneurship/contact"
+      />
       <EntrepreneurshipNavbar />
       
       <div className="pt-16">
@@ -214,6 +222,7 @@ const Contact = () => {
       </div>
       
       <EntrepreneurshipFooter />
+      <FloatingMainSiteButton />
     </div>
   );
 };

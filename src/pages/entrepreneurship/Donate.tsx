@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/EntrepreneurshipNavbar";
 import EntrepreneurshipFooter from "@/components/entrepreneurship/EntrepreneurshipFooter";
+import SEOHelmet from "@/components/SEOHelmet";
+import { FloatingMainSiteButton } from "@/components/FloatingMainSiteButton";
 import { Heart, DollarSign, Users, TrendingUp, Star, Target } from "lucide-react";
 
 const Donate = () => {
@@ -47,6 +49,12 @@ const Donate = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHelmet 
+        title="Donate - Support Entrepreneurs | Waumbe"
+        description="Support aspiring entrepreneurs with your donation. Help us provide funding, mentorship, and resources to build successful businesses."
+        keywords="donate, support entrepreneurs, startup funding, business mentorship, entrepreneurship support"
+        url="https://www.waumbe.org.za/entrepreneurship/donate"
+      />
       <EntrepreneurshipNavbar />
       
       <div className="pt-16">
@@ -258,6 +266,7 @@ const Donate = () => {
       </div>
       
       <EntrepreneurshipFooter />
+      <FloatingMainSiteButton />
     </div>
   );
 };

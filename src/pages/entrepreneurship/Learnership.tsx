@@ -10,6 +10,8 @@ import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/Entreprene
 import EntrepreneurshipFooter from "@/components/entrepreneurship/EntrepreneurshipFooter";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import MiniHeroBanner from "@/components/MiniHeroBanner";
+import SEOHelmet from "@/components/SEOHelmet";
+import { FloatingMainSiteButton } from "@/components/FloatingMainSiteButton";
 import { useToast } from "@/hooks/use-toast";
 
 const Learnership = () => {
@@ -43,6 +45,12 @@ const Learnership = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHelmet 
+        title="Learnerships - Waumbe Entrepreneurship"
+        description="Explore our MICT SETA accredited learnerships in End User Computing, Business Administration, and Technical Support & Information Technology."
+        keywords="learnerships, MICT SETA, business administration, technical support, IT training, NQF qualifications"
+        url="https://www.waumbe.org.za/entrepreneurship/learnership"
+      />
       <EntrepreneurshipNavbar />
       
       <div className="pt-16">
@@ -171,6 +179,7 @@ const Learnership = () => {
       </div>
       
       <EntrepreneurshipFooter />
+      <FloatingMainSiteButton />
     </div>
   );
 };

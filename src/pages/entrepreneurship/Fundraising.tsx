@@ -4,6 +4,8 @@ import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/Entreprene
 import EntrepreneurshipFooter from "@/components/entrepreneurship/EntrepreneurshipFooter";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import MiniHeroBanner from "@/components/MiniHeroBanner";
+import SEOHelmet from "@/components/SEOHelmet";
+import { FloatingMainSiteButton } from "@/components/FloatingMainSiteButton";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 const Fundraising = () => {
@@ -40,6 +42,12 @@ const Fundraising = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHelmet 
+        title="Fundraising - Waumbe Entrepreneurship"
+        description="Support our entrepreneurship initiatives and help us empower communities through education, skills development, and economic opportunities."
+        keywords="fundraising, community development, education funding, entrepreneurship support, skills development funding"
+        url="https://www.waumbe.org.za/entrepreneurship/fundraising"
+      />
       <EntrepreneurshipNavbar />
       
       <div className="pt-16">
@@ -329,6 +337,7 @@ const Fundraising = () => {
       </div>
       
       <EntrepreneurshipFooter />
+      <FloatingMainSiteButton />
     </div>
   );
 };
