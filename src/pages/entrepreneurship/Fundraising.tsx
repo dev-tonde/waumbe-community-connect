@@ -42,12 +42,6 @@ const Fundraising = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <SEOHelmet 
-        title="Fundraising - Waumbe Entrepreneurship"
-        description="Support our entrepreneurship initiatives and help us empower communities through education, skills development, and economic opportunities."
-        keywords="fundraising, community development, education funding, entrepreneurship support, skills development funding"
-        url="https://www.waumbe.org.za/entrepreneurship/fundraising"
-      />
       <EntrepreneurshipNavbar />
       
       <div className="pt-16">

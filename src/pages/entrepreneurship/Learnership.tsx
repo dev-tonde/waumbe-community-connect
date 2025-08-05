@@ -45,12 +45,6 @@ const Learnership = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <SEOHelmet 
-        title="Learnerships - Waumbe Entrepreneurship"
-        description="Explore our MICT SETA accredited learnerships in End User Computing, Business Administration, and Technical Support & Information Technology."
-        keywords="learnerships, MICT SETA, business administration, technical support, IT training, NQF qualifications"
-        url="https://www.waumbe.org.za/entrepreneurship/learnership"
-      />
       <EntrepreneurshipNavbar />
       
       <div className="pt-16">

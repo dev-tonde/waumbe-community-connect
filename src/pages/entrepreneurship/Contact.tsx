@@ -44,12 +44,6 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <SEOHelmet 
-        title="Contact Us - Waumbe Entrepreneurship"
-        description="Get in touch with our entrepreneurship team. Contact us for program information, partnerships, or general inquiries."
-        keywords="contact, entrepreneurship, business support, partnerships, program information"
-        url="https://www.waumbe.org.za/entrepreneurship/contact"
-      />
       <EntrepreneurshipNavbar />
       
       <div className="pt-16">

@@ -9,7 +9,7 @@ import TeamSection from '@/components/TeamSection';
 import PartnersSection from '@/components/PartnersSection';
 import EntrepreneurshipFooter from '@/components/entrepreneurship/EntrepreneurshipFooter';
 import { FloatingMainSiteButton } from '@/components/FloatingMainSiteButton';
-import SEOHelmet from '@/components/SEOHelmet';
+
 import { useState } from 'react';
 import { toast } from '@/components/ui/use-toast';
 
@@ -29,12 +29,6 @@ export default function Entrepreneurship() {
 
   return (
     <div className="min-h-screen bg-background">
-      <SEOHelmet 
-        title="Entrepreneurship Hub - Waumbe"
-        description="Empowering the next generation of entrepreneurs through education, mentorship, and funding opportunities. Join our comprehensive entrepreneurship programs."
-        keywords="entrepreneurship, business training, mentorship, funding, skills development, Cape Town, South Africa"
-        url="https://www.waumbe.org.za/entrepreneurship"
-      />
       <EntrepreneurshipNavbar />
       
       {/* Hero Section */}

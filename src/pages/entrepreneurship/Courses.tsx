@@ -65,12 +65,6 @@ const Courses = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <SEOHelmet 
-        title="Entrepreneurship Courses - Waumbe"
-        description="Discover our comprehensive range of entrepreneurship courses including End User Computing, Administration, Skills Development, and Data Management."
-        keywords="entrepreneurship courses, business training, computer skills, data management, administration, skills development"
-        url="https://www.waumbe.org.za/entrepreneurship/courses"
-      />
       <EntrepreneurshipNavbar />
       
       <div className="pt-16">

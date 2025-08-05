@@ -49,12 +49,6 @@ const Donate = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <SEOHelmet 
-        title="Donate - Support Entrepreneurs | Waumbe"
-        description="Support aspiring entrepreneurs with your donation. Help us provide funding, mentorship, and resources to build successful businesses."
-        keywords="donate, support entrepreneurs, startup funding, business mentorship, entrepreneurship support"
-        url="https://www.waumbe.org.za/entrepreneurship/donate"
-      />
       <EntrepreneurshipNavbar />
       
       <div className="pt-16">
