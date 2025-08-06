@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import waumbelogo from "@/assets/logo.png";
 
-const Navbar = () => {
+function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
@@ -200,6 +200,6 @@ const Navbar = () => {
     </nav>
     </>
   );
-};
+}
 
 export default Navbar;
