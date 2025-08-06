@@ -1,6 +1,6 @@
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
+// import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
@@ -48,49 +48,47 @@ const App = () => {
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Layout />}>
-                <Route index element={<Home />} />
-                <Route path="about" element={<About />} />
-                <Route path="programs" element={<Programs />} />
-                <Route path="programs/academic-development" element={<AcademicDevelopment />} />
-                <Route path="programs/skills-development" element={<SkillsDevelopment />} />
-                <Route path="programs/entrepreneurship" element={<Entrepreneurship />} />
-                <Route path="programs/societal-reformation" element={<SocietalReformation />} />
-                <Route path="programs/courses" element={<Courses />} />
-                <Route path="programs/learnerships" element={<Learnerships />} />
-                <Route path="programs/volunteer" element={<ProgramVolunteer />} />
-                <Route path="team" element={<Team />} />
-                <Route path="gallery" element={<Gallery />} />
-                <Route path="contact" element={<Contact />} />
-                <Route path="volunteer" element={<Volunteer />} />
-                <Route path="donate" element={<Donate />} />
-                <Route path="share-testimonial" element={<ShareTestimonial />} />
-                <Route path="testimonials" element={<Testimonials />} />
-                <Route path="testimonials/awards" element={<Awards />} />
-                <Route path="testimonials/:id" element={<TestimonialDetail />} />
-                <Route path="partners" element={<Partners />} />
-                <Route path="financial-reports" element={<FinancialReports />} />
-                <Route path="governance" element={<Governance />} />
-                <Route path="governance/core-steering-group" element={<CoreSteeringGroup />} />
-                
-                {/* Entrepreneurship Routes */}
-                <Route path="entrepreneurship" element={<EntrepreneurshipHome />} />
-                <Route path="entrepreneurship/courses" element={<EntrepreneurshipCourses />} />
-                <Route path="entrepreneurship/learnership" element={<EntrepreneurshipLearnership />} />
-                <Route path="entrepreneurship/fundraising" element={<EntrepreneurshipFundraising />} />
-                <Route path="entrepreneurship/contact" element={<EntrepreneurshipContact />} />
-                <Route path="entrepreneurship/donate" element={<EntrepreneurshipDonate />} />
-                
-                <Route path="*" element={<NotFound />} />
-              </Route>
-            </Routes>
-            <Toaster />
-            <Sonner />
-          </BrowserRouter>
-        </TooltipProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="about" element={<About />} />
+              <Route path="programs" element={<Programs />} />
+              <Route path="programs/academic-development" element={<AcademicDevelopment />} />
+              <Route path="programs/skills-development" element={<SkillsDevelopment />} />
+              <Route path="programs/entrepreneurship" element={<Entrepreneurship />} />
+              <Route path="programs/societal-reformation" element={<SocietalReformation />} />
+              <Route path="programs/courses" element={<Courses />} />
+              <Route path="programs/learnerships" element={<Learnerships />} />
+              <Route path="programs/volunteer" element={<ProgramVolunteer />} />
+              <Route path="team" element={<Team />} />
+              <Route path="gallery" element={<Gallery />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="volunteer" element={<Volunteer />} />
+              <Route path="donate" element={<Donate />} />
+              <Route path="share-testimonial" element={<ShareTestimonial />} />
+              <Route path="testimonials" element={<Testimonials />} />
+              <Route path="testimonials/awards" element={<Awards />} />
+              <Route path="testimonials/:id" element={<TestimonialDetail />} />
+              <Route path="partners" element={<Partners />} />
+              <Route path="financial-reports" element={<FinancialReports />} />
+              <Route path="governance" element={<Governance />} />
+              <Route path="governance/core-steering-group" element={<CoreSteeringGroup />} />
+              
+              {/* Entrepreneurship Routes */}
+              <Route path="entrepreneurship" element={<EntrepreneurshipHome />} />
+              <Route path="entrepreneurship/courses" element={<EntrepreneurshipCourses />} />
+              <Route path="entrepreneurship/learnership" element={<EntrepreneurshipLearnership />} />
+              <Route path="entrepreneurship/fundraising" element={<EntrepreneurshipFundraising />} />
+              <Route path="entrepreneurship/contact" element={<EntrepreneurshipContact />} />
+              <Route path="entrepreneurship/donate" element={<EntrepreneurshipDonate />} />
+              
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+          <Toaster />
+          <Sonner />
+        </BrowserRouter>
       </QueryClientProvider>
     </HelmetProvider>
   );
