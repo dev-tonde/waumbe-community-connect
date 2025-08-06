@@ -11,10 +11,11 @@ import EntrepreneurshipFooter from '@/components/entrepreneurship/Entrepreneursh
 import { FloatingMainSiteButton } from '@/components/FloatingMainSiteButton';
 
 import { useState } from 'react';
-import { toast } from '@/components/ui/use-toast';
+import { useToast } from '@/hooks/use-toast';
 
 export default function Entrepreneurship() {
   const [email, setEmail] = useState('');
+  const { toast } = useToast();
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
