@@ -46,8 +46,8 @@ const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <React.StrictMode>
-      <HelmetProvider>
+    <HelmetProvider>
+      <React.StrictMode>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <QueryClientProvider client={queryClient}>
             <BrowserRouter>
@@ -90,8 +90,8 @@ const App = () => {
             </BrowserRouter>
           </QueryClientProvider>
         </ThemeProvider>
-      </HelmetProvider>
-    </React.StrictMode>
+      </React.StrictMode>
+    </HelmetProvider>
   );
 };
 
