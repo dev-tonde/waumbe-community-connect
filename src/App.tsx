@@ -46,10 +46,11 @@ const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <HelmetProvider>
-      <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-        <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
+    <React.StrictMode>
+      <HelmetProvider>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <QueryClientProvider client={queryClient}>
+            <BrowserRouter>
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
@@ -84,12 +85,13 @@ const App = () => {
               <Route path="/entrepreneurship/donate" element={<EntrepreneurshipDonate />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-            <Toaster />
-            <Sonner />
-          </BrowserRouter>
-        </QueryClientProvider>
-      </ThemeProvider>
-    </HelmetProvider>
+              <Toaster />
+              <Sonner />
+            </BrowserRouter>
+          </QueryClientProvider>
+        </ThemeProvider>
+      </HelmetProvider>
+    </React.StrictMode>
   );
 };
 
