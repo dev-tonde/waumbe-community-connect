@@ -46,11 +46,10 @@ const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <React.StrictMode>
-      <HelmetProvider>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <QueryClientProvider client={queryClient}>
-            <BrowserRouter>
+    <HelmetProvider>
+      <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
@@ -91,7 +90,6 @@ const App = () => {
           </QueryClientProvider>
         </ThemeProvider>
       </HelmetProvider>
-    </React.StrictMode>
   );
 };
 
