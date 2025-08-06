@@ -38,8 +38,8 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-fun-blue/10 to-fun-pink/10">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section className="w-full py-20 bg-gradient-to-br from-fun-blue/10 to-fun-pink/10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <ScrollAnimation>
           <Mail className="w-16 h-16 text-fun-blue mx-auto mb-6 animate-bounce-gentle" />
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">

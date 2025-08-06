@@ -36,7 +36,7 @@ export default function Entrepreneurship() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1553484771-371a605b060b?auto=format&fit=crop&w=1920&q=80"
+            src="/src/assets/hero-image.jpg"
             alt="Entrepreneurship and innovation"
             className="w-full h-full object-cover"
           />
@@ -263,7 +263,6 @@ export default function Entrepreneurship() {
       
       {/* Entrepreneurship Footer */}
       <EntrepreneurshipFooter />
-      <FloatingMainSiteButton />
     </div>
   );
 }

@@ -18,7 +18,7 @@ const Layout = () => {
       </main>
       <StayConnected />
       <Footer />
-      {!isEntrepreneurshipRoute && <FloatingMainSiteButton />}
+      {isEntrepreneurshipRoute && <FloatingMainSiteButton />}
     </div>
   );
 };
