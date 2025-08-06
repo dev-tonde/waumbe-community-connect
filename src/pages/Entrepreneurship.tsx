@@ -1,6 +1,7 @@
 import { EntrepreneurshipNavbar } from '@/components/entrepreneurship/EntrepreneurshipNavbar';
 import { ScrollAnimation } from '@/components/ScrollAnimation';
 import { Button } from '@/components/ui/button';
+import { FunButton } from '@/components/ui/fun-button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { ArrowLeft, BookOpen, Users, TrendingUp, DollarSign, Lightbulb, GraduationCap } from 'lucide-react';
@@ -12,6 +13,7 @@ import { FloatingMainSiteButton } from '@/components/FloatingMainSiteButton';
 
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
+import heroImage from "@/assets/hero-image.jpg";
 
 export default function Entrepreneurship() {
   const [email, setEmail] = useState('');
@@ -37,7 +39,7 @@ export default function Entrepreneurship() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/src/assets/hero-image.jpg"
+            src={heroImage}
             alt="Entrepreneurship and innovation"
             className="w-full h-full object-cover"
           />
@@ -63,17 +65,16 @@ export default function Entrepreneurship() {
 
             <ScrollAnimation delay={0.4}>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-fun-yellow text-foreground hover:bg-fun-yellow/90">
-                  Start Your Journey
-                </Button>
-                <Button 
+                <FunButton variant="rainbow" size="lg" asChild>
+                  <Link to="/entrepreneurship/courses">Start Your Journey</Link>
+                </FunButton>
+                <FunButton 
+                  variant="bounce" 
                   size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-foreground"
                   asChild
                 >
-                  <Link to="/entrepreneurship/courses">Explore Courses</Link>
-                </Button>
+                  <a href="/volunteer">Become a Volunteer</a>
+                </FunButton>
               </div>
             </ScrollAnimation>
 
