@@ -1,9 +1,16 @@
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 export const FloatingMainSiteButton = () => {
+  const location = useLocation();
+  
+  // Only show on entrepreneurship routes
+  if (!location.pathname.startsWith('/entrepreneurship')) {
+    return null;
+  }
+
   return (
     <motion.div
       className="fixed bottom-6 right-6 z-50"
