@@ -1,21 +1,31 @@
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 
+// Import partner logos
+import sponsor1 from "@/assets/partners/sponsor1.png";
+import sponsor2 from "@/assets/partners/sponsor2.png";
+import sponsor3 from "@/assets/partners/sponsor3.png";
+import sponsor4 from "@/assets/partners/sponsor4.png";
+import sponsor5 from "@/assets/partners/sponsor5.jpg";
+import sponsor6 from "@/assets/partners/sponsor6.jpg";
+import sponsor7 from "@/assets/partners/sponsor7.png";
+import sponsor8 from "@/assets/partners/sponsor8.png";
+
 const PartnersSection = () => {
   const partners = [
     {
       name: "Grand Slots",
-      logo: "/src/assets/partners/sponsor1.png",
+      logo: sponsor1,
     },
     {
       name: "King Bausuin Foundation",
-      logo: "/src/assets/partners/sponsor2.png",
+      logo: sponsor2,
     },
-    { name: "MegChem", logo: "/src/assets/partners/sponsor3.png" },
-    { name: "SPZA", logo: "/src/assets/partners/sponsor4.png" },
-    { name: "100Years", logo: "/src/assets/partners/sponsor5.jpg" },
-    { name: "EXEO", logo: "/src/assets/partners/sponsor6.jpg" },
-    { name: "Sub Slots", logo: "/src/assets/partners/sponsor7.png" },
-    { name: "Learning Trust", logo: "/src/assets/partners/sponsor8.png" },
+    { name: "MegChem", logo: sponsor3 },
+    { name: "SPZA", logo: sponsor4 },
+    { name: "100Years", logo: sponsor5 },
+    { name: "EXEO", logo: sponsor6 },
+    { name: "Sub Slots", logo: sponsor7 },
+    { name: "Learning Trust", logo: sponsor8 },
   ];
 
   return (

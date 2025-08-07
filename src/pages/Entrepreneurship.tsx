@@ -1,4 +1,4 @@
-import { EntrepreneurshipNavbar } from '@/components/entrepreneurship/EntrepreneurshipNavbar';
+
 import { ScrollAnimation } from '@/components/ScrollAnimation';
 import { Button } from '@/components/ui/button';
 import { FunButton } from '@/components/ui/fun-button';
@@ -32,7 +32,6 @@ export default function Entrepreneurship() {
 
   return (
     <div className="min-h-screen bg-background">
-      <EntrepreneurshipNavbar />
       
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center">

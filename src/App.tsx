@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
 import Layout from "@/components/Layout";
+import EntrepreneurshipLayout from "@/components/EntrepreneurshipLayout";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Programs from "@/pages/Programs";
@@ -76,15 +77,17 @@ const App = () => {
                 <Route path="governance" element={<Governance />} />
                 <Route path="governance/core-steering-group" element={<CoreSteeringGroup />} />
                 
-                {/* Entrepreneurship Routes */}
-                <Route path="entrepreneurship" element={<EntrepreneurshipHome />} />
-                <Route path="entrepreneurship/courses" element={<EntrepreneurshipCourses />} />
-                <Route path="entrepreneurship/learnership" element={<EntrepreneurshipLearnership />} />
-                <Route path="entrepreneurship/fundraising" element={<EntrepreneurshipFundraising />} />
-                <Route path="entrepreneurship/contact" element={<EntrepreneurshipContact />} />
-                <Route path="entrepreneurship/donate" element={<EntrepreneurshipDonate />} />
-                
                 <Route path="*" element={<NotFound />} />
+              </Route>
+              
+              {/* Entrepreneurship Routes with separate layout */}
+              <Route path="/entrepreneurship" element={<EntrepreneurshipLayout />}>
+                <Route index element={<EntrepreneurshipHome />} />
+                <Route path="courses" element={<EntrepreneurshipCourses />} />
+                <Route path="learnership" element={<EntrepreneurshipLearnership />} />
+                <Route path="fundraising" element={<EntrepreneurshipFundraising />} />
+                <Route path="contact" element={<EntrepreneurshipContact />} />
+                <Route path="donate" element={<EntrepreneurshipDonate />} />
               </Route>
             </Routes>
             <Toaster />
