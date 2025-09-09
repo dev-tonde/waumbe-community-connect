@@ -1,6 +1,10 @@
 import React from 'react';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "@/components/ui/toaster";
+import Home from "@/pages/Home";
+import Layout from "@/components/Layout";
+import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -8,9 +12,13 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <div className="min-h-screen bg-background flex items-center justify-center">
-          <h1 className="text-4xl font-bold">Step 2: Added QueryClientProvider</h1>
-        </div>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+        <Toaster />
       </BrowserRouter>
     </QueryClientProvider>
   );
