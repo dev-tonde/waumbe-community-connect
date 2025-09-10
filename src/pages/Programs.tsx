@@ -1,6 +1,6 @@
 import CorePrograms from "@/components/CorePrograms";
 import MiniHeroBanner from "@/components/MiniHeroBanner";
-import SEOManager from "@/components/EnhancedSEO";
+import SEOManager from "@/components/PageSEO";
 
 const Programs = () => {
   const programsSchema = {

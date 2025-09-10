@@ -3,7 +3,7 @@ import MiniHeroBanner from "@/components/MiniHeroBanner";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import SEOManager from "@/components/EnhancedSEO";
+import SEOManager from "@/components/PageSEO";
 
 // Import testimonial images
 import LwandoImage from "@/assets/testimonials/Lwando.jpg";

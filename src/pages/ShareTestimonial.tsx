@@ -1,7 +1,7 @@
 import TestimonialForm from "@/components/forms/TestimonialForm";
 import MiniHeroBanner from "@/components/MiniHeroBanner";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import SEOManager from "@/components/EnhancedSEO";
+import SEOManager from "@/components/PageSEO";
 
 const ShareTestimonial = () => {
   const breadcrumbItems = [

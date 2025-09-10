@@ -5,7 +5,7 @@ import Newsletter from "@/components/Newsletter";
 import TeamSection from "@/components/TeamSection";
 import PartnersSection from "@/components/PartnersSection";
 import { FloatingEntrepreneurshipModal } from "@/components/FloatingEntrepreneurshipModal";
-import SEOManager from "@/components/EnhancedSEO";
+import SEOManager from "@/components/PageSEO";
 
 const Home = () => {
   const homeSchema = {

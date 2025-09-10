@@ -8,7 +8,7 @@ import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/Entreprene
 import EntrepreneurshipFooter from "@/components/entrepreneurship/EntrepreneurshipFooter";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import MiniHeroBanner from "@/components/MiniHeroBanner";
-import SEOManager from "@/components/EnhancedSEO";
+import SEOManager from "@/components/PageSEO";
 import { FloatingMainSiteButton } from "@/components/FloatingMainSiteButton";
 import { useToast } from "@/hooks/use-toast";
 
