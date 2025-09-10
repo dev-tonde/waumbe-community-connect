@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 
 interface SEOHelmetProps {
   title?: string;
@@ -19,42 +19,66 @@ const SEOHelmet = ({
 }: SEOHelmetProps) => {
   const fullTitle = title.includes("Waumbe") ? title : `${title} - Waumbe`;
 
-  return (
-    <Helmet>
-      <title>{fullTitle}</title>
-      <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
-      <meta name="author" content="Waumbe NPO" />
+  useEffect(() => {
+    // Set document title
+    document.title = fullTitle;
+
+    // Helper function to set or update meta tags
+    const setMetaTag = (name: string, content: string, property?: boolean) => {
+      const selector = property ? `meta[property="${name}"]` : `meta[name="${name}"]`;
+      let element = document.querySelector(selector) as HTMLMetaElement;
       
-      {/* Open Graph / Facebook */}
-      <meta property="og:type" content={type} />
-      <meta property="og:url" content={url} />
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
-      <meta property="og:site_name" content="Waumbe" />
-      
-      {/* Twitter */}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={url} />
-      <meta property="twitter:title" content={fullTitle} />
-      <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={image} />
-      
-      {/* Additional SEO tags */}
-      <meta name="robots" content="index, follow" />
-      <meta name="googlebot" content="index, follow" />
-      <meta name="bingbot" content="index, follow" />
-      <link rel="canonical" href={url} />
-      
-      {/* Language and region */}
-      <meta name="language" content="English" />
-      <meta name="geo.region" content="ZA-WC" />
-      <meta name="geo.placename" content="Cape Town" />
-      <meta name="geo.position" content="-33.9249;18.4241" />
-      <meta name="ICBM" content="-33.9249, 18.4241" />
-    </Helmet>
-  );
+      if (!element) {
+        element = document.createElement('meta');
+        if (property) {
+          element.setAttribute('property', name);
+        } else {
+          element.setAttribute('name', name);
+        }
+        document.head.appendChild(element);
+      }
+      element.content = content;
+    };
+
+    // Set all meta tags
+    setMetaTag("description", description);
+    setMetaTag("keywords", keywords);
+    setMetaTag("author", "Waumbe NPO");
+    setMetaTag("robots", "index, follow");
+    setMetaTag("googlebot", "index, follow");
+    setMetaTag("bingbot", "index, follow");
+    setMetaTag("language", "English");
+    setMetaTag("geo.region", "ZA-WC");
+    setMetaTag("geo.placename", "Cape Town");
+    setMetaTag("geo.position", "-33.9249;18.4241");
+    setMetaTag("ICBM", "-33.9249, 18.4241");
+
+    // Open Graph / Facebook
+    setMetaTag("og:type", type, true);
+    setMetaTag("og:url", url, true);
+    setMetaTag("og:title", fullTitle, true);
+    setMetaTag("og:description", description, true);
+    setMetaTag("og:image", image, true);
+    setMetaTag("og:site_name", "Waumbe", true);
+
+    // Twitter
+    setMetaTag("twitter:card", "summary_large_image", true);
+    setMetaTag("twitter:url", url, true);
+    setMetaTag("twitter:title", fullTitle, true);
+    setMetaTag("twitter:description", description, true);
+    setMetaTag("twitter:image", image, true);
+
+    // Set canonical link
+    let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.rel = 'canonical';
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.href = url;
+  }, [fullTitle, description, keywords, image, url, type]);
+
+  return null;
 };
 
 export default SEOHelmet;
