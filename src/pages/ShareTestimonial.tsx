@@ -1,7 +1,7 @@
 import TestimonialForm from "@/components/forms/TestimonialForm";
 import MiniHeroBanner from "@/components/MiniHeroBanner";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import SEOHelmet from "@/components/SEOHelmet";
+import EnhancedSEO from "@/components/EnhancedSEO";
 
 const ShareTestimonial = () => {
   const breadcrumbItems = [
@@ -12,7 +12,7 @@ const ShareTestimonial = () => {
 
   return (
     <div className="pt-16">
-      <SEOHelmet 
+      <EnhancedSEO 
         title="Share Your Story"
         description="Share your experience with Waumbe's programs. Your testimonial could inspire other young people to pursue their dreams through education and empowerment."
         keywords="share testimonial, success story, youth program experience, Waumbe impact, student feedback"
