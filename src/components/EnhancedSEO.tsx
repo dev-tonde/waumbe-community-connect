@@ -41,6 +41,7 @@ interface OrganizationSchema {
   nonprofitStatus: string;
 }
 
+// Enhanced SEO component to replace react-helmet-async
 const EnhancedSEO = ({
   title = "Waumbe - Empowering Communities Through Education & Innovation",
   description = "Cape Town-based nonprofit transforming communities through education, youth empowerment, entrepreneurship, and innovation programs. Join us in making a lasting impact.",
