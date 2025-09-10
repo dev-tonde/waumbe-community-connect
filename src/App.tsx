@@ -7,10 +7,11 @@ import Layout from "@/components/Layout";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
+const helmetContext = {};
 
 const App = () => {
   return (
-    <HelmetProvider>
+    <HelmetProvider context={helmetContext}>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Routes>
