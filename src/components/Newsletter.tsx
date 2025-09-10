@@ -38,47 +38,51 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="w-full py-20 bg-gradient-to-br from-fun-blue/10 to-fun-pink/10">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section className="w-full py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-fun-blue/10 to-fun-pink/10">
+      <div className="w-full px-4 sm:px-6 lg:px-8 text-center">
         <ScrollAnimation>
-          <Mail className="w-16 h-16 text-fun-blue mx-auto mb-6 animate-bounce-gentle" />
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+          <Mail className="w-12 h-12 sm:w-16 sm:h-16 text-fun-blue mx-auto mb-4 sm:mb-6 animate-bounce-gentle" />
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6">
             Stay Updated
           </h2>
-          <p id="newsletter-description" className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p id="newsletter-description" className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
             Subscribe to our newsletter for the latest updates on our programs, 
             success stories, and opportunities to make a difference.
           </p>
         </ScrollAnimation>
         
         <ScrollAnimation delay={0.2}>
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto w-full">
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="flex-1"
-              disabled={isLoading}
-              aria-label="Email address for newsletter subscription"
-              aria-describedby="newsletter-description"
-            />
-            <FunButton 
-              type="submit" 
-              variant="primary" 
-              disabled={isLoading}
-              aria-label={isLoading ? "Subscribing..." : "Subscribe to newsletter"}
-            >
-              {isLoading ? (
-                <>
-                  <LoadingSpinner size="sm" className="mr-2" />
-                  Subscribing...
-                </>
-              ) : (
-                "Subscribe"
-              )}
-            </FunButton>
+          <form onSubmit={handleSubmit} className="w-full max-w-none mx-auto">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-4xl mx-auto px-4">
+              <Input
+                type="email"
+                placeholder="Enter your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="flex-1 h-12 sm:h-14 text-base sm:text-lg px-4 sm:px-6"
+                disabled={isLoading}
+                aria-label="Email address for newsletter subscription"
+                aria-describedby="newsletter-description"
+              />
+              <FunButton 
+                type="submit" 
+                variant="primary" 
+                disabled={isLoading}
+                aria-label={isLoading ? "Subscribing..." : "Subscribe to newsletter"}
+                className="h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg whitespace-nowrap min-w-fit sm:min-w-[140px]"
+              >
+                {isLoading ? (
+                  <>
+                    <LoadingSpinner size="sm" className="mr-2" />
+                    <span className="hidden sm:inline">Subscribing...</span>
+                    <span className="sm:hidden">Loading...</span>
+                  </>
+                ) : (
+                  "Subscribe"
+                )}
+              </FunButton>
+            </div>
           </form>
         </ScrollAnimation>
       </div>

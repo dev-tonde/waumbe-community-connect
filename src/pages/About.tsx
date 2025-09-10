@@ -16,6 +16,24 @@ import {
 import teamImage from "@/assets/team-images/Waumbe-Team.jpg";
 
 const About = () => {
+  const aboutSchema = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "mainEntity": {
+      "@type": "NonProfitOrganization",
+      "name": "Waumbe Youth Development Centre",
+      "description": "Empowering youth through education, skills development, and entrepreneurship programs in Cape Town, South Africa.",
+      "foundingDate": "2015",
+      "mission": "To bridge the gap between education and employment by providing comprehensive development programs for youth",
+      "programsOffered": [
+        "TVET Training Programs",
+        "Higher Education Support",
+        "Skills Development Workshops", 
+        "Entrepreneurship Training",
+        "Community Outreach Programs"
+      ]
+    }
+  };
   const strategicPillars = [
     {
       icon: BookOpen,
