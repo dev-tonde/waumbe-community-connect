@@ -14,7 +14,11 @@ export default defineConfig(({ mode, command }) => {
       // splitVendorChunkPlugin removed in Vite >=5.2.7 – use manualChunks instead
     ],
     resolve: {
-      alias: { "@": path.resolve(__dirname, "./src") },
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+        react: path.resolve(__dirname, "node_modules/react"),
+        "react-dom": path.resolve(__dirname, "node_modules/react-dom"),
+      },
       dedupe: ["react", "react-dom"],
     },
     optimizeDeps: {
