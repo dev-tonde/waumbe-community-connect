@@ -22,12 +22,19 @@ export default defineConfig(({ mode, command }) => {
       dedupe: ["react", "react-dom"],
     },
     optimizeDeps: {
-      include: ["react", "react-dom", "@tanstack/react-query"],
+      include: [
+        "react",
+        "react-dom",
+        "@tanstack/react-query",
+        "react-resizable-panels",
+        "react-merge-refs",
+        "use-merge-refs",
+      ],
       esbuildOptions: { target: "es2020" },
     },
     build: {
       target: "es2020",
-      sourcemap: isDev,
+      sourcemap: true,
       modulePreload: { polyfill: false },
       cssCodeSplit: true,
       chunkSizeWarningLimit: 1024,
