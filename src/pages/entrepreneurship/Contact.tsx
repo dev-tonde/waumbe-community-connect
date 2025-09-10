@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
-import EnhancedSEO from "@/components/EnhancedSEO";
+import SEOManager from "@/components/EnhancedSEO";
 import { FloatingMainSiteButton } from "@/components/FloatingMainSiteButton";
 import { toast } from "@/components/ui/use-toast";
 

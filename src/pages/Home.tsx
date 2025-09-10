@@ -5,7 +5,7 @@ import Newsletter from "@/components/Newsletter";
 import TeamSection from "@/components/TeamSection";
 import PartnersSection from "@/components/PartnersSection";
 import { FloatingEntrepreneurshipModal } from "@/components/FloatingEntrepreneurshipModal";
-import EnhancedSEO from "@/components/EnhancedSEO";
+import SEOManager from "@/components/EnhancedSEO";
 
 const Home = () => {
   const homeSchema = {
@@ -26,7 +26,7 @@ const Home = () => {
 
   return (
     <div>
-      <EnhancedSEO 
+      <SEOManager 
         title="Waumbe - Empowering Communities Through Education & Innovation"
         description="Cape Town-based nonprofit transforming communities through education, youth empowerment, entrepreneurship, and innovation programs. Join us in making a lasting impact through TVET training, higher education support, and skills development."
         keywords="nonprofit, education, youth empowerment, Cape Town, community development, entrepreneurship, skills development, South Africa, TVET, higher education, job creation, social impact"

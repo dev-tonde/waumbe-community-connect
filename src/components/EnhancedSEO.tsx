@@ -42,7 +42,7 @@ interface OrganizationSchema {
 }
 
 // Enhanced SEO component to replace react-helmet-async
-const EnhancedSEO = ({
+const SEOManager = ({
   title = "Waumbe - Empowering Communities Through Education & Innovation",
   description = "Cape Town-based nonprofit transforming communities through education, youth empowerment, entrepreneurship, and innovation programs. Join us in making a lasting impact.",
   keywords = "nonprofit, education, youth empowerment, Cape Town, community development, entrepreneurship, skills development, South Africa, TVET, higher education, job creation",
@@ -219,4 +219,4 @@ const EnhancedSEO = ({
   return null;
 };
 
-export default EnhancedSEO;
+export default SEOManager;

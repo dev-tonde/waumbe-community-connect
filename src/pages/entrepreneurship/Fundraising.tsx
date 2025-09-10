@@ -4,7 +4,7 @@ import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/Entreprene
 import EntrepreneurshipFooter from "@/components/entrepreneurship/EntrepreneurshipFooter";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import MiniHeroBanner from "@/components/MiniHeroBanner";
-import EnhancedSEO from "@/components/EnhancedSEO";
+import SEOManager from "@/components/EnhancedSEO";
 import { FloatingMainSiteButton } from "@/components/FloatingMainSiteButton";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 

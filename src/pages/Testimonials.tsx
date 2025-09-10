@@ -3,7 +3,7 @@ import MiniHeroBanner from "@/components/MiniHeroBanner";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import EnhancedSEO from "@/components/EnhancedSEO";
+import SEOManager from "@/components/EnhancedSEO";
 
 // Import testimonial images
 import LwandoImage from "@/assets/testimonials/Lwando.jpg";
@@ -63,7 +63,7 @@ const Testimonials = () => {
 
   return (
     <div className="pt-16">
-      <EnhancedSEO 
+      <SEOManager 
         title="Testimonials"
         description="Read inspiring success stories from young people who have participated in Waumbe's programs. Discover how education and mentorship transform lives."
         keywords="testimonials, success stories, youth empowerment, student achievements, Cape Town education, nonprofit impact"

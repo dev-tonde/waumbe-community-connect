@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/EntrepreneurshipNavbar";
 import EntrepreneurshipFooter from "@/components/entrepreneurship/EntrepreneurshipFooter";
-import EnhancedSEO from "@/components/EnhancedSEO";
+import SEOManager from "@/components/EnhancedSEO";
 import { FloatingMainSiteButton } from "@/components/FloatingMainSiteButton";
 import { Heart, DollarSign, Users, TrendingUp, Star, Target } from "lucide-react";
 
