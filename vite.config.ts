@@ -13,13 +13,11 @@ export default defineConfig(({ mode, command }) => {
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),
-        // ensure a single React instance
+        // ensure a single React instance everywhere
         react: path.resolve(__dirname, "node_modules/react"),
         "react-dom": path.resolve(__dirname, "node_modules/react-dom"),
-        // force ESM variant to avoid React being undefined in prod
+        // 🚑 force ESM build so React is actually imported in use-callback-ref
         "use-callback-ref": "use-callback-ref/dist/es2019/index.js",
-        // If your installed version exposes /dist/index.mjs, use that instead:
-        // "use-callback-ref": "use-callback-ref/dist/index.mjs",
       },
       dedupe: ["react", "react-dom"],
     },
@@ -28,8 +26,8 @@ export default defineConfig(({ mode, command }) => {
         "react",
         "react-dom",
         "@tanstack/react-query",
-        "react-resizable-panels",
         "use-callback-ref",
+        "react-resizable-panels",
       ],
       esbuildOptions: { target: "es2020" },
     },
@@ -56,8 +54,6 @@ export default defineConfig(({ mode, command }) => {
       legalComments: "none",
       drop: isBuild ? ["console", "debugger"] : [],
     },
-    define: {
-      __DEV__: JSON.stringify(isDev),
-    },
+    define: { __DEV__: JSON.stringify(isDev) },
   };
 });
