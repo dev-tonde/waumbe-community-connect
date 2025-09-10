@@ -9,15 +9,17 @@ export default defineConfig(({ mode, command }) => {
 
   return {
     server: { host: "::", port: 8080, strictPort: true },
-    plugins: [
-      react(),
-      // splitVendorChunkPlugin removed in Vite >=5.2.7 – use manualChunks instead
-    ],
+    plugins: [react()],
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),
+        // lock React to a single copy
         react: path.resolve(__dirname, "node_modules/react"),
         "react-dom": path.resolve(__dirname, "node_modules/react-dom"),
+        // 👉 force ESM entry for use-callback-ref to avoid React being undefined
+        "use-callback-ref": "use-callback-ref/dist/es2019/index.js",
+        // If your installed version exposes an MJS entry, you can use:
+        // "use-callback-ref": "use-callback-ref/dist/index.mjs",
       },
       dedupe: ["react", "react-dom"],
     },
@@ -27,8 +29,7 @@ export default defineConfig(({ mode, command }) => {
         "react-dom",
         "@tanstack/react-query",
         "react-resizable-panels",
-        "react-merge-refs",
-        "use-merge-refs",
+        "use-callback-ref",
       ],
       esbuildOptions: { target: "es2020" },
     },
