@@ -13,12 +13,12 @@ export default defineConfig(({ mode, command }) => {
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),
-        // lock React to a single copy
+        // ensure a single React instance
         react: path.resolve(__dirname, "node_modules/react"),
         "react-dom": path.resolve(__dirname, "node_modules/react-dom"),
-        // 👉 force ESM entry for use-callback-ref to avoid React being undefined
+        // force ESM variant to avoid React being undefined in prod
         "use-callback-ref": "use-callback-ref/dist/es2019/index.js",
-        // If your installed version exposes an MJS entry, you can use:
+        // If your installed version exposes /dist/index.mjs, use that instead:
         // "use-callback-ref": "use-callback-ref/dist/index.mjs",
       },
       dedupe: ["react", "react-dom"],
