@@ -1,7 +1,13 @@
 import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/EntrepreneurshipNavbar";
 import EntrepreneurshipFooter from "@/components/entrepreneurship/EntrepreneurshipFooter";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,27 +19,34 @@ import { toast } from "@/components/ui/use-toast";
 const Contact = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+    const formEl = e.currentTarget;
+    const formData = new FormData(formEl);
     const data = Object.fromEntries(formData);
 
     try {
-      await fetch('/functions/v1/send-form-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const base = import.meta.env.VITE_SUPABASE_URL as string;
+      const apikey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
+
+      const res = await fetch(`${base}/functions/v1/send-form-email`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", apikey },
         body: JSON.stringify({
-          formType: 'contact',
+          formType: "contact",
           formData: data,
-          recipientEmail: 'waumbedata@gmail.com'
+          recipientEmail: "waumbedata@gmail.com",
         }),
       });
-      
+
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
       toast({
         title: "Message sent successfully!",
         description: "We'll get back to you as soon as possible.",
       });
-      
-      e.currentTarget.reset();
+
+      formEl.reset();
     } catch (error) {
+      console.error(error);
       toast({
         title: "Error sending message",
         description: "Please try again later.",
@@ -44,8 +57,12 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOManager
+        title="Entrepreneurship — Contact"
+        description="Get in touch with the Waumbe Entrepreneurship team."
+      />
       <EntrepreneurshipNavbar />
-      
+
       <div className="pt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <ScrollAnimation>
@@ -54,7 +71,8 @@ const Contact = () => {
                 Contact Us
               </h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Ready to start your entrepreneurial journey? Get in touch with our team to learn more about our programs and opportunities.
+                Ready to start your entrepreneurial journey? Get in touch with
+                our team to learn more about our programs and opportunities.
               </p>
             </div>
           </ScrollAnimation>
@@ -82,9 +100,15 @@ const Contact = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold mb-1">Email</h3>
-                        <p className="text-muted-foreground">terencewillemse@waumbe.org.za</p>
-                        <p className="text-muted-foreground">asiphekhemtse@waumbe.org.za</p>
-                        <p className="text-muted-foreground">info@waumbe.org.za</p>
+                        <p className="text-muted-foreground">
+                          terencewillemse@waumbe.org.za
+                        </p>
+                        <p className="text-muted-foreground">
+                          asiphekhemtse@waumbe.org.za
+                        </p>
+                        <p className="text-muted-foreground">
+                          info@waumbe.org.za
+                        </p>
                       </div>
                     </div>
 
@@ -95,7 +119,8 @@ const Contact = () => {
                       <div>
                         <h3 className="font-semibold mb-1">Address</h3>
                         <p className="text-muted-foreground">
-                          14 Moses Mabhida Street,<br />
+                          14 Moses Mabhida Street,
+                          <br />
                           Fisantekraal, Cape Town, 7550
                         </p>
                       </div>
@@ -107,8 +132,12 @@ const Contact = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold mb-1">Office Hours</h3>
-                        <p className="text-muted-foreground">Monday - Friday: 8:00 AM - 5:00 PM</p>
-                        <p className="text-muted-foreground">Saturday: 9:00 AM - 1:00 PM</p>
+                        <p className="text-muted-foreground">
+                          Monday - Friday: 8:00 AM - 5:00 PM
+                        </p>
+                        <p className="text-muted-foreground">
+                          Saturday: 9:00 AM - 1:00 PM
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -121,14 +150,18 @@ const Contact = () => {
                 <CardHeader className="px-0">
                   <CardTitle className="text-2xl">Send us a Message</CardTitle>
                   <CardDescription>
-                    Fill out the form below and we'll get back to you within 24 hours.
+                    Fill out the form below and we'll get back to you within 24
+                    hours.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="px-0">
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="firstName" className="block text-sm font-medium mb-2">
+                        <label
+                          htmlFor="firstName"
+                          className="block text-sm font-medium mb-2"
+                        >
                           First Name
                         </label>
                         <Input
@@ -140,7 +173,10 @@ const Contact = () => {
                         />
                       </div>
                       <div>
-                        <label htmlFor="lastName" className="block text-sm font-medium mb-2">
+                        <label
+                          htmlFor="lastName"
+                          className="block text-sm font-medium mb-2"
+                        >
                           Last Name
                         </label>
                         <Input
@@ -154,7 +190,10 @@ const Contact = () => {
                     </div>
 
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium mb-2">
+                      <label
+                        htmlFor="email"
+                        className="block text-sm font-medium mb-2"
+                      >
                         Email Address
                       </label>
                       <Input
@@ -167,7 +206,10 @@ const Contact = () => {
                     </div>
 
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium mb-2">
+                      <label
+                        htmlFor="phone"
+                        className="block text-sm font-medium mb-2"
+                      >
                         Phone Number
                       </label>
                       <Input
@@ -179,7 +221,10 @@ const Contact = () => {
                     </div>
 
                     <div>
-                      <label htmlFor="subject" className="block text-sm font-medium mb-2">
+                      <label
+                        htmlFor="subject"
+                        className="block text-sm font-medium mb-2"
+                      >
                         Subject
                       </label>
                       <Input
@@ -192,7 +237,10 @@ const Contact = () => {
                     </div>
 
                     <div>
-                      <label htmlFor="message" className="block text-sm font-medium mb-2">
+                      <label
+                        htmlFor="message"
+                        className="block text-sm font-medium mb-2"
+                      >
                         Message
                       </label>
                       <Textarea
@@ -214,7 +262,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      
+
       <EntrepreneurshipFooter />
       <FloatingMainSiteButton />
     </div>

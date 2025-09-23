@@ -1,5 +1,11 @@
 import React, { Suspense, lazy } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // Lazy-loaded layout & pages
@@ -20,6 +26,36 @@ const Governance = lazy(() => import("@/pages/Governance"));
 const CoreSteeringGroup = lazy(() => import("@/pages/CoreSteeringGroup"));
 const Entrepreneurship = lazy(() => import("@/pages/Entrepreneurship"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
+const AcademicDevelopment = lazy(
+  () => import("@/pages/programs/AcademicDevelopment")
+);
+const SocietalReformation = lazy(
+  () => import("@/pages/programs/SocietalReformation")
+);
+const ProgramsCourses = lazy(() => import("@/pages/programs/Courses"));
+const ProgramsLearnerships = lazy(
+  () => import("@/pages/programs/Learnerships")
+);
+const ProgramsSkills = lazy(() => import("@/pages/programs/SkillsDevelopment"));
+const ProgramsVolunteer = lazy(() => import("@/pages/programs/Volunteer"));
+const ProgramsEntrepreneurship = lazy(
+  () => import("@/pages/programs/Entrepreneurship")
+);
+
+const EntCourses = lazy(() => import("@/pages/entrepreneurship/Courses"));
+const EntLearnership = lazy(
+  () => import("@/pages/entrepreneurship/Learnership")
+);
+const EntFundraising = lazy(
+  () => import("@/pages/entrepreneurship/Fundraising")
+);
+const EntContact = lazy(() => import("@/pages/entrepreneurship/Contact"));
+const EntDonate = lazy(() => import("@/pages/entrepreneurship/Donate"));
+
+const Awards = lazy(() => import("@/pages/testimonials/Awards"));
+const TestimonialDetail = lazy(
+  () => import("@/pages/testimonials/TestimonialDetail")
+);
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -68,6 +104,37 @@ export default function App() {
                 <Route path="gallery" element={<Gallery />} />
                 <Route path="testimonials" element={<Testimonials />} />
                 <Route
+                  path="programs/academic-development"
+                  element={<AcademicDevelopment />}
+                />
+                <Route
+                  path="programs/societal-reformation"
+                  element={<SocietalReformation />}
+                />
+                <Route
+                  path="programs/societal-reform"
+                  element={
+                    <Navigate to="/programs/societal-reformation" replace />
+                  }
+                />
+                <Route path="programs/courses" element={<ProgramsCourses />} />
+                <Route
+                  path="programs/learnerships"
+                  element={<ProgramsLearnerships />}
+                />
+                <Route
+                  path="programs/skills-development"
+                  element={<ProgramsSkills />}
+                />
+                <Route
+                  path="programs/volunteer"
+                  element={<ProgramsVolunteer />}
+                />
+                <Route
+                  path="programs/entrepreneurship"
+                  element={<ProgramsEntrepreneurship />}
+                />
+                <Route
                   path="testimonials/share"
                   element={<ShareTestimonial />}
                 />
@@ -81,6 +148,31 @@ export default function App() {
                   element={<CoreSteeringGroup />}
                 />
                 <Route path="entrepreneurship" element={<Entrepreneurship />} />
+                {/* entrepreneurship subroutes */}
+                <Route
+                  path="entrepreneurship/courses"
+                  element={<EntCourses />}
+                />
+                <Route
+                  path="entrepreneurship/learnership"
+                  element={<EntLearnership />}
+                />
+                <Route
+                  path="entrepreneurship/fundraising"
+                  element={<EntFundraising />}
+                />
+                <Route
+                  path="entrepreneurship/contact"
+                  element={<EntContact />}
+                />
+                <Route path="entrepreneurship/donate" element={<EntDonate />} />
+
+                {/* testimonials extras */}
+                <Route path="testimonials/awards" element={<Awards />} />
+                <Route
+                  path="testimonials/:slug"
+                  element={<TestimonialDetail />}
+                />
                 <Route path="*" element={<NotFound />} />
               </Route>
             </Routes>
