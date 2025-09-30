@@ -89,6 +89,10 @@ const Team = () => {
 
   return (
     <div className="min-h-screen pt-16">
+            <MiniHeroBanner
+        title="Waumbe Youth Development Team"
+        subtitle="Meet the team that makes it all possible"
+      />
       <ScrollAnimation>
         <section className="py-16 bg-gradient-to-br from-fun-purple/5 to-fun-pink/5">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
