@@ -22,10 +22,9 @@ type Member = {
 };
 
 const Team = () => {
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-
-  const teamMembers = [
-    {
+  const teamMembers: Member[] = useMemo(
+    () => [
+      {
         name: "Mdu Menze",
         role: "Chief Executive Officer",
         img: MduImg,
@@ -85,82 +84,63 @@ const Team = () => {
         img: NikiweImg,
         bio: "Staff support plays a critical role in the smooth operation of any organisation. They are responsible for assisting employees with a range of administrative and logistical tasks, ensuring that the workforce can focus on their core responsibilities. This role often includes duties such as scheduling meetings, managing communications, organising files, and assisting with technology issues. A staff support person serves as a key point of contact for both internal and external stakeholders, facilitating effective communication and collaboration across the organisation. By providing this essential support, they help to create a more efficient, productive, and positive work environment, enabling all team members to thrive.",
       },
-  ];
+    ],
+    []
+  );
 
   return (
     <div className="min-h-screen pt-16">
-            <MiniHeroBanner
-        title="Waumbe Youth Development Team"
-        subtitle="Meet the team that makes it all possible"
-      />
       <ScrollAnimation>
         <section className="py-16 bg-gradient-to-br from-fun-purple/5 to-fun-pink/5">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 bg-gradient-to-r from-fun-purple to-fun-pink bg-clip-text text-transparent">
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 bg-gradient-to-r from-fun-purple to-fun-pink bg-clip-text">
                 Meet Our Team
               </h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 Our passionate team of educators, innovators, and community
-                leaders working together to create lasting change in our
-                communities.
+                leaders working together to create lasting change.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-              {teamMembers.map((member, index) => (
-                <motion.div
-                  key={index}
-                  className="h-full"
-                  onHoverStart={() => setHoveredCard(index)}
-                  onHoverEnd={() => setHoveredCard(null)}
-                  style={{ perspective: "1000px" }}
+            {/* ✅ Simple responsive grid, no carousel */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+              {teamMembers.map((m) => (
+                <Card
+                  key={m.name}
+                  className="overflow-hidden hover:shadow-lg transition-shadow"
                 >
-                  <motion.div
-                    className="relative w-full h-96 preserve-3d cursor-pointer"
-                    animate={{
-                      rotateY: hoveredCard === index ? 180 : 0,
-                    }}
-                    transition={{ duration: 0.6, ease: "easeInOut" }}
-                  >
-                    {/* Front of card */}
-                    <Card className="absolute inset-0 w-full h-full backface-hidden bg-gradient-to-br from-fun-blue/10 to-fun-green/10 border-2 border-fun-blue/20 hover:border-fun-purple/40 transition-colors">
-                      <CardContent className="p-6 flex flex-col items-center text-center h-full">
-                        <div className="w-24 h-24 bg-gradient-to-br from-fun-purple to-fun-pink rounded-full mb-4 flex items-center justify-center text-2xl font-bold text-white">
-                          {member.name
-                            .split(" ")
-                            .map((n) => n[0])
-                            .join("")}
-                        </div>
-                        <h3 className="text-xl font-bold text-foreground mb-2">
-                          {member.name}
-                        </h3>
-                        <p className="text-fun-purple font-semibold mb-1">
-                          {member.role}
-                        </p>
-                        <div className="mt-auto">
-                          <p className="text-sm text-muted-foreground italic">
-                            Hover to learn more
-                          </p>
-                        </div>
-                      </CardContent>
-                    </Card>
-
-                    {/* Back of card */}
-                    <Card className="absolute inset-0 w-full h-full backface-hidden rotateY-180 bg-gradient-to-br from-fun-green/10 to-fun-yellow/10 border-2 border-fun-green/20">
-                      <CardContent className="p-6 flex flex-col h-full text-center">
-                        <h3 className="text-lg font-bold text-foreground mb-4">
-                          {member.name}
-                        </h3>
-                        <div className="flex-1 overflow-y-auto">
-                          <p className="text-muted-foreground leading-relaxed text-sm">
-                            {member.bio}
-                          </p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                </motion.div>
+                  <div className="aspect-[4/3] w-full bg-muted/20">
+                    <img
+                      src={m.img}
+                      alt={`${m.name} — ${m.role}`}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        // graceful fallback to initials if an image ever fails
+                        const el = e.currentTarget;
+                        el.style.display = "none";
+                        const wrapper = el.parentElement;
+                        if (wrapper) {
+                          wrapper.innerHTML = `
+                            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-fun-purple/20 to-fun-pink/20 text-foreground/70 text-3xl font-bold">
+                              ${m.name
+                                .split(" ")
+                                .map((n) => n[0])
+                                .join("")}
+                            </div>`;
+                        }
+                      }}
+                    />
+                  </div>
+                  <CardContent className="p-4">
+                    <h3 className="text-lg font-semibold">{m.name}</h3>
+                    <p className="text-fun-purple font-medium">{m.role}</p>
+                    <p className="mt-2 text-sm text-muted-foreground line-clamp-4">
+                      {m.bio}
+                    </p>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
@@ -171,3 +151,4 @@ const Team = () => {
 };
 
 export default Team;
+
