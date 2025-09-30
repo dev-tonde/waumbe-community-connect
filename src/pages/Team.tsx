@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { motion } from "framer-motion";
