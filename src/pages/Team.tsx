@@ -1,14 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Team = () => {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -92,71 +85,61 @@ const Team = () => {
               </p>
             </div>
 
-            <div className="relative max-w-6xl mx-auto">
-              <Carousel className="w-full">
-                <CarouselContent className="-ml-4">
-                  {teamMembers.map((member, index) => (
-                    <CarouselItem
-                      key={index}
-                      className="pl-4 md:basis-1/2 lg:basis-1/3"
-                    >
-                      <motion.div
-                        className="h-full"
-                        onHoverStart={() => setHoveredCard(index)}
-                        onHoverEnd={() => setHoveredCard(null)}
-                        style={{ perspective: "1000px" }}
-                      >
-                        <motion.div
-                          className="relative w-full h-96 preserve-3d cursor-pointer"
-                          animate={{
-                            rotateY: hoveredCard === index ? 180 : 0,
-                          }}
-                          transition={{ duration: 0.6, ease: "easeInOut" }}
-                        >
-                          {/* Front of card */}
-                          <Card className="absolute inset-0 w-full h-full backface-hidden bg-gradient-to-br from-fun-blue/10 to-fun-green/10 border-2 border-fun-blue/20 hover:border-fun-purple/40 transition-colors">
-                            <CardContent className="p-6 flex flex-col items-center text-center h-full">
-                              <div className="w-24 h-24 bg-gradient-to-br from-fun-purple to-fun-pink rounded-full mb-4 flex items-center justify-center text-2xl font-bold text-white">
-                                {member.name
-                                  .split(" ")
-                                  .map((n) => n[0])
-                                  .join("")}
-                              </div>
-                              <h3 className="text-xl font-bold text-foreground mb-2">
-                                {member.name}
-                              </h3>
-                              <p className="text-fun-purple font-semibold mb-1">
-                                {member.role}
-                              </p>
-                              <div className="mt-auto">
-                                <p className="text-sm text-muted-foreground italic">
-                                  Hover to learn more
-                                </p>
-                              </div>
-                            </CardContent>
-                          </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+              {teamMembers.map((member, index) => (
+                <motion.div
+                  key={index}
+                  className="h-full"
+                  onHoverStart={() => setHoveredCard(index)}
+                  onHoverEnd={() => setHoveredCard(null)}
+                  style={{ perspective: "1000px" }}
+                >
+                  <motion.div
+                    className="relative w-full h-96 preserve-3d cursor-pointer"
+                    animate={{
+                      rotateY: hoveredCard === index ? 180 : 0,
+                    }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                  >
+                    {/* Front of card */}
+                    <Card className="absolute inset-0 w-full h-full backface-hidden bg-gradient-to-br from-fun-blue/10 to-fun-green/10 border-2 border-fun-blue/20 hover:border-fun-purple/40 transition-colors">
+                      <CardContent className="p-6 flex flex-col items-center text-center h-full">
+                        <div className="w-24 h-24 bg-gradient-to-br from-fun-purple to-fun-pink rounded-full mb-4 flex items-center justify-center text-2xl font-bold text-white">
+                          {member.name
+                            .split(" ")
+                            .map((n) => n[0])
+                            .join("")}
+                        </div>
+                        <h3 className="text-xl font-bold text-foreground mb-2">
+                          {member.name}
+                        </h3>
+                        <p className="text-fun-purple font-semibold mb-1">
+                          {member.role}
+                        </p>
+                        <div className="mt-auto">
+                          <p className="text-sm text-muted-foreground italic">
+                            Hover to learn more
+                          </p>
+                        </div>
+                      </CardContent>
+                    </Card>
 
-                           {/* Back of card */}
-                           <Card className="absolute inset-0 w-full h-full backface-hidden rotateY-180 bg-gradient-to-br from-fun-green/10 to-fun-yellow/10 border-2 border-fun-green/20">
-                             <CardContent className="p-6 flex flex-col h-full text-center">
-                               <h3 className="text-lg font-bold text-foreground mb-4">
-                                 {member.name}
-                               </h3>
-                               <div className="flex-1 overflow-y-auto">
-                                 <p className="text-muted-foreground leading-relaxed text-sm">
-                                   {member.bio}
-                                 </p>
-                               </div>
-                             </CardContent>
-                           </Card>
-                        </motion.div>
-                      </motion.div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-                <CarouselPrevious className="bg-fun-purple/10 border-fun-purple/20 hover:bg-fun-purple/20" />
-                <CarouselNext className="bg-fun-purple/10 border-fun-purple/20 hover:bg-fun-purple/20" />
-              </Carousel>
+                    {/* Back of card */}
+                    <Card className="absolute inset-0 w-full h-full backface-hidden rotateY-180 bg-gradient-to-br from-fun-green/10 to-fun-yellow/10 border-2 border-fun-green/20">
+                      <CardContent className="p-6 flex flex-col h-full text-center">
+                        <h3 className="text-lg font-bold text-foreground mb-4">
+                          {member.name}
+                        </h3>
+                        <div className="flex-1 overflow-y-auto">
+                          <p className="text-muted-foreground leading-relaxed text-sm">
+                            {member.bio}
+                          </p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
