@@ -5,6 +5,8 @@ const Footer = () => {
   const quickLinks = [
     { name: "About Us", href: "/about" },
     { name: "Programs", href: "/programs" },
+    { name: "Team", href: "/team" },
+    { name: "Gallery", href: "/gallery" },
     { name: "Contact", href: "/contact" }
   ];
 
@@ -147,6 +149,57 @@ const Footer = () => {
                  </a>
                </div>
             </nav>
+          </div>
+        </div>
+
+        {/* Newsletter Signup */}
+        <div className="border-t border-white/20 pt-8 mb-8">
+          <div className="text-center">
+            <h4 className="text-xl font-semibold mb-4 text-gold">Stay Updated</h4>
+            <p id="footer-newsletter-description" className="text-white/80 mb-6 max-w-2xl mx-auto">
+              Subscribe to our newsletter for the latest updates on our programs, 
+              success stories, and community impact.
+            </p>
+             <form 
+               onSubmit={async (e) => {
+                 e.preventDefault();
+                 const email = (e.target as HTMLFormElement).email.value;
+                 try {
+                   await fetch('/functions/v1/send-form-email', {
+                     method: 'POST',
+                     headers: { 'Content-Type': 'application/json' },
+                     body: JSON.stringify({
+                       formType: 'newsletter',
+                       formData: { email },
+                       recipientEmail: 'waumbedata@gmail.com'
+                     }),
+                   });
+                   (e.target as HTMLFormElement).reset();
+                  } catch (error) {
+                    // Error handled silently in production
+                  }
+               }} 
+               className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
+               aria-label="Newsletter subscription form"
+             >
+               <input
+                 type="email"
+                 name="email"
+                 placeholder="Enter your email"
+                 required
+                 aria-label="Email address for newsletter"
+                 aria-describedby="footer-newsletter-description"
+                 aria-required="true"
+                 className="flex-1 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-foreground"
+               />
+               <button 
+                 type="submit" 
+                 className="bg-gold text-foreground px-6 py-2 rounded-lg font-semibold hover:bg-gold/90 transition-colors focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-foreground"
+                 aria-label="Subscribe to newsletter"
+               >
+                 Subscribe
+               </button>
+             </form>
           </div>
         </div>
 
