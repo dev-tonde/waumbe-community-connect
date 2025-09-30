@@ -28,7 +28,7 @@ export const sanitizeEmail = (email: string): string => {
   const sanitized = sanitizeInput(email);
   
   // Basic email validation pattern
-  const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
   return emailRegex.test(sanitized) ? sanitized : '';
 };
@@ -42,7 +42,8 @@ export const sanitizePhone = (phone: string): string => {
   if (!phone) return '';
   
   // Remove HTML, then keep only digits, spaces, +, -, (, )
-  return sanitizeInput(phone).replace(/[^\\d\\s+\\-()]/g, '');
+  // Hyphen at end of character class to avoid range interpretation
+  return sanitizeInput(phone).replace(/[^\d\s+()-]/g, '');
 };
 
 /**
