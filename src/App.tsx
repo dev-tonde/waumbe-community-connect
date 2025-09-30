@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 // Lazy-loaded layout & pages
 const Layout = lazy(() => import("@/components/Layout"));
@@ -19,6 +20,8 @@ const FinancialReports = lazy(() => import("@/pages/FinancialReports"));
 const Governance = lazy(() => import("@/pages/Governance"));
 const CoreSteeringGroup = lazy(() => import("@/pages/CoreSteeringGroup"));
 const Entrepreneurship = lazy(() => import("@/pages/Entrepreneurship"));
+const Auth = lazy(() => import("@/pages/Auth"));
+const Admin = lazy(() => import("@/pages/Admin"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
 
 const queryClient = new QueryClient({
@@ -52,40 +55,44 @@ export default function App() {
   return (
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <ScrollToTop />
-          <Suspense fallback={<Loading />}>
-            <Routes>
-              <Route path="/" element={<Layout />}>
-                <Route index element={<Home />} />
-                <Route path="about" element={<About />} />
-                <Route path="programs" element={<Programs />} />
-                <Route path="contact" element={<Contact />} />
-                <Route path="team" element={<Team />} />
-                <Route path="partners" element={<Partners />} />
-                <Route path="donate" element={<Donate />} />
-                <Route path="volunteer" element={<Volunteer />} />
-                <Route path="gallery" element={<Gallery />} />
-                <Route path="testimonials" element={<Testimonials />} />
-                <Route
-                  path="testimonials/share"
-                  element={<ShareTestimonial />}
-                />
-                <Route
-                  path="financial-reports"
-                  element={<FinancialReports />}
-                />
-                <Route path="governance" element={<Governance />} />
-                <Route
-                  path="core-steering-group"
-                  element={<CoreSteeringGroup />}
-                />
-                <Route path="entrepreneurship" element={<Entrepreneurship />} />
-                <Route path="*" element={<NotFound />} />
-              </Route>
-            </Routes>
-          </Suspense>
-        </BrowserRouter>
+        <AuthProvider>
+          <BrowserRouter>
+            <ScrollToTop />
+            <Suspense fallback={<Loading />}>
+              <Routes>
+                <Route path="/auth" element={<Auth />} />
+                <Route path="/admin" element={<Admin />} />
+                <Route path="/" element={<Layout />}>
+                  <Route index element={<Home />} />
+                  <Route path="about" element={<About />} />
+                  <Route path="programs" element={<Programs />} />
+                  <Route path="contact" element={<Contact />} />
+                  <Route path="team" element={<Team />} />
+                  <Route path="partners" element={<Partners />} />
+                  <Route path="donate" element={<Donate />} />
+                  <Route path="volunteer" element={<Volunteer />} />
+                  <Route path="gallery" element={<Gallery />} />
+                  <Route path="testimonials" element={<Testimonials />} />
+                  <Route
+                    path="testimonials/share"
+                    element={<ShareTestimonial />}
+                  />
+                  <Route
+                    path="financial-reports"
+                    element={<FinancialReports />}
+                  />
+                  <Route path="governance" element={<Governance />} />
+                  <Route
+                    path="core-steering-group"
+                    element={<CoreSteeringGroup />}
+                  />
+                  <Route path="entrepreneurship" element={<Entrepreneurship />} />
+                  <Route path="*" element={<NotFound />} />
+                </Route>
+              </Routes>
+            </Suspense>
+          </BrowserRouter>
+        </AuthProvider>
       </QueryClientProvider>
     </React.StrictMode>
   );

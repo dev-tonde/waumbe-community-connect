@@ -40,7 +40,7 @@ const Gallery = () => {
       if (error) throw error;
       setGalleryItems(data || []);
     } catch (error) {
-      console.error('Error fetching gallery items:', error);
+      // Error handled silently in production
     } finally {
       setLoading(false);
     }

@@ -68,7 +68,6 @@ const TestimonialForm = () => {
 
       form.reset();
     } catch (error) {
-      console.error('Error submitting testimonial:', error);
       toast({
         title: "Error",
         description: "There was an error submitting your testimonial. Please try again.",

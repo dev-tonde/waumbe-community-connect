@@ -151,9 +151,9 @@ const EntrepreneurshipFooter = () => {
                    }),
                  });
                  (e.target as HTMLFormElement).reset();
-               } catch (error) {
-                 console.error('Newsletter subscription failed:', error);
-               }
+                } catch (error) {
+                  // Error handled silently in production
+                }
              }} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
                <input
                  type="email"

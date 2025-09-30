@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { GraduationCap, Clock, Phone, User } from "lucide-react";
+import { sanitizeInput, sanitizeEmail, sanitizePhone } from "@/utils/sanitize";
 
 const learnershipFormSchema = z.object({
   full_name: z.string().min(2, "Full name must be at least 2 characters"),
@@ -52,23 +53,33 @@ export const LearnershipApplicationForm = () => {
   const onSubmit = async (data: LearnershipFormData) => {
     setIsSubmitting(true);
     try {
+      // Sanitize inputs
+      const sanitizedData = {
+        full_name: sanitizeInput(data.full_name),
+        email: sanitizeEmail(data.email),
+        phone: data.phone ? sanitizePhone(data.phone) : null,
+        age: data.age,
+        education_level: sanitizeInput(data.education_level),
+        program_interest: sanitizeInput(data.program_interest),
+        motivation: sanitizeInput(data.motivation),
+        previous_experience: data.previous_experience ? sanitizeInput(data.previous_experience) : null,
+        availability: sanitizeInput(data.availability),
+        emergency_contact: sanitizeInput(data.emergency_contact),
+        emergency_phone: sanitizePhone(data.emergency_phone),
+      };
+
+      // Save to database
+      const { error: dbError } = await supabase
+        .from('learnership_applications')
+        .insert(sanitizedData);
+
+      if (dbError) throw dbError;
+
       // Send email notification
       await supabase.functions.invoke('send-form-email', {
         body: {
           formType: 'learnership_application',
-          formData: {
-            full_name: data.full_name,
-            email: data.email,
-            phone: data.phone,
-            age: data.age,
-            education_level: data.education_level,
-            program_interest: data.program_interest,
-            motivation: data.motivation,
-            previous_experience: data.previous_experience,
-            availability: data.availability,
-            emergency_contact: data.emergency_contact,
-            emergency_phone: data.emergency_phone
-          }
+          formData: sanitizedData
         }
       });
 
@@ -79,7 +90,6 @@ export const LearnershipApplicationForm = () => {
 
       form.reset();
     } catch (error) {
-      console.error('Error submitting application:', error);
       toast({
         title: "Submission Failed",
         description: "There was an error submitting your application. Please try again.",

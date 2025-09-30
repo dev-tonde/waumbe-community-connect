@@ -7,18 +7,69 @@ import { ScrollAnimation } from "@/components/ScrollAnimation";
 import MiniHeroBanner from "@/components/MiniHeroBanner";
 import { Phone, Mail, MapPin, Send, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { sanitizeInput, sanitizeEmail, sanitizePhone } from "@/utils/sanitize";
 
 const Contact = () => {
-  const [message, setMessage] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message sent successfully!",
-      description: "We'll get back to you within 24 hours.",
-    });
-    setMessage("");
+    setIsSubmitting(true);
+
+    try {
+      // Sanitize inputs
+      const sanitizedData = {
+        name: sanitizeInput(formData.name),
+        email: sanitizeEmail(formData.email),
+        subject: sanitizeInput(formData.subject),
+        message: sanitizeInput(formData.message),
+        form_type: 'general'
+      };
+
+      // Save to database
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert(sanitizedData);
+
+      if (error) throw error;
+
+      // Send email notification
+      await supabase.functions.invoke('send-form-email', {
+        body: {
+          formType: 'contact',
+          formData: sanitizedData,
+          recipientEmail: 'info@waumbe.org.za'
+        }
+      });
+
+      toast({
+        title: "Message sent successfully!",
+        description: "We'll get back to you within 24 hours.",
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -48,19 +99,48 @@ const Contact = () => {
                   <CardContent>
                     <form onSubmit={handleContactSubmit} className="space-y-4">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <Input placeholder="Full Name" required className="border-fun-green/30 focus:border-fun-green" />
-                        <Input placeholder="Email Address" type="email" required className="border-fun-green/30 focus:border-fun-green" />
+                        <Input 
+                          placeholder="Full Name" 
+                          required 
+                          className="border-fun-green/30 focus:border-fun-green"
+                          value={formData.name}
+                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          disabled={isSubmitting}
+                        />
+                        <Input 
+                          placeholder="Email Address" 
+                          type="email" 
+                          required 
+                          className="border-fun-green/30 focus:border-fun-green"
+                          value={formData.email}
+                          onChange={(e) => setFormData({...formData, email: e.target.value})}
+                          disabled={isSubmitting}
+                        />
                       </div>
-                      <Input placeholder="Subject" required className="border-fun-green/30 focus:border-fun-green" />
+                      <Input 
+                        placeholder="Subject" 
+                        required 
+                        className="border-fun-green/30 focus:border-fun-green"
+                        value={formData.subject}
+                        onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                        disabled={isSubmitting}
+                      />
                       <Textarea
                         placeholder="Your message..."
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
+                        value={formData.message}
+                        onChange={(e) => setFormData({...formData, message: e.target.value})}
                         required
                         className="border-fun-green/30 focus:border-fun-green min-h-32"
+                        disabled={isSubmitting}
                       />
-                      <FunButton type="submit" variant="wiggle" size="lg" className="w-full">
-                        Send Message
+                      <FunButton 
+                        type="submit" 
+                        variant="wiggle" 
+                        size="lg" 
+                        className="w-full"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? "Sending..." : "Send Message"}
                       </FunButton>
                     </form>
                   </CardContent>

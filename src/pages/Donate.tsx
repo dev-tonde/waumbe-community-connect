@@ -142,7 +142,6 @@ const Donate = () => {
       document.body.appendChild(form);
       form.submit();
     } catch (error) {
-      console.error('Donation error:', error);
       toast({
         title: "Error",
         description: "There was an error processing your donation. Please try again.",

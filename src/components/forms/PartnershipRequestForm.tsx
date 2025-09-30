@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Building, Users, DollarSign, Target } from "lucide-react";
+import { sanitizeInput, sanitizeEmail, sanitizePhone } from "@/utils/sanitize";
 
 const partnershipFormSchema = z.object({
   company_name: z.string().min(2, "Company name is required"),
@@ -54,24 +55,34 @@ export const PartnershipRequestForm = () => {
   const onSubmit = async (data: PartnershipFormData) => {
     setIsSubmitting(true);
     try {
+      // Sanitize inputs
+      const sanitizedData = {
+        company_name: sanitizeInput(data.company_name),
+        contact_person: sanitizeInput(data.contact_person),
+        email: sanitizeEmail(data.email),
+        phone: data.phone ? sanitizePhone(data.phone) : null,
+        company_size: sanitizeInput(data.company_size),
+        industry: sanitizeInput(data.industry),
+        partnership_type: sanitizeInput(data.partnership_type),
+        proposed_contribution: data.proposed_contribution ? sanitizeInput(data.proposed_contribution) : null,
+        goals: sanitizeInput(data.goals),
+        timeline: data.timeline ? sanitizeInput(data.timeline) : null,
+        budget_range: data.budget_range ? sanitizeInput(data.budget_range) : null,
+        additional_info: data.additional_info ? sanitizeInput(data.additional_info) : null,
+      };
+
+      // Save to database
+      const { error: dbError } = await supabase
+        .from('partnership_requests')
+        .insert(sanitizedData);
+
+      if (dbError) throw dbError;
+
       // Send email notification
       await supabase.functions.invoke('send-form-email', {
         body: {
           formType: 'partnership_request',
-          formData: {
-            company_name: data.company_name,
-            contact_person: data.contact_person,
-            email: data.email,
-            phone: data.phone,
-            company_size: data.company_size,
-            industry: data.industry,
-            partnership_type: data.partnership_type,
-            proposed_contribution: data.proposed_contribution,
-            goals: data.goals,
-            timeline: data.timeline,
-            budget_range: data.budget_range,
-            additional_info: data.additional_info
-          }
+          formData: sanitizedData
         }
       });
 
@@ -82,7 +93,6 @@ export const PartnershipRequestForm = () => {
 
       form.reset();
     } catch (error) {
-      console.error('Error submitting partnership request:', error);
       toast({
         title: "Submission Failed",
         description: "There was an error submitting your request. Please try again.",

@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { sanitizeInput, sanitizeEmail, sanitizePhone } from "@/utils/sanitize";
 
 const courseApplicationSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
@@ -50,6 +51,20 @@ const CourseApplicationForm = () => {
   const onSubmit = async (data: CourseApplicationFormData) => {
     setIsSubmitting(true);
     try {
+      // Save to database first
+      const { error: dbError } = await supabase
+        .from('course_applications')
+        .insert({
+          full_name: data.fullName,
+          email: data.email,
+          phone: data.phone,
+          selected_course: data.selectedCourse,
+          interest_reason: data.interestReason,
+          status: 'pending'
+        });
+
+      if (dbError) throw dbError;
+
       // Send email notification
       await supabase.functions.invoke('send-form-email', {
         body: {
@@ -104,7 +119,6 @@ const CourseApplicationForm = () => {
       });
 
     } catch (error) {
-      console.error('Error submitting application:', error);
       toast({
         title: "Error",
         description: "There was an error submitting your application. Please try again.",
