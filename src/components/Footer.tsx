@@ -23,7 +23,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-foreground text-white">
+    <footer className="bg-foreground text-white" role="contentinfo" aria-label="Site footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
@@ -58,73 +58,95 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <nav aria-label="Quick links">
             <h4 className="text-lg font-semibold mb-4 text-gold">Quick Links</h4>
             <ul className="space-y-2">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <Link 
                     to={link.href} 
-                    className="text-white/80 hover:text-gold transition-colors"
+                    className="text-white/80 hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-foreground rounded-sm"
                   >
                     {link.name}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Programs */}
-          <div>
+          <nav aria-label="Programs">
             <h4 className="text-lg font-semibold mb-4 text-gold">Our Programs</h4>
             <ul className="space-y-2">
               {programs.map((program, index) => (
                 <li key={index}>
                   <Link 
                     to={program.href} 
-                    className="text-white/80 hover:text-gold transition-colors"
+                    className="text-white/80 hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-foreground rounded-sm"
                   >
                     {program.name}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           {/* Resources */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-gold">Resources</h4>
-            <ul className="space-y-2 mb-6">
-              {resources.map((resource, index) => (
-                <li key={index}>
-                  <Link 
-                    to={resource.href} 
-                    className="text-white/80 hover:text-gold transition-colors"
-                  >
-                    {resource.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <nav aria-label="Resources">
+              <h4 className="text-lg font-semibold mb-4 text-gold">Resources</h4>
+              <ul className="space-y-2 mb-6">
+                {resources.map((resource, index) => (
+                  <li key={index}>
+                    <Link 
+                      to={resource.href} 
+                      className="text-white/80 hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-foreground rounded-sm"
+                    >
+                      {resource.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
             
             {/* Social Media */}
-            <div>
+            <nav aria-label="Social media links">
               <h5 className="text-sm font-semibold mb-3 text-gold">Follow Us</h5>
                <div className="flex space-x-4">
-                 <a href="https://www.facebook.com/share/16UJyPDtTQ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-gold transition-colors">
-                   <Facebook className="w-5 h-5" />
+                 <a 
+                   href="https://www.facebook.com/share/16UJyPDtTQ/?mibextid=wwXIfr" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   className="text-white/80 hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-foreground rounded-sm"
+                   aria-label="Visit our Facebook page"
+                 >
+                   <Facebook className="w-5 h-5" aria-hidden="true" />
                  </a>
-                 <a href="#" className="text-white/80 hover:text-gold transition-colors">
-                   <Twitter className="w-5 h-5" />
+                 <a 
+                   href="#" 
+                   className="text-white/80 hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-foreground rounded-sm"
+                   aria-label="Visit our Twitter page"
+                 >
+                   <Twitter className="w-5 h-5" aria-hidden="true" />
                  </a>
-                 <a href="https://www.instagram.com/waumbe?igsh=OXk3NzFhajFmZDAx" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-gold transition-colors">
-                   <Instagram className="w-5 h-5" />
+                 <a 
+                   href="https://www.instagram.com/waumbe?igsh=OXk3NzFhajFmZDAx" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   className="text-white/80 hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-foreground rounded-sm"
+                   aria-label="Visit our Instagram page"
+                 >
+                   <Instagram className="w-5 h-5" aria-hidden="true" />
                  </a>
-                 <a href="#" className="text-white/80 hover:text-gold transition-colors">
-                   <Linkedin className="w-5 h-5" />
+                 <a 
+                   href="#" 
+                   className="text-white/80 hover:text-gold transition-colors focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-foreground rounded-sm"
+                   aria-label="Visit our LinkedIn page"
+                 >
+                   <Linkedin className="w-5 h-5" aria-hidden="true" />
                  </a>
                </div>
-            </div>
+            </nav>
           </div>
         </div>
 
@@ -132,36 +154,47 @@ const Footer = () => {
         <div className="border-t border-white/20 pt-8 mb-8">
           <div className="text-center">
             <h4 className="text-xl font-semibold mb-4 text-gold">Stay Updated</h4>
-            <p className="text-white/80 mb-6 max-w-2xl mx-auto">
+            <p id="footer-newsletter-description" className="text-white/80 mb-6 max-w-2xl mx-auto">
               Subscribe to our newsletter for the latest updates on our programs, 
               success stories, and community impact.
             </p>
-             <form onSubmit={async (e) => {
-               e.preventDefault();
-               const email = (e.target as HTMLFormElement).email.value;
-               try {
-                 await fetch('/functions/v1/send-form-email', {
-                   method: 'POST',
-                   headers: { 'Content-Type': 'application/json' },
-                   body: JSON.stringify({
-                     formType: 'newsletter',
-                     formData: { email },
-                     recipientEmail: 'waumbedata@gmail.com'
-                   }),
-                 });
-                 (e.target as HTMLFormElement).reset();
-                } catch (error) {
-                  // Error handled silently in production
-                }
-             }} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+             <form 
+               onSubmit={async (e) => {
+                 e.preventDefault();
+                 const email = (e.target as HTMLFormElement).email.value;
+                 try {
+                   await fetch('/functions/v1/send-form-email', {
+                     method: 'POST',
+                     headers: { 'Content-Type': 'application/json' },
+                     body: JSON.stringify({
+                       formType: 'newsletter',
+                       formData: { email },
+                       recipientEmail: 'waumbedata@gmail.com'
+                     }),
+                   });
+                   (e.target as HTMLFormElement).reset();
+                  } catch (error) {
+                    // Error handled silently in production
+                  }
+               }} 
+               className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
+               aria-label="Newsletter subscription form"
+             >
                <input
                  type="email"
                  name="email"
                  placeholder="Enter your email"
                  required
-                 className="flex-1 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-gold"
+                 aria-label="Email address for newsletter"
+                 aria-describedby="footer-newsletter-description"
+                 aria-required="true"
+                 className="flex-1 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-foreground"
                />
-               <button type="submit" className="bg-gold text-foreground px-6 py-2 rounded-lg font-semibold hover:bg-gold/90 transition-colors">
+               <button 
+                 type="submit" 
+                 className="bg-gold text-foreground px-6 py-2 rounded-lg font-semibold hover:bg-gold/90 transition-colors focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-foreground"
+                 aria-label="Subscribe to newsletter"
+               >
                  Subscribe
                </button>
              </form>
@@ -177,17 +210,23 @@ const Footer = () => {
               </p>
             </div>
             
-            <div className="flex items-center space-x-6">
-              <a href="#" className="text-white/60 hover:text-gold text-sm transition-colors">
+            <nav className="flex items-center space-x-6" aria-label="Legal and site information">
+              <a 
+                href="#" 
+                className="text-white/60 hover:text-gold text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-foreground rounded-sm"
+              >
                 Privacy Policy
               </a>
-              <a href="#" className="text-white/60 hover:text-gold text-sm transition-colors">
+              <a 
+                href="#" 
+                className="text-white/60 hover:text-gold text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-foreground rounded-sm"
+              >
                 Terms of Service
               </a>
               <div className="flex items-center text-white/60 text-sm">
-                Made with <Heart className="w-4 h-4 mx-1 text-red-400" /> for community
+                Made with <Heart className="w-4 h-4 mx-1 text-red-400" aria-hidden="true" /> for community
               </div>
-            </div>
+            </nav>
           </div>
         </div>
 

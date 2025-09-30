@@ -38,22 +38,34 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="w-full py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-fun-blue/10 to-fun-pink/10">
-      <div className="w-full px-4 sm:px-6 lg:px-8 text-center">
+    <section 
+      className="w-full py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-fun-blue/10 to-fun-pink/10"
+      aria-label="Newsletter subscription"
+    >
+      <div className="w-full px-4 sm:px-6 lg:px-8">
         <ScrollAnimation>
-          <Mail className="w-12 h-12 sm:w-16 sm:h-16 text-fun-blue mx-auto mb-4 sm:mb-6 animate-bounce-gentle" />
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6">
-            Stay Updated
-          </h2>
-          <p id="newsletter-description" className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
-            Subscribe to our newsletter for the latest updates on our programs, 
-            success stories, and opportunities to make a difference.
-          </p>
+          <div className="text-center mb-6 sm:mb-8">
+            <Mail 
+              className="w-12 h-12 sm:w-16 sm:h-16 text-fun-blue mx-auto mb-4 sm:mb-6 animate-bounce-gentle" 
+              aria-hidden="true"
+            />
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6">
+              Stay Updated
+            </h2>
+            <p id="newsletter-description" className="text-base sm:text-lg text-muted-foreground mb-0 max-w-2xl mx-auto">
+              Subscribe to our newsletter for the latest updates on our programs, 
+              success stories, and opportunities to make a difference.
+            </p>
+          </div>
         </ScrollAnimation>
         
         <ScrollAnimation delay={0.2}>
-          <form onSubmit={handleSubmit} className="w-full max-w-none mx-auto">
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-4xl mx-auto px-4">
+          <form 
+            onSubmit={handleSubmit} 
+            className="w-full"
+            aria-label="Newsletter subscription form"
+          >
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-full mx-auto">
               <Input
                 type="email"
                 placeholder="Enter your email address"
@@ -64,17 +76,18 @@ const Newsletter = () => {
                 disabled={isLoading}
                 aria-label="Email address for newsletter subscription"
                 aria-describedby="newsletter-description"
+                aria-required="true"
               />
               <FunButton 
                 type="submit" 
                 variant="primary" 
                 disabled={isLoading}
-                aria-label={isLoading ? "Subscribing..." : "Subscribe to newsletter"}
+                aria-label={isLoading ? "Subscribing to newsletter, please wait" : "Subscribe to newsletter"}
                 className="h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg whitespace-nowrap min-w-fit sm:min-w-[140px]"
               >
                 {isLoading ? (
                   <>
-                    <LoadingSpinner size="sm" className="mr-2" />
+                    <LoadingSpinner size="sm" className="mr-2" aria-hidden="true" />
                     <span className="hidden sm:inline">Subscribing...</span>
                     <span className="sm:hidden">Loading...</span>
                   </>
