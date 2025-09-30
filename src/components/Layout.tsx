@@ -14,13 +14,6 @@ const Layout = () => {
       <AccessibilityEnhancements />
       <AccessibilitySkipLink />
       
-      {/* Skip navigation links */}
-      <div className="sr-only">
-        <a href="#main-content" className="skip-link">Skip to main content</a>
-        <a href="#navigation" className="skip-link">Skip to navigation</a>
-        <a href="#footer" className="skip-link">Skip to footer</a>
-      </div>
-      
       <header role="banner">
         <Navbar />
       </header>
