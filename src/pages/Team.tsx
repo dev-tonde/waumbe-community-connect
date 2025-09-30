@@ -22,7 +22,7 @@ const Team = () => {
     },
     {
       name: "Terence Willemse",
-      role: "Head of Facilitation, Entrepreneurship, Media & Marketing/ Project Manager",
+      role: "Head of Skills & Development Facilitation, Media & Marketing Officer",
       image: "/src/assets/team-images/Terence-Willemse.png",
       bio: "Overseeing facilitation, entrepreneurship development, and media/marketing initiatives. Proven project manager with expertise in managing projects from conception to completion, ensuring effective delivery and impactful outcomes. Driving organizational growth through strategic planning, team leadership, and stakeholder engagement. Responsible for Facilitation and entrepreneurship development, Media and marketing initiatives, Project management (from conception to completion), and Strategic planning and team leadership",
     },
@@ -58,9 +58,9 @@ const Team = () => {
     },
     {
       name: "Anelisa Siyibana",
-      role: "Academic Development Innovation Assistant",
+      role: "Programs Assistant",
       image: "/src/assets/team-images/Anelisa-Siyibana.png",
-      bio: "Academic Development & Innovation Officer Assistant plays a crucial role in supporting the initiatives aimed at enhancing educational practices and fostering innovation within an academic institution. This role typically involves coordinating and assisting with the development of innovative teaching strategies, curriculum design, and the integration of new technologies into the learning environment. The assistant may be responsible for organising workshops, managing project timelines, and liaising between faculty, students, and external partners to ensure the smooth implementation of innovative projects. Additionally, they might assist in researching and analysing educational trends to provide insights that drive academic growth. Strong organisational, communication, and problem-solving skills are essential in this role, as it requires a proactive approach to supporting the continuous improvement of educational offerings.",
+      bio: "Office assistant plays a crucial role in ensuring the smooth operation of any business environment. They are responsible for a variety of administrative tasks, such as managing correspondence, scheduling appointments, organising files, and handling basic bookkeeping duties. Additionally, they often serve as the first point of contact for visitors and clients, requiring strong communication and interpersonal skills. Proficiency in office software, attention to detail, and the ability to multitask are essential qualities for success in this role. An effective office assistant not only supports the daily functions of the office but also contributes to a positive and efficient workplace atmosphere.",
     },
     {
       name: "Avela Xwayi",
