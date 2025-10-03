@@ -1,5 +1,11 @@
 import React, { Suspense, lazy } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { Toaster } from "@/components/ui/toaster";
@@ -25,6 +31,36 @@ const Entrepreneurship = lazy(() => import("@/pages/Entrepreneurship"));
 const Auth = lazy(() => import("@/pages/Auth"));
 const Admin = lazy(() => import("@/pages/Admin"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
+const AcademicDevelopment = lazy(
+  () => import("@/pages/programs/AcademicDevelopment")
+);
+const SocietalReformation = lazy(
+  () => import("@/pages/programs/SocietalReformation")
+);
+const ProgramsCourses = lazy(() => import("@/pages/programs/Courses"));
+const ProgramsLearnerships = lazy(
+  () => import("@/pages/programs/Learnerships")
+);
+const ProgramsSkills = lazy(() => import("@/pages/programs/SkillsDevelopment"));
+const ProgramsVolunteer = lazy(() => import("@/pages/programs/Volunteer"));
+const ProgramsEntrepreneurship = lazy(
+  () => import("@/pages/programs/Entrepreneurship")
+);
+
+const EntCourses = lazy(() => import("@/pages/entrepreneurship/Courses"));
+const EntLearnership = lazy(
+  () => import("@/pages/entrepreneurship/Learnership")
+);
+const EntFundraising = lazy(
+  () => import("@/pages/entrepreneurship/Fundraising")
+);
+const EntContact = lazy(() => import("@/pages/entrepreneurship/Contact"));
+const EntDonate = lazy(() => import("@/pages/entrepreneurship/Donate"));
+
+const Awards = lazy(() => import("@/pages/testimonials/Awards"));
+const TestimonialDetail = lazy(
+  () => import("@/pages/testimonials/TestimonialDetail")
+);
 
 // Programs subpages
 const AcademicDevelopment = lazy(() => import("@/pages/programs/AcademicDevelopment"));
@@ -76,6 +112,7 @@ export default function App() {
   return (
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
+<<<<<<< HEAD
         <AuthProvider>
           <BrowserRouter>
             <ScrollToTop />
@@ -125,6 +162,98 @@ export default function App() {
             <Toaster />
           </BrowserRouter>
         </AuthProvider>
+=======
+        <BrowserRouter>
+          <ScrollToTop />
+          <Suspense fallback={<Loading />}>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="about" element={<About />} />
+                <Route path="programs" element={<Programs />} />
+                <Route path="contact" element={<Contact />} />
+                <Route path="team" element={<Team />} />
+                <Route path="partners" element={<Partners />} />
+                <Route path="donate" element={<Donate />} />
+                <Route path="volunteer" element={<Volunteer />} />
+                <Route path="gallery" element={<Gallery />} />
+                <Route path="testimonials" element={<Testimonials />} />
+                <Route
+                  path="programs/academic-development"
+                  element={<AcademicDevelopment />}
+                />
+                <Route
+                  path="programs/societal-reformation"
+                  element={<SocietalReformation />}
+                />
+                <Route
+                  path="programs/societal-reform"
+                  element={
+                    <Navigate to="/programs/societal-reformation" replace />
+                  }
+                />
+                <Route path="programs/courses" element={<ProgramsCourses />} />
+                <Route
+                  path="programs/learnerships"
+                  element={<ProgramsLearnerships />}
+                />
+                <Route
+                  path="programs/skills-development"
+                  element={<ProgramsSkills />}
+                />
+                <Route
+                  path="programs/volunteer"
+                  element={<ProgramsVolunteer />}
+                />
+                <Route
+                  path="programs/entrepreneurship"
+                  element={<ProgramsEntrepreneurship />}
+                />
+                <Route
+                  path="testimonials/share"
+                  element={<ShareTestimonial />}
+                />
+                <Route
+                  path="financial-reports"
+                  element={<FinancialReports />}
+                />
+                <Route path="governance" element={<Governance />} />
+                <Route
+                  path="core-steering-group"
+                  element={<CoreSteeringGroup />}
+                />
+                <Route path="entrepreneurship" element={<Entrepreneurship />} />
+                {/* entrepreneurship subroutes */}
+                <Route
+                  path="entrepreneurship/courses"
+                  element={<EntCourses />}
+                />
+                <Route
+                  path="entrepreneurship/learnership"
+                  element={<EntLearnership />}
+                />
+                <Route
+                  path="entrepreneurship/fundraising"
+                  element={<EntFundraising />}
+                />
+                <Route
+                  path="entrepreneurship/contact"
+                  element={<EntContact />}
+                />
+                <Route path="entrepreneurship/donate" element={<EntDonate />} />
+
+                {/* testimonials extras */}
+                <Route path="testimonials/awards" element={<Awards />} />
+                <Route
+                  path="testimonials/:slug"
+                  element={<TestimonialDetail />}
+                />
+                <Route path="*" element={<NotFound />} />
+              </Route>
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+>>>>>>> ee625ae35d2e9f2e7f9829c8ec6f4ff2557f5b42
       </QueryClientProvider>
     </React.StrictMode>
   );

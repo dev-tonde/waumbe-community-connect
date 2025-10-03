@@ -14,7 +14,7 @@ const EntrepreneurshipFooter = () => {
   const quickLinks = [
     { name: "About Us", href: "/about" },
     { name: "Programs", href: "/programs" },
-    // { name: "Gallery", href: "/gallery" },
+    { name: "Gallery", href: "/gallery" },
     { name: "Contact", href: "/entrepreneurship/contact" },
   ];
 
@@ -132,7 +132,7 @@ const EntrepreneurshipFooter = () => {
               </h5>
               <div className="flex space-x-4">
                 <a
-                  href="https://www.facebook.com/share/1EbUELK332/?mibextid=wwXIfr"
+                  href="https://www.facebook.com/share/16UJyPDtTQ/?mibextid=wwXIfr"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white/80 hover:text-gold transition-colors"
@@ -140,7 +140,7 @@ const EntrepreneurshipFooter = () => {
                   <Facebook className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://x.com/waumbe_fisant"
+                  href="#"
                   className="text-white/80 hover:text-gold transition-colors"
                 >
                   <Twitter className="w-5 h-5" />
@@ -154,7 +154,7 @@ const EntrepreneurshipFooter = () => {
                   <Instagram className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://www.linkedin.com/company/waumbe-youth-development/"
+                  href="#"
                   className="text-white/80 hover:text-gold transition-colors"
                 >
                   <Linkedin className="w-5 h-5" />
@@ -191,7 +191,7 @@ const EntrepreneurshipFooter = () => {
                   });
                   (e.target as HTMLFormElement).reset();
                 } catch (error) {
-                  // Error handled silently in production
+                  console.error("Newsletter subscription failed:", error);
                 }
               }}
               className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
