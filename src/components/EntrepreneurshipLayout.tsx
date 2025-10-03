@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/EntrepreneurshipNavbar";
+import EntrepreneurshipFooter from "@/components/entrepreneurship/EntrepreneurshipFooter";
 import { FloatingMainSiteButton } from "@/components/FloatingMainSiteButton";
 import AccessibilitySkipLink from "@/components/AccessibilitySkipLink";
 
@@ -11,6 +12,7 @@ const EntrepreneurshipLayout = () => {
       <main id="main-content" role="main" className="flex-1">
         <Outlet />
       </main>
+      <EntrepreneurshipFooter />
       <FloatingMainSiteButton />
     </div>
   );
