@@ -188,22 +188,30 @@ export default function App() {
                 <Route path="entrepreneurship" element={<Entrepreneurship />} />
                 {/* entrepreneurship subroutes */}
                 <Route
-                  path="entrepreneurship/courses"
-                  element={<EntCourses />}
-                />
-                <Route
-                  path="entrepreneurship/learnership"
-                  element={<EntLearnership />}
-                />
-                <Route
-                  path="entrepreneurship/fundraising"
-                  element={<EntFundraising />}
-                />
-                <Route
-                  path="entrepreneurship/contact"
-                  element={<EntContact />}
-                />
-                <Route path="entrepreneurship/donate" element={<EntDonate />} />
+                  path="entrepreneurship"
+                  element={<EntrepreneurshipLayout />}
+                >
+                  <Route
+                    path="entrepreneurship/courses"
+                    element={<EntCourses />}
+                  />
+                  <Route
+                    path="entrepreneurship/learnership"
+                    element={<EntLearnership />}
+                  />
+                  <Route
+                    path="entrepreneurship/fundraising"
+                    element={<EntFundraising />}
+                  />
+                  <Route
+                    path="entrepreneurship/contact"
+                    element={<EntContact />}
+                  />
+                  <Route
+                    path="entrepreneurship/donate"
+                    element={<EntDonate />}
+                  />
+                </Route>
 
                 {/* testimonials extras */}
                 <Route path="testimonials/awards" element={<Awards />} />
