@@ -28,11 +28,18 @@ export default defineConfig(({ mode, command }) => {
       include: [
         "react",
         "react-dom",
+        "react/jsx-runtime",
         "@tanstack/react-query",
         "use-callback-ref",
         "react-resizable-panels",
+        "react-remove-scroll",
+        "react-style-singleton",
+        "use-sidecar",
       ],
       esbuildOptions: { target: "es2020" },
+    },
+    ssr: {
+      noExternal: ["react", "react-dom"],
     },
     build: {
       target: "es2020",
@@ -40,11 +47,20 @@ export default defineConfig(({ mode, command }) => {
       modulePreload: { polyfill: false },
       cssCodeSplit: true,
       chunkSizeWarningLimit: 1024,
+      commonjsOptions: {
+        include: [/node_modules/],
+        transformMixedEsModules: true,
+      },
       rollupOptions: {
         output: {
           manualChunks(id) {
             if (!id.includes("node_modules")) return;
-            if (id.includes("react")) return "react-vendor";
+            // Keep all React-related packages together to prevent duplicate instances
+            if (id.includes("react") || id.includes("use-callback-ref") || 
+                id.includes("react-remove-scroll") || id.includes("react-style-singleton") ||
+                id.includes("use-sidecar")) {
+              return "react-vendor";
+            }
             if (id.includes("@radix-ui")) return "radix";
             if (id.includes("lucide-react")) return "icons";
             if (id.includes("date-fns")) return "date-fns";
