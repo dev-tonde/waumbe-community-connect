@@ -38,9 +38,6 @@ export default defineConfig(({ mode, command }) => {
       ],
       esbuildOptions: { target: "es2020" },
     },
-    ssr: {
-      noExternal: ["react", "react-dom"],
-    },
     build: {
       target: "es2020",
       sourcemap: true,
