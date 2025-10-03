@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { Toaster } from "@/components/ui/toaster";
 
 // Lazy-loaded layout & pages
 const Layout = lazy(() => import("@/components/Layout"));
@@ -91,6 +92,7 @@ export default function App() {
                 </Route>
               </Routes>
             </Suspense>
+            <Toaster />
           </BrowserRouter>
         </AuthProvider>
       </QueryClientProvider>
