@@ -40,7 +40,7 @@ export default defineConfig(({ mode, command }) => {
     },
     build: {
       target: "es2020",
-      sourcemap: true,
+      sourcemap: false,
       modulePreload: { polyfill: false },
       cssCodeSplit: true,
       chunkSizeWarningLimit: 1024,
@@ -58,9 +58,16 @@ export default defineConfig(({ mode, command }) => {
                 id.includes("use-sidecar")) {
               return "react-vendor";
             }
+            // Split heavy libraries for better caching
             if (id.includes("@radix-ui")) return "radix";
             if (id.includes("lucide-react")) return "icons";
+            if (id.includes("framer-motion")) return "framer";
+            if (id.includes("@tanstack/react-query")) return "query";
+            if (id.includes("recharts") || id.includes("d3-")) return "charts";
             if (id.includes("date-fns")) return "date-fns";
+            if (id.includes("@supabase")) return "supabase";
+            if (id.includes("dompurify")) return "sanitize";
+            // Everything else goes to vendor
             return "vendor";
           },
         },
