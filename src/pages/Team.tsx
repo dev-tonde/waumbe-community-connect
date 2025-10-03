@@ -1,8 +1,8 @@
-import { useState, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
-import { motion } from "framer-motion";
+import { useMemo } from "react";
 
+// ✅ Import images so Vite fingerprints and serves them correctly
 import MduImg from "@/assets/team-images/Mdu-Menze.png";
 import TerenceImg from "@/assets/team-images/Terence-Willemse.png";
 import AsipheImg from "@/assets/team-images/Asiphe-Khemtse.png";
@@ -151,4 +151,3 @@ const Team = () => {
 };
 
 export default Team;
-

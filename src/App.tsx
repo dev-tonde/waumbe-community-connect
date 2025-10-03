@@ -1,12 +1,20 @@
 import React, { Suspense, lazy } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { Toaster } from "@/components/ui/toaster";
 
 // Lazy-loaded layout & pages
 const Layout = lazy(() => import("@/components/Layout"));
-const EntrepreneurshipLayout = lazy(() => import("@/components/EntrepreneurshipLayout"));
+const EntrepreneurshipLayout = lazy(
+  () => import("@/components/EntrepreneurshipLayout")
+);
 const Home = lazy(() => import("@/pages/Home"));
 const About = lazy(() => import("@/pages/About"));
 const Programs = lazy(() => import("@/pages/Programs"));
@@ -26,21 +34,63 @@ const Auth = lazy(() => import("@/pages/Auth"));
 const Admin = lazy(() => import("@/pages/Admin"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
 
+const ProgramsCourses = lazy(() => import("@/pages/programs/Courses"));
+const ProgramsLearnerships = lazy(
+  () => import("@/pages/programs/Learnerships")
+);
+const ProgramsSkills = lazy(() => import("@/pages/programs/SkillsDevelopment"));
+const ProgramsVolunteer = lazy(() => import("@/pages/programs/Volunteer"));
+const ProgramsEntrepreneurship = lazy(
+  () => import("@/pages/programs/Entrepreneurship")
+);
+
+const EntCourses = lazy(() => import("@/pages/entrepreneurship/Courses"));
+const EntLearnership = lazy(
+  () => import("@/pages/entrepreneurship/Learnership")
+);
+const EntFundraising = lazy(
+  () => import("@/pages/entrepreneurship/Fundraising")
+);
+const EntContact = lazy(() => import("@/pages/entrepreneurship/Contact"));
+const EntDonate = lazy(() => import("@/pages/entrepreneurship/Donate"));
+
+const TestimonialDetail = lazy(
+  () => import("@/pages/testimonials/TestimonialDetail")
+);
+
 // Programs subpages
-const AcademicDevelopment = lazy(() => import("@/pages/programs/AcademicDevelopment"));
+const AcademicDevelopment = lazy(
+  () => import("@/pages/programs/AcademicDevelopment")
+);
 const ProgramCourses = lazy(() => import("@/pages/programs/Courses"));
-const ProgramEntrepreneurship = lazy(() => import("@/pages/programs/Entrepreneurship"));
+const ProgramEntrepreneurship = lazy(
+  () => import("@/pages/programs/Entrepreneurship")
+);
 const Learnerships = lazy(() => import("@/pages/programs/Learnerships"));
-const SkillsDevelopment = lazy(() => import("@/pages/programs/SkillsDevelopment"));
-const SocietalReformation = lazy(() => import("@/pages/programs/SocietalReformation"));
+const SkillsDevelopment = lazy(
+  () => import("@/pages/programs/SkillsDevelopment")
+);
+const SocietalReformation = lazy(
+  () => import("@/pages/programs/SocietalReformation")
+);
 const ProgramVolunteer = lazy(() => import("@/pages/programs/Volunteer"));
 
 // Entrepreneurship subpages
-const EntrepreneurshipCourses = lazy(() => import("@/pages/entrepreneurship/Courses"));
-const EntrepreneurshipLearnership = lazy(() => import("@/pages/entrepreneurship/Learnership"));
-const EntrepreneurshipFundraising = lazy(() => import("@/pages/entrepreneurship/Fundraising"));
-const EntrepreneurshipContact = lazy(() => import("@/pages/entrepreneurship/Contact"));
-const EntrepreneurshipDonate = lazy(() => import("@/pages/entrepreneurship/Donate"));
+const EntrepreneurshipCourses = lazy(
+  () => import("@/pages/entrepreneurship/Courses")
+);
+const EntrepreneurshipLearnership = lazy(
+  () => import("@/pages/entrepreneurship/Learnership")
+);
+const EntrepreneurshipFundraising = lazy(
+  () => import("@/pages/entrepreneurship/Fundraising")
+);
+const EntrepreneurshipContact = lazy(
+  () => import("@/pages/entrepreneurship/Contact")
+);
+const EntrepreneurshipDonate = lazy(
+  () => import("@/pages/entrepreneurship/Donate")
+);
 
 // Testimonials subpages
 const Awards = lazy(() => import("@/pages/testimonials/Awards"));
@@ -76,55 +126,96 @@ export default function App() {
   return (
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <BrowserRouter>
-            <ScrollToTop />
-            <Suspense fallback={<Loading />}>
-              <Routes>
-                <Route path="/auth" element={<Auth />} />
-                <Route path="/admin" element={<Admin />} />
-                
-                {/* Entrepreneurship routes with separate layout */}
-                <Route path="/entrepreneurship" element={<EntrepreneurshipLayout />}>
-                  <Route index element={<Entrepreneurship />} />
-                  <Route path="courses" element={<EntrepreneurshipCourses />} />
-                  <Route path="learnership" element={<EntrepreneurshipLearnership />} />
-                  <Route path="fundraising" element={<EntrepreneurshipFundraising />} />
-                  <Route path="contact" element={<EntrepreneurshipContact />} />
-                  <Route path="donate" element={<EntrepreneurshipDonate />} />
-                </Route>
-                
-                {/* Main site routes with standard layout */}
-                <Route path="/" element={<Layout />}>
-                  <Route index element={<Home />} />
-                  <Route path="about" element={<About />} />
-                  <Route path="programs" element={<Programs />} />
-                  <Route path="programs/academic-development" element={<AcademicDevelopment />} />
-                  <Route path="programs/courses" element={<ProgramCourses />} />
-                  <Route path="programs/entrepreneurship" element={<ProgramEntrepreneurship />} />
-                  <Route path="programs/learnerships" element={<Learnerships />} />
-                  <Route path="programs/skills-development" element={<SkillsDevelopment />} />
-                  <Route path="programs/societal-reformation" element={<SocietalReformation />} />
-                  <Route path="programs/volunteer" element={<ProgramVolunteer />} />
-                  <Route path="contact" element={<Contact />} />
-                  <Route path="team" element={<Team />} />
-                  <Route path="partners" element={<Partners />} />
-                  <Route path="donate" element={<Donate />} />
-                  <Route path="volunteer" element={<Volunteer />} />
-                  <Route path="gallery" element={<Gallery />} />
-                  <Route path="testimonials" element={<Testimonials />} />
-                  <Route path="testimonials/share" element={<ShareTestimonial />} />
-                  <Route path="testimonials/awards" element={<Awards />} />
-                  <Route path="financial-reports" element={<FinancialReports />} />
-                  <Route path="governance" element={<Governance />} />
-                  <Route path="core-steering-group" element={<CoreSteeringGroup />} />
-                  <Route path="*" element={<NotFound />} />
-                </Route>
-              </Routes>
-            </Suspense>
-            <Toaster />
-          </BrowserRouter>
-        </AuthProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <Suspense fallback={<Loading />}>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="about" element={<About />} />
+                <Route path="programs" element={<Programs />} />
+                <Route path="contact" element={<Contact />} />
+                <Route path="team" element={<Team />} />
+                <Route path="partners" element={<Partners />} />
+                <Route path="donate" element={<Donate />} />
+                <Route path="volunteer" element={<Volunteer />} />
+                <Route path="gallery" element={<Gallery />} />
+                <Route path="testimonials" element={<Testimonials />} />
+                <Route
+                  path="programs/academic-development"
+                  element={<AcademicDevelopment />}
+                />
+                <Route
+                  path="programs/societal-reformation"
+                  element={<SocietalReformation />}
+                />
+                <Route
+                  path="programs/societal-reform"
+                  element={
+                    <Navigate to="/programs/societal-reformation" replace />
+                  }
+                />
+                <Route path="programs/courses" element={<ProgramsCourses />} />
+                <Route
+                  path="programs/learnerships"
+                  element={<ProgramsLearnerships />}
+                />
+                <Route
+                  path="programs/skills-development"
+                  element={<ProgramsSkills />}
+                />
+                <Route
+                  path="programs/volunteer"
+                  element={<ProgramsVolunteer />}
+                />
+                <Route
+                  path="programs/entrepreneurship"
+                  element={<ProgramsEntrepreneurship />}
+                />
+                <Route
+                  path="testimonials/share"
+                  element={<ShareTestimonial />}
+                />
+                <Route
+                  path="financial-reports"
+                  element={<FinancialReports />}
+                />
+                <Route path="governance" element={<Governance />} />
+                <Route
+                  path="core-steering-group"
+                  element={<CoreSteeringGroup />}
+                />
+                <Route path="entrepreneurship" element={<Entrepreneurship />} />
+                {/* entrepreneurship subroutes */}
+                <Route
+                  path="entrepreneurship/courses"
+                  element={<EntCourses />}
+                />
+                <Route
+                  path="entrepreneurship/learnership"
+                  element={<EntLearnership />}
+                />
+                <Route
+                  path="entrepreneurship/fundraising"
+                  element={<EntFundraising />}
+                />
+                <Route
+                  path="entrepreneurship/contact"
+                  element={<EntContact />}
+                />
+                <Route path="entrepreneurship/donate" element={<EntDonate />} />
+
+                {/* testimonials extras */}
+                <Route path="testimonials/awards" element={<Awards />} />
+                <Route
+                  path="testimonials/:slug"
+                  element={<TestimonialDetail />}
+                />
+                <Route path="*" element={<NotFound />} />
+              </Route>
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
       </QueryClientProvider>
     </React.StrictMode>
   );
