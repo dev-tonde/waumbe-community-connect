@@ -14,7 +14,7 @@ const EntrepreneurshipFooter = () => {
   const quickLinks = [
     { name: "About Us", href: "/about" },
     { name: "Programs", href: "/programs" },
-    { name: "Gallery", href: "/gallery" },
+    // { name: "Gallery", href: "/gallery" },
     { name: "Contact", href: "/entrepreneurship/contact" },
   ];
 
