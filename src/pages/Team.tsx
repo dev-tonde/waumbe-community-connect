@@ -1,16 +1,8 @@
-<<<<<<< HEAD
-import { useState, useMemo } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { ScrollAnimation } from "@/components/ScrollAnimation";
-import { motion } from "framer-motion";
-
-=======
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { useMemo } from "react";
 
 // ✅ Import images so Vite fingerprints and serves them correctly
->>>>>>> ee625ae35d2e9f2e7f9829c8ec6f4ff2557f5b42
 import MduImg from "@/assets/team-images/Mdu-Menze.png";
 import TerenceImg from "@/assets/team-images/Terence-Willemse.png";
 import AsipheImg from "@/assets/team-images/Asiphe-Khemtse.png";
@@ -159,4 +151,3 @@ const Team = () => {
 };
 
 export default Team;
-

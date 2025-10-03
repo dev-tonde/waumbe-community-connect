@@ -54,31 +54,20 @@ const StayConnected = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <section id="contact" className="w-full py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-primary/5 to-accent/5">
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-=======
     <section
       id="contact"
       className="py-20 bg-gradient-to-br from-primary/5 to-accent/5"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
->>>>>>> ee625ae35d2e9f2e7f9829c8ec6f4ff2557f5b42
         {/* Header */}
         <ScrollAnimation>
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4 sm:mb-6 animate-float">
               Stay Connected
             </h2>
-<<<<<<< HEAD
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
-              Join our community and stay updated on our latest programs, success stories, 
-              and opportunities to make a difference.
-=======
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Join our community and stay updated on our latest programs,
               success stories, and opportunities to make a difference.
->>>>>>> ee625ae35d2e9f2e7f9829c8ec6f4ff2557f5b42
             </p>
           </div>
         </ScrollAnimation>
@@ -89,7 +78,10 @@ const StayConnected = () => {
             <Card className="lg:col-span-1 bg-gradient-to-br from-fun-pink/10 to-fun-blue/10 hover:scale-105 transition-transform duration-300 h-full">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
-                  <Mail className="w-5 h-5 text-fun-pink animate-bounce-gentle" aria-hidden="true" />
+                  <Mail
+                    className="w-5 h-5 text-fun-pink animate-bounce-gentle"
+                    aria-hidden="true"
+                  />
                   Newsletter
                 </CardTitle>
                 <CardDescription className="text-sm sm:text-base">
@@ -97,8 +89,8 @@ const StayConnected = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form 
-                  onSubmit={handleNewsletterSubmit} 
+                <form
+                  onSubmit={handleNewsletterSubmit}
                   className="space-y-4"
                   aria-label="Newsletter subscription form"
                 >
@@ -112,9 +104,9 @@ const StayConnected = () => {
                     aria-label="Email address for newsletter"
                     aria-required="true"
                   />
-                  <FunButton 
-                    type="submit" 
-                    variant="primary" 
+                  <FunButton
+                    type="submit"
+                    variant="primary"
                     className="w-full"
                     aria-label="Subscribe to newsletter"
                   >
@@ -129,16 +121,6 @@ const StayConnected = () => {
         {/* Contact Information */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16 max-w-7xl mx-auto">
           <ScrollAnimation delay={0.3}>
-<<<<<<< HEAD
-             <div className="text-center transform hover:scale-110 transition-transform duration-300 p-4">
-               <Phone className="w-8 h-8 sm:w-10 sm:h-10 text-fun-blue mx-auto mb-4 animate-bounce-gentle" aria-hidden="true" />
-               <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">Call Us</h3>
-               <div className="text-sm sm:text-base text-muted-foreground space-y-1">
-                 <p><a href="tel:+27753406751" className="hover:text-fun-blue transition-colors">+27 75 340 6751</a></p>
-                 <p><a href="tel:+27614556192" className="hover:text-fun-blue transition-colors">+27 61 455 6192</a></p>
-               </div>
-             </div>
-=======
             <div className="text-center transform hover:scale-110 transition-transform duration-300">
               <Phone className="w-8 h-8 text-fun-blue mx-auto mb-4 animate-bounce-gentle" />
               <h3 className="text-lg font-semibold text-foreground mb-2">
@@ -149,21 +131,9 @@ const StayConnected = () => {
                 <p>+27 61 455 6192</p>
               </div>
             </div>
->>>>>>> ee625ae35d2e9f2e7f9829c8ec6f4ff2557f5b42
           </ScrollAnimation>
 
           <ScrollAnimation delay={0.4}>
-<<<<<<< HEAD
-             <div className="text-center transform hover:scale-110 transition-transform duration-300 p-4">
-               <Mail className="w-8 h-8 sm:w-10 sm:h-10 text-fun-pink mx-auto mb-4 animate-float" aria-hidden="true" />
-               <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">Email</h3>
-               <div className="text-sm sm:text-base text-muted-foreground space-y-1">
-                 <p><a href="mailto:terencewillemse@waumbe.org.za" className="hover:text-fun-pink transition-colors break-all">terencewillemse@waumbe.org.za</a></p>
-                 <p><a href="mailto:asiphekhemtse@waumbe.org.za" className="hover:text-fun-pink transition-colors break-all">asiphekhemtse@waumbe.org.za</a></p>
-                 <p><a href="mailto:info@waumbe.org.za" className="hover:text-fun-pink transition-colors break-all">info@waumbe.org.za</a></p>
-               </div>
-             </div>
-=======
             <div className="text-center transform hover:scale-110 transition-transform duration-300">
               <Mail className="w-8 h-8 text-fun-pink mx-auto mb-4 animate-float" />
               <h3 className="text-lg font-semibold text-foreground mb-2">
@@ -175,27 +145,9 @@ const StayConnected = () => {
                 <p>info@waumbe.org.za</p>
               </div>
             </div>
->>>>>>> ee625ae35d2e9f2e7f9829c8ec6f4ff2557f5b42
           </ScrollAnimation>
 
           <ScrollAnimation delay={0.5}>
-<<<<<<< HEAD
-             <div className="text-center transform hover:scale-110 transition-transform duration-300 p-4 sm:col-span-2 md:col-span-1">
-               <MapPin className="w-8 h-8 sm:w-10 sm:h-10 text-fun-green mx-auto mb-4 animate-pulse-slow" aria-hidden="true" />
-               <h3 className="text-lg sm:text-xl font-semibold text-foreground mb-2">Visit Us</h3>
-               <p className="text-sm sm:text-base text-muted-foreground max-w-xs mx-auto">
-                 <a 
-                   href="https://maps.google.com/?q=14+Moses+Mabhida+Street,+Fisantekraal,+Cape+Town,+7550" 
-                   target="_blank" 
-                   rel="noopener noreferrer"
-                   className="hover:text-fun-green transition-colors"
-                   aria-label="View our location on Google Maps"
-                 >
-                   14 Moses Mabhida Street, Fisantekraal, Cape Town, 7550
-                 </a>
-               </p>
-             </div>
-=======
             <div className="text-center transform hover:scale-110 transition-transform duration-300">
               <MapPin className="w-8 h-8 text-fun-green mx-auto mb-4 animate-pulse-slow" />
               <h3 className="text-lg font-semibold text-foreground mb-2">
@@ -205,7 +157,6 @@ const StayConnected = () => {
                 14 Moses Mabhida Street, Fisantekraal, Cape Town, 7550
               </p>
             </div>
->>>>>>> ee625ae35d2e9f2e7f9829c8ec6f4ff2557f5b42
           </ScrollAnimation>
         </div>
 
@@ -216,20 +167,6 @@ const StayConnected = () => {
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 animate-float">
                 Ready to Make a Difference?
               </h3>
-<<<<<<< HEAD
-              <p className="text-base sm:text-lg md:text-xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto">
-                Join us in transforming communities through education, innovation, and empowerment. 
-                Every contribution makes a lasting impact.
-              </p>
-               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                 <FunButton variant="warning" size="lg" asChild>
-                   <a href="/donate" className="text-base sm:text-lg">Donate</a>
-                 </FunButton>
-                 <FunButton variant="bounce" size="lg" asChild>
-                   <a href="/programs/volunteer" className="text-base sm:text-lg">Volunteer With Us</a>
-                 </FunButton>
-               </div>
-=======
               <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
                 Join us in transforming communities through education,
                 innovation, and empowerment. Every contribution makes a lasting
@@ -243,7 +180,6 @@ const StayConnected = () => {
                   <a href="/programs/volunteer">Volunteer With Us</a>
                 </FunButton>
               </div>
->>>>>>> ee625ae35d2e9f2e7f9829c8ec6f4ff2557f5b42
             </div>
           </div>
         </ScrollAnimation>
