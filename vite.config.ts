@@ -20,10 +20,9 @@ export default defineConfig(({ mode, command }) => {
         // ensure a single React instance everywhere
         react: path.resolve(__dirname, "node_modules/react"),
         "react-dom": path.resolve(__dirname, "node_modules/react-dom"),
-        // 🚑 force ESM build so React is actually imported in use-callback-ref
-        "use-callback-ref": "use-callback-ref/dist/es2019/index.js",
+        "react/jsx-runtime": path.resolve(__dirname, "node_modules/react/jsx-runtime"),
       },
-      dedupe: ["react", "react-dom"],
+      dedupe: ["react", "react-dom", "react/jsx-runtime"],
     },
     optimizeDeps: {
       include: [
