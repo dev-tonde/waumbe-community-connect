@@ -25,7 +25,7 @@ import PageSEO from '@/components/PageSEO';
 
 const Admin = () => {
   const navigate = useNavigate();
-  const { user, profile, signOut, isStaffOrAdmin, loading } = useAuth();
+  const { user, profile, signOut, isStaffOrAdmin, isAdmin, loading } = useAuth();
   const { toast } = useToast();
   
   const [contacts, setContacts] = useState<any[]>([]);
@@ -134,7 +134,7 @@ const Admin = () => {
             <div>
               <h1 className="text-3xl font-bold">Admin Dashboard</h1>
               <p className="text-muted-foreground">
-                Welcome back, {profile?.full_name || 'Admin'} ({profile?.role})
+                Welcome back, {profile?.full_name || 'Admin'} ({isAdmin ? 'Admin' : 'Staff'})
               </p>
             </div>
             <Button onClick={handleSignOut} variant="outline">

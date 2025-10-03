@@ -6,6 +6,9 @@ interface Profile {
   id: string;
   email: string;
   full_name: string | null;
+}
+
+interface UserRole {
   role: 'admin' | 'staff' | 'user';
 }
 
@@ -27,6 +30,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
+  const [userRole, setUserRole] = useState<UserRole | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -64,17 +68,32 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const fetchProfile = async (userId: string) => {
     try {
-      const { data, error } = await supabase
+      // Fetch profile data
+      const { data: profileData, error: profileError } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', userId)
         .single();
 
-      if (error) throw error;
-      setProfile(data);
+      if (profileError) throw profileError;
+      setProfile(profileData);
+
+      // Fetch user role from user_roles table
+      const { data: roleData, error: roleError } = await supabase
+        .from('user_roles')
+        .select('role')
+        .eq('user_id', userId)
+        .single();
+
+      if (!roleError && roleData) {
+        setUserRole(roleData);
+      } else {
+        setUserRole(null);
+      }
     } catch (error) {
       // Profile might not exist yet, that's okay
       setProfile(null);
+      setUserRole(null);
     }
   };
 
@@ -114,8 +133,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     await supabase.auth.signOut();
   };
 
-  const isAdmin = profile?.role === 'admin';
-  const isStaffOrAdmin = profile?.role === 'admin' || profile?.role === 'staff';
+  const isAdmin = userRole?.role === 'admin';
+  const isStaffOrAdmin = userRole?.role === 'admin' || userRole?.role === 'staff';
 
   return (
     <AuthContext.Provider
