@@ -1,11 +1,8 @@
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/EntrepreneurshipNavbar";
-import EntrepreneurshipFooter from "@/components/entrepreneurship/EntrepreneurshipFooter";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import MiniHeroBanner from "@/components/MiniHeroBanner";
 import SEOManager from "@/components/PageSEO";
-import { FloatingMainSiteButton } from "@/components/FloatingMainSiteButton";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 const Fundraising = () => {
@@ -42,8 +39,6 @@ const Fundraising = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <EntrepreneurshipNavbar />
-      
       <div className="pt-16">
         <MiniHeroBanner
           title="Fundraising"
@@ -329,9 +324,6 @@ const Fundraising = () => {
           </ScrollAnimation>
         </div>
       </div>
-      
-      <EntrepreneurshipFooter />
-      <FloatingMainSiteButton />
     </div>
   );
 };

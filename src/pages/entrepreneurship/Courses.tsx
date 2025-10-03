@@ -4,12 +4,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import CourseApplicationForm from "@/components/forms/CourseApplicationForm";
-import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/EntrepreneurshipNavbar";
-import EntrepreneurshipFooter from "@/components/entrepreneurship/EntrepreneurshipFooter";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import MiniHeroBanner from "@/components/MiniHeroBanner";
 import SEOManager from "@/components/PageSEO";
-import { FloatingMainSiteButton } from "@/components/FloatingMainSiteButton";
 import { useToast } from "@/hooks/use-toast";
 
 const Courses = () => {
@@ -65,8 +62,6 @@ const Courses = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <EntrepreneurshipNavbar />
-      
       <div className="pt-16">
         <MiniHeroBanner
           title="Courses"
@@ -127,9 +122,6 @@ const Courses = () => {
           </ScrollAnimation>
         </div>
       </div>
-      
-      <EntrepreneurshipFooter />
-      <FloatingMainSiteButton />
     </div>
   );
 };

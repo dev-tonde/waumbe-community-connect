@@ -1,5 +1,3 @@
-import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/EntrepreneurshipNavbar";
-import EntrepreneurshipFooter from "@/components/entrepreneurship/EntrepreneurshipFooter";
 import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import SEOManager from "@/components/PageSEO";
-import { FloatingMainSiteButton } from "@/components/FloatingMainSiteButton";
 import { toast } from "@/components/ui/use-toast";
 
 const Contact = () => {
@@ -44,8 +41,6 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <EntrepreneurshipNavbar />
-      
       <div className="pt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <ScrollAnimation>
@@ -214,9 +209,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      
-      <EntrepreneurshipFooter />
-      <FloatingMainSiteButton />
     </div>
   );
 };

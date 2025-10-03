@@ -2,10 +2,7 @@ import { ScrollAnimation } from "@/components/ScrollAnimation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { EntrepreneurshipNavbar } from "@/components/entrepreneurship/EntrepreneurshipNavbar";
-import EntrepreneurshipFooter from "@/components/entrepreneurship/EntrepreneurshipFooter";
 import SEOManager from "@/components/PageSEO";
-import { FloatingMainSiteButton } from "@/components/FloatingMainSiteButton";
 import { Heart, DollarSign, Users, TrendingUp, Star, Target } from "lucide-react";
 
 const Donate = () => {
@@ -49,8 +46,6 @@ const Donate = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <EntrepreneurshipNavbar />
-      
       <div className="pt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <ScrollAnimation>
@@ -258,9 +253,6 @@ const Donate = () => {
           </ScrollAnimation>
         </div>
       </div>
-      
-      <EntrepreneurshipFooter />
-      <FloatingMainSiteButton />
     </div>
   );
 };
